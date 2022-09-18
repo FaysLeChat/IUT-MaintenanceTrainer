@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AcceuilComponent implements OnInit {
 
+  français = true;
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
+
+
 
 }

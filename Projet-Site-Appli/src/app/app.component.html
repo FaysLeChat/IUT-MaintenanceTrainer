@@ -1,15 +1,33 @@
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<ul>
-  <li><a href="#"><img id="logo" src="favicon.ico" alt="logo"/></a></li>
-  <li><br><a href="#">Mode</a></li>
-    <ul class="sous">
-      <li><a href="/entrainement">Mode Entrainement</a></li>
-      <li><a href="/simulation">Mode Test</a></li>
-      <li><a href="/survival">Mode Survival</a> </li>
-    </ul>
-  <div class="logo_quizz">
-    <li><a href="#"><img src="assets/img/Logo.png" width="129"/></a></li>
-  </div>
-</ul>
-<router-outlet></router-outlet>
-
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" style="position: sticky;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">(IUT)</a>
+      <button class="navbar-toggler d-lg-none" type="button" (click)="isCollapsed=!isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="navbarsExampleDefault" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault" [ngbCollapse]="isCollapsed">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Accueil</a>
+          </li>
+          <li class="nav-item">
+            <div ngbDropdown class="d-inline-block">
+              <a class="nav-link" id="dropdownBasic1" ngbDropdownToggle>Mode</a>
+              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <a href="/entrainement" ngbDropdownItem>Entrainement</a>
+                <a href="/simulation" ngbDropdownItem>Test</a>
+                <a href="/survival" ngbDropdownItem>Survie</a>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item active">
+            <button class="nav-link"(click)="translate()">Langue</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+<main>
+  <router-outlet></router-outlet>
+</main>

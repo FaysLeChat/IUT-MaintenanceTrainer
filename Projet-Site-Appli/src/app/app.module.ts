@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { AcceuilComponent } from './acceuil/acceuil.component';
 import {MatCardModule} from "@angular/material/card";
 import { EntrainementComponent } from './entrainement/entrainement.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {Erreur404Component} from "./erreur404/erreur404.component";
 
 
 @NgModule({
@@ -13,13 +15,15 @@ import { EntrainementComponent } from './entrainement/entrainement.component';
     AppComponent,
     AcceuilComponent,
     EntrainementComponent,
-    
+    Erreur404Component,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MatGridListModule,
     MatCardModule,
+    NgbModule,
   ],
 
   providers: [],

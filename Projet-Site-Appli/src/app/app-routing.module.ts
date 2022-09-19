@@ -3,11 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import {AcceuilComponent} from "./acceuil/acceuil.component";
 import {EntrainementComponent} from "./entrainement/entrainement.component";
 import {Erreur404Component} from "./erreur404/erreur404.component";
+import { SurvivalComponent } from './survival/survival.component';
 
 const routes: Routes = [
   {path: '', component: AcceuilComponent},
   {path: 'entrainement', component: EntrainementComponent},
-  {path: '**', component: Erreur404Component},
+  {path: 'survival', component: SurvivalComponent}, 
+  {path: '**', component: Erreur404Component}, 
 ];
 
 @NgModule({

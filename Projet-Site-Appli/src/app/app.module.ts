@@ -11,6 +11,10 @@ import {Erreur404Component} from "./erreur404/erreur404.component";
 import { SimulationComponent } from './simulation/simulation.component';
 import { SurvivalComponent } from './survival/survival.component';
 
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -23,14 +27,27 @@ import { SurvivalComponent } from './survival/survival.component';
 
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
     MatGridListModule,
     MatCardModule,
     NgbModule,
+    BrowserModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: httpTranslateLoader,
+        deps: [HttpClient]
+      }
+    }),
+    FormsModule,
+    ReactiveFormsModule
   ],
-
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function httpTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}

@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./simulation.component.css']
 })
 export class SimulationComponent implements OnInit {
-  
+  resultat = 0;
   changement = false;
   constructor() { }
 
@@ -22,8 +22,11 @@ export class SimulationComponent implements OnInit {
     }
   }
   
-  /*ajout(score){
-
-  }*/
+  ajout(score : number){
+    if(document.getElementById('point')){
+      this.resultat += score;
+    }
+    return this.resultat;
+  }
 
 }

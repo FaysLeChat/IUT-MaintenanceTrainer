@@ -27,13 +27,14 @@
             <p>Réponse de la question</p>
 
             <p id="note">Note :
-                <button onclick="ajout(0)">0</button>
-                <button onclick="ajout(1)">1</button>
-                <button onclick="ajout(2)">2</button>
-                <button onclick="ajout(3)">3</button>
-                <button onclick="ajout(4)">4</button>
-                <button onclick="ajout(5)">5</button>
+                <button id ='point' (click)="ajout(0)">0</button>
+                <button  (click)="ajout(1)">1</button>
+                <button (click)="ajout(2)">2</button>
+                <button (click)="ajout(3)">3</button>
+                <button (click)="ajout(4)">4</button>
+                <button (click)="ajout(5)">5</button>
             </p>
+            <p>Score : {{resultat}} / 100</p>
           </div>
           <button (click)= "changerQuestion()" class="btn btn-primary">Test affichage Question Ouverte/Fermée </button>
         </div>

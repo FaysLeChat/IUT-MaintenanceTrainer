@@ -66,7 +66,7 @@ INSERT INTO questions (id_question, label_fr, label_en, id_categorie, id_difficu
 (14, 'Expliquer _construct() et _destruct()', 'Explain _construct() and _destruct()', 8,2,TRUE,FALSE,FALSE,NULL,NULL),
 (15, 'Comment exporter des données PHP dans Excel ?', 'How to export PHP datas in Excel ?', 8,2,TRUE,FALSE,FALSE,NULL,NULL),
 (16, 'Quelle est la balise la plus courante pour intégrer PHP au HTML?','What is the most common element to integrate PHP into HTML ?',8,1,TRUE,TRUE,TRUE,NULL,NULL),
-(17, 'Quelle est la différence entre «==» et «===»','What is the difference between == and === ?',6,TRUE,TRUE,TRUE,NULL,NULL);
+(17, 'Quelle est la différence entre «==» et «===»','What is the difference between == and ===?',6,1,TRUE,TRUE,TRUE,NULL,NULL);
 
 CREATE TABLE reponses (
   id_reponse serial PRIMARY KEY NOT NULL,

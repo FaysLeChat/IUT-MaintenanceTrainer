@@ -5,11 +5,12 @@ services:
     container_name: 'recruit_postgres'
     restart: always
     volumes:
-      - ./data/postgres:/var/lib/postgresql/data
+      - ./data/postgres:/var/lib/postgresql/jeu:z
     environment:
       POSTGRES_USER: app_user
       POSTGRES_PASSWORD: password
       POSTGRES_DB: database
+      PGDATA : /var/lib/postgresql/data/pgdata
     ports:
       - "5432:5432"
     stop_signal: SIGINT
@@ -18,13 +19,11 @@ services:
     container_name: 'recruit_api'
     ports:
       - "3000:3000"
-    links:
-      - db:db
     environment:
       PGRST_DB_URI: postgres://app_user:password@db:5432/database
       PGRST_DB_SCHEMA: public
       PGRST_DB_ANON_ROLE: app_user
-      PGRST_SERVER_PROXY_URI: "http://127.0.0.1:3000" 
+      PGRST_OPENAPI_SERVER_PROXY_URI: http://127.0.0.1:3000
     depends_on:
       - db
   adminer:
@@ -42,6 +41,6 @@ services:
     ports:
       - "8080:8080"
     links:
-        - postgrest:postgrest  
+        - postgrest:postgrest
     environment:
       API_URL: http://localhost:3000

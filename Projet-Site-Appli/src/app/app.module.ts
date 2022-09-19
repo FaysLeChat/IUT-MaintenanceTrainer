@@ -9,6 +9,7 @@ import { EntrainementComponent } from './entrainement/entrainement.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {Erreur404Component} from "./erreur404/erreur404.component";
 import { SimulationComponent } from './simulation/simulation.component';
+import { SurvivalComponent } from './survival/survival.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { SimulationComponent } from './simulation/simulation.component';
     EntrainementComponent,
     Erreur404Component,
     SimulationComponent,
+    SurvivalComponent,
 
   ],
   imports: [

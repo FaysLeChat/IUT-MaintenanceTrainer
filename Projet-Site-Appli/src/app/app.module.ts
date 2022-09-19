@@ -8,6 +8,7 @@ import {MatCardModule} from "@angular/material/card";
 import { EntrainementComponent } from './entrainement/entrainement.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {Erreur404Component} from "./erreur404/erreur404.component";
+import { SimulationComponent } from './simulation/simulation.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import {Erreur404Component} from "./erreur404/erreur404.component";
     AcceuilComponent,
     EntrainementComponent,
     Erreur404Component,
+    SimulationComponent,
 
   ],
   imports: [

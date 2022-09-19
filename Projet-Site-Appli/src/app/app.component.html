@@ -8,22 +8,22 @@
       <div class="collapse navbar-collapse" id="navbarsExampleDefault" [ngbCollapse]="isCollapsed">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Accueil</a>
+            <a class="nav-link" href="#">{{'navbar.index' | translate }}</a>
           </li>
           <li class="nav-item">
             <div ngbDropdown class="d-inline-block">
-              <a class="nav-link" id="dropdownBasic1" ngbDropdownToggle>Mode</a>
+              <a class="nav-link" id="dropdownBasic1" ngbDropdownToggle>{{'navbar.gamemode' | translate }}</a>
               <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                <a href="/entrainement" ngbDropdownItem>Entrainement</a>
-                <a href="/simulation" ngbDropdownItem>Test</a>
-                <a href="/survival" ngbDropdownItem>Survie</a>
+                <a href="/entrainement" ngbDropdownItem>{{'navbar.gamemodes.training' | translate }}</a>
+                <a href="/simulation" ngbDropdownItem>{{'navbar.gamemodes.test' | translate }}</a>
+                <a href="/survival" ngbDropdownItem>{{'navbar.gamemodes.survival' | translate }}</a>
               </div>
             </div>
           </li>
-          <li class="nav-item active">
-            <button class="nav-link"(click)="translate()">Langue</button>
-          </li>
         </ul>
+      </div>
+      <div class="d-flex">
+        <a (click)="open(content)"><i class="bi bi-gear" style="color: white"></i></a>
       </div>
     </div>
   </nav>
@@ -31,3 +31,26 @@
 <main>
   <router-outlet></router-outlet>
 </main>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title"><i class="bi bi-gear"></i> {{'settings.title' | translate }}</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="mb-3">
+        <label>{{'settings.language' | translate }}</label>
+        <div class="input-group">
+          <select [(ngModel)]="selectedLang" (ngModelChange)="onChange($event)" name="selectLang" class="form-select" aria-label="Select lang">
+            <option value="fr">{{'settings.languages.french' | translate }}</option>
+            <option value="en">{{'settings.languages.english' | translate }}</option>
+          </select>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">{{'settings.close' | translate }}</button>
+  </div>
+</ng-template>

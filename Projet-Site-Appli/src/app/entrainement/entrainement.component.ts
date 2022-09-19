@@ -11,4 +11,5 @@ export class EntrainementComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
 }

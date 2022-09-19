@@ -16,8 +16,7 @@ INSERT INTO categories (id_categorie, label_fr, label_en) VALUES
 (4, 'Web - Back ', 'Web - Back '),
 (5,'Prog Objet', 'Oriented Object Programmation'),
 (6, 'Experience','Experience'),
-(7,'Personnel','Personnal'),
-(8, 'PHP', 'PHP');
+(7,'Personnel','Personnal');
 
 
 

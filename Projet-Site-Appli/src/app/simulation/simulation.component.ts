@@ -23,7 +23,7 @@ export class SimulationComponent implements OnInit {
   }
   
   ajout(score : number){
-    if(document.getElementById('point')){
+    if(document.getElementById('note')){
       this.resultat += score;
     }
     return this.resultat;

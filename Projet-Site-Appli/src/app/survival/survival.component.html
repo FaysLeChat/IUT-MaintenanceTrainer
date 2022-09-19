@@ -1,4 +1,5 @@
-<div class="container">
+<ul *ngIf="tab_create">
+  <div class="container">
     <div class="row">
         <div class="col">
             <p style = "text-align: center; font-size: xx-large;">Mode Survie </p>
@@ -48,4 +49,15 @@
       </div>
     </div>
   </div>
-  
+</ul>
+
+
+
+<ul *ngIf="tab_create == false">
+    <div>
+        <form name = "Nombre de Joueurs" >
+          <input type = "number" name = "" value="" id="nbj">
+          <button (click)="tab()">Valider</button>
+        </form>
+    </div>
+</ul>

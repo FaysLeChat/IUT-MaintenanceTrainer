@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-root',
@@ -8,29 +6,13 @@ import {TranslateService} from "@ngx-translate/core";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  francais = true;
   title = 'Projet-Site-Appli';
-  nb_joueur = 0;
 
-
-
-
-  constructor(private translate: TranslateService, private modalService: NgbModal) {
-    translate.addLangs(['fr', 'en']);
-    translate.setDefaultLang('fr');
-    translate.use('fr');
-    this.selectedLang = "fr";
+  translate(): void {
+    this.francais = !this.francais;
+    console.log(this.francais);
   }
 
   public isCollapsed = false;
-  selectedLang: any;
-
-  open(content: any) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
-  }
-
-  onChange(deviceValue: any) {
-    this.selectedLang = deviceValue;
-    console.log(this.selectedLang)
-    this.translate.use(deviceValue);
-  }
 }

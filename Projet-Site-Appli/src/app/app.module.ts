@@ -8,6 +8,8 @@ import {MatCardModule} from "@angular/material/card";
 import { EntrainementComponent } from './entrainement/entrainement.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {Erreur404Component} from "./erreur404/erreur404.component";
+import { SimulationComponent } from './simulation/simulation.component';
+import { SurvivalComponent } from './survival/survival.component';
 
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
@@ -20,6 +22,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     AcceuilComponent,
     EntrainementComponent,
     Erreur404Component,
+    SimulationComponent,
+    SurvivalComponent,
 
   ],
   imports: [

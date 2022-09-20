@@ -16,7 +16,8 @@ INSERT INTO categories (id_categorie, label_fr, label_en) VALUES
 (4, 'Web - Back ', 'Web - Back '),
 (5,'Prog Objet', 'Oriented Object Programmation'),
 (6, 'Experience','Experience'),
-(7,'Personnel','Personnal');
+(7,'Personnel','Personnal'),
+(8, 'PHP', 'PHP');
 
 
 
@@ -60,7 +61,12 @@ INSERT INTO questions (id_question, label_fr, label_en, id_categorie, id_difficu
 (9, 'Qu''est ce que le HTML sémantique ?','What is Semantic HTML?',3,2,TRUE,TRUE,TRUE,NULL,NULL),
 (10, 'Un site ne s''affiche pas correctement sur des appareils différents. Quels sont les premières choses que vous feriez pour corriger le problème ?','The website does not display correctly on different devices.  What are the first steps you would take to fix it?',3,2,TRUE,TRUE,TRUE,NULL,NULL),
 (11, 'Quelle est pour vous, la meilleure qualité pour un développeur ?','What is for you, the best quality for a developper ?',7,1,TRUE,FALSE,FALSE,NULL,NULL),
-(12, 'En Java, quelle est la différence entre equals() et == ?','In Java, what is the difference between equals() and ==?',5,2,TRUE,TRUE,TRUE,NULL,NULL);
+(12, 'En Java, quelle est la différence entre equals() et == ?','In Java, what is the difference between equals() and ==?',5,2,TRUE,TRUE,TRUE,NULL,NULL),
+(13, 'PHP est-il un langage de programmation POO ?', 'Is PHP a programming language OOP ?',8,1,TRUE,TRUE,TRUE, NULL, NULL),
+(14, 'Expliquer _construct() et _destruct()', 'Explain _construct() and _destruct()', 8,2,TRUE,FALSE,FALSE,NULL,NULL),
+(15, 'Comment exporter des données PHP dans Excel ?', 'How to export PHP datas in Excel ?', 8,2,TRUE,FALSE,FALSE,NULL,NULL),
+(16, 'Quelle est la balise la plus courante pour intégrer PHP au HTML?','What is the most common element to integrate PHP into HTML ?',8,1,TRUE,TRUE,TRUE,NULL,NULL),
+(17, 'Quelle est la différence entre «==» et «===»','What is the difference between == and ===?',6,1,TRUE,TRUE,TRUE,NULL,NULL);
 
 CREATE TABLE reponses (
   id_reponse serial PRIMARY KEY NOT NULL,

@@ -9,6 +9,10 @@ import {TranslateService} from "@ngx-translate/core";
 })
 export class AppComponent {
   title = 'Projet-Site-Appli';
+  nb_joueur = 0;
+
+
+
 
   constructor(private translate: TranslateService, private modalService: NgbModal) {
     translate.addLangs(['fr', 'en']);

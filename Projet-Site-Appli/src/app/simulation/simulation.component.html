@@ -14,12 +14,16 @@
             <p style="text-align: center">Question n°1/20</p>
             <p style="text-align: center">Quelle est la meilleure reponse ?</p>
 
-            <a class="btn btn-primary">Réponse A</a>
-            <a class="btn btn-primary">Réponse B</a>
-            <a class="btn btn-primary">Réponse C</a>
-            <a class="btn btn-primary">La réponse D</a>
+            <p id="note">
+                <a class="btn btn-primary">Réponse A</a>
+                <a class="btn btn-primary">Réponse B</a>
+                <a class="btn btn-primary">Réponse C</a>
+                <a (click)="ajout(5)" class="btn btn-primary">La réponse D</a>
+            </p>
 
             <p>Réponse de la question</p>
+
+            <p>Score : {{resultat}} / 100</p>
           </div>
 
           <div *ngIf="changement == true" class="card-body">
@@ -32,8 +36,8 @@
             <p>Réponse de la question</p>
 
             <p id="note">Note :
-                <button id ='point' (click)="ajout(0)">0</button>
-                <button  (click)="ajout(1)">1</button>
+                <button (click)="ajout(0)">0</button>
+                <button (click)="ajout(1)">1</button>
                 <button (click)="ajout(2)">2</button>
                 <button (click)="ajout(3)">3</button>
                 <button (click)="ajout(4)">4</button>

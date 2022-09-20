@@ -1,10 +1,11 @@
 {
   "navbar": {
+    "logotext": "PTE",
     "index": "Accueil",
     "gamemode": "Mode",
     "gamemodes": {
       "training": "Entrainement",
-      "test": "Test",
+      "simulation": "Simulation",
       "survival": "Survie"
     }
   },
@@ -12,18 +13,43 @@
     "gamemodes": {
       "survival": {
         "title": "Survie",
-        "description": "(Description)"
+        "description": "Affronter vos amis dans un Battle Royal afin de déterminer qui est le meilleur dans les questions lors d'entretiens."
       },
       "training": {
         "title": "Entrainement",
-        "description": "(Description)"
+        "description": "Entraine toi  à répondre à une série de questions sur un thème choisi qui te seront possiblement posées lors d'entretiens."
       },
       "simulation": {
         "title": "Simulation",
-        "description": "(Description)"
+        "description": "Fais une simulation d'entretien avec un de tes amis ou l'aide d'un professeur pour voir comment se déroule un entretien."
       }
     },
     "play": "Jouer"
+  },
+  "training": {
+    "title": "Mode Entraînement"
+  },
+  "simulation": {
+    "title": "Mode Simulation",
+    "error": "Score maximum atteint",
+    "bar": {
+      "test": "Test affichage question",
+      "score": "Score"
+    }
+  },
+  "survival": {
+    "title": "Mode Survie",
+    "setup": "Configuration",
+    "play": "Jouer",
+    "nbplayers": {
+      "title": "Nombre de joueurs",
+      "placeholder": "Entre 2 et 10",
+      "error": "Le nombre de joueurs doit être compris entre 2 et 10 !"
+    },
+    "bar": {
+      "players": "Joueurs",
+      "lives": "Vie(s)"
+    }
   },
   "settings": {
     "title": "Paramètres",
@@ -33,5 +59,8 @@
       "english": "Anglais"
     },
     "close": "Fermer"
+  },
+  "footerbar": {
+    "settings": "Paramètres"
   }
 }

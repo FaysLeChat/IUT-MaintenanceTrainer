@@ -1,11 +1,11 @@
 <header>
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" style="position: sticky;">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">(IUT)</a>
+      <a class="navbar-brand" href="#">{{'navbar.logotext' | translate }}</a>
       <button class="navbar-toggler d-lg-none" type="button" (click)="isCollapsed=!isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="navbarsExampleDefault" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault" [ngbCollapse]="isCollapsed">
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault" [ngbCollapse]="!isCollapsed">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
             <a class="nav-link" href="#">{{'navbar.index' | translate }}</a>
@@ -15,15 +15,12 @@
               <a class="nav-link" id="dropdownBasic1" ngbDropdownToggle>{{'navbar.gamemode' | translate }}</a>
               <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                 <a href="/entrainement" ngbDropdownItem>{{'navbar.gamemodes.training' | translate }}</a>
-                <a href="/simulation" ngbDropdownItem>{{'navbar.gamemodes.test' | translate }}</a>
+                <a href="/simulation" ngbDropdownItem>{{'navbar.gamemodes.simulation' | translate }}</a>
                 <a href="/survival" ngbDropdownItem>{{'navbar.gamemodes.survival' | translate }}</a>
               </div>
             </div>
           </li>
         </ul>
-      </div>
-      <div class="d-flex">
-        <a (click)="open(content)"><i class="bi bi-gear" style="color: white"></i></a>
       </div>
     </div>
   </nav>
@@ -48,9 +45,122 @@
           </select>
         </div>
       </div>
+      <div class="mb-3">
+        <label>Changer le thème des questions (DEV TEMPORAIRE)</label>
+        <div class="input-group">
+          <button (click)="changeTheme(content2)" class="btn btn-dark"><i class="bi bi-gear"></i> Modifier</button>
+        </div>
+      </div>
     </form>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">{{'settings.close' | translate }}</button>
   </div>
 </ng-template>
+<ng-template #content2 let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title-2"><i class="bi bi-patch-question"></i> Choix du thème des questions</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="mb-4">
+        <div class="row">
+          <div class="col-4">
+            <div class="card">
+              <div class="card-body" style="background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(assets/img/themes/mysql.jpg); background-repeat: no-repeat; background-size: 100%;">
+                <h5 class="card-title">Base de données</h5>
+                <p class="card-text">(Description)</p>
+                <a href="#" class="btn btn-primary">Sélectionner</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card">
+              <div class="card-body" style="background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(assets/img/themes/reseau.jpg); background-repeat: no-repeat; background-size: 100%;">
+                <h5 class="card-title">Réseau</h5>
+                <p class="card-text">(Description)</p>
+                <a href="#" class="btn btn-primary">Sélectionner</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card">
+              <div class="card-body" style="background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(assets/img/themes/frontend.jpg); background-repeat: no-repeat; background-size: 100%;">
+                <h5 class="card-title">Web - Front</h5>
+                <p class="card-text">(Description)</p>
+                <a href="#" class="btn btn-primary">Sélectionner</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-4">
+            <div class="card">
+              <div class="card-body" style="background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(assets/img/themes/backend.png); background-repeat: no-repeat; background-size: 100%;">
+                <h5 class="card-title">Web - Back</h5>
+                <p class="card-text">(Description)</p>
+                <a href="#" class="btn btn-primary">Sélectionner</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card">
+              <div class="card-body" style="background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(assets/img/themes/poo.jpg); background-repeat: no-repeat; background-size: 100%;">
+                <h5 class="card-title">Prog Objet</h5>
+                <p class="card-text">(Description)</p>
+                <a href="#" class="btn btn-primary">Sélectionner</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card">
+              <div class="card-body" style="background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(assets/img/themes/experience.jpg); background-repeat: no-repeat; background-size: 100%;">
+                <h5 class="card-title">Experience</h5>
+                <p class="card-text">(Description)</p>
+                <a href="#" class="btn btn-primary">Sélectionner</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-4">
+            <div class="card">
+              <div class="card-body" style="background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(assets/img/themes/personnel.jpg); background-repeat: no-repeat; background-size: 100%;">
+                <h5 class="card-title">Personnel</h5>
+                <p class="card-text">(Description)</p>
+                <a href="#" class="btn btn-primary">Sélectionner</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card">
+              <div class="card-body" style="background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(assets/img/themes/php.jpg); background-repeat: no-repeat; background-size: 100%;">
+                <h5 class="card-title">PHP</h5>
+                <p class="card-text">(Description)</p>
+                <a href="#" class="btn btn-primary">Sélectionner</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card">
+              <div class="card-body" style="background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(assets/img/themes/softskills.webp); background-repeat: no-repeat; background-size: 100%;">
+                <h5 class="card-title">Soft Skills</h5>
+                <p class="card-text">(Description)</p>
+                <a href="#" class="btn btn-primary">Sélectionner</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">{{'settings.close' | translate }}</button>
+  </div>
+</ng-template>
+<div style="position: fixed; bottom: 10px; left: 10px;">
+  <button (click)="open(content)" class="btn btn-dark"><i class="bi bi-gear"></i> {{'footerbar.settings' | translate }}</button>
+</div>

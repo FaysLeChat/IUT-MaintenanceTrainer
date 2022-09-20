@@ -66,7 +66,17 @@ INSERT INTO questions (id_question, label_fr, label_en, id_categorie, id_difficu
 (14, 'Expliquer _construct() et _destruct()', 'Explain _construct() and _destruct()', 8,2,TRUE,FALSE,FALSE,NULL,NULL),
 (15, 'Comment exporter des données PHP dans Excel ?', 'How to export PHP datas in Excel ?', 8,2,TRUE,FALSE,FALSE,NULL,NULL),
 (16, 'Quelle est la balise la plus courante pour intégrer PHP au HTML?','What is the most common element to integrate PHP into HTML ?',8,1,TRUE,TRUE,TRUE,NULL,NULL),
-(17, 'Quelle est la différence entre «==» et «===»','What is the difference between == and ===?',6,1,TRUE,TRUE,TRUE,NULL,NULL);
+(17, 'Quelle est la différence entre «==» et «===»','What is the difference between == and ===?',6,1,TRUE,TRUE,TRUE,NULL,NULL),
+(23, 'Qu est ce qu une base de données ?','What is a database ?',1,1,TRUE,TRUE,TRUE,NULL,NULL),
+(24, 'Qu est-ce qu un SGBD ?','What is a DBMS ?',1,1,TRUE,TRUE,TRUE,NULL,NULL),
+(25, 'Qu est-ce qu un SGBDR ?','What is an RDBMS ?',1,2,TRUE,TRUE,TRUE,NULL,NULL),
+(26, 'Que sont les tableaux et les champs en SQL ?','What are tables and fields in SQL?',1,1,TRUE,TRUE,TRUE,NULL,NULL),
+(27, 'Qu est-ce qu une clé primaire ?','What s a primary key ?',1,1,TRUE,TRUE,TRUE,NULL,NULL),
+(28, 'Que sont les routeurs ?','What are routers ?',2,2,TRUE,TRUE,TRUE,NULL,NULL),
+(29, 'Quelle est la différence entre GET et POST ?','What is the difference between GET and POST ?',4,2,TRUE,TRUE,TRUE,NULL,NULL),
+(30, 'Quelles sont les différences entre HTML et XHTML ?','What are the differences between HTML and XHTML ?',3,2,TRUE,TRUE,TRUE,NULL,NULL),
+(31, 'Quelles sont vos forces et vos faiblesses ?', 'What are your strengths and weaknesses?',7,1,TRUE,FALSE,FALSE,NULL,NULL),
+(32, 'Qu’est-ce que l’ héritage en Programmation Orientée Objet ?', 'What is legacy in Oriented Object Programmation ?',5,2,TRUE,TRUE,TRUE,NULL,NULL);
 
 CREATE TABLE reponses (
   id_reponse serial PRIMARY KEY NOT NULL,

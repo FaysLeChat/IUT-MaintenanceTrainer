@@ -72,7 +72,17 @@ INSERT INTO questions (id_question, label_fr, label_en, id_categorie, id_difficu
 (19, 'Que penses-tu de la programmation en équipe ? L’as-tu déjà fait ou serais-tu intéressé pour essayer ?', 'What do you think about team programming? Have you ever done it or would you be interested in trying?', 9,1,TRUE,FALSE,FALSE,NULL,NULL),
 (20, 'Qu’est-ce que tu trouves le plus difficile dans ton métier ?','What do you find most difficult about your job?',9,1,TRUE,FALSE,FALSE,NULL,NULL),
 (21, 'Parle moi d’un projet dont tu es particulièrement fier et de ce que tu as accompli dans ce projet', 6,1,TRUE,FALSE,FALSE,NULL,NULL),
-(22, 'Tu bloques sur une ligne de code ou un problème technique. Comment trouves-tu la réponse ?','You are blocking on a line of code or a technical problem. How do you find the answer ?',9,1,TRUE,FALSE,FALSE,NULL,NULL);
+(22, 'Tu bloques sur une ligne de code ou un problème technique. Comment trouves-tu la réponse ?','You are blocking on a line of code or a technical problem. How do you find the answer ?',9,1,TRUE,FALSE,FALSE,NULL,NULL),
+(23, 'Qu est ce qu une base de données ?','What is a database ?',1,1,TRUE,TRUE,TRUE,NULL,NULL),
+(24, 'Qu est-ce qu un SGBD ?','What is a DBMS ?',1,1,TRUE,TRUE,TRUE,NULL,NULL),
+(25, 'Qu est-ce qu un SGBDR ?','What is an RDBMS ?',1,2,TRUE,TRUE,TRUE,NULL,NULL),
+(26, 'Que sont les tableaux et les champs en SQL ?','What are tables and fields in SQL?',1,1,TRUE,TRUE,TRUE,NULL,NULL),
+(27, 'Qu est-ce qu une clé primaire ?','What s a primary key ?',1,1,TRUE,TRUE,TRUE,NULL,NULL),
+(28, 'Que sont les routeurs ?','What are routers ?',2,2,TRUE,TRUE,TRUE,NULL,NULL),
+(29, 'Quelle est la différence entre GET et POST ?','What is the difference between GET and POST ?',4,2,TRUE,TRUE,TRUE,NULL,NULL),
+(30, 'Quelles sont les différences entre HTML et XHTML ?','What are the differences between HTML and XHTML ?',3,2,TRUE,TRUE,TRUE,NULL,NULL),
+(31, 'Quelles sont vos forces et vos faiblesses ?', 'What are your strengths and weaknesses?',7,1,TRUE,FALSE,FALSE,NULL,NULL),
+(32, 'Qu’est-ce que l’ héritage en Programmation Orientée Objet ?', 'What is legacy in Oriented Object Programmation ?',5,2,TRUE,TRUE,TRUE,NULL,NULL);
 
 CREATE TABLE reponses (
   id_reponse serial PRIMARY KEY NOT NULL,

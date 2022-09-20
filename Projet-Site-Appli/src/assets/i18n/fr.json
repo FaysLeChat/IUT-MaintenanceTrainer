@@ -58,5 +58,8 @@
       "english": "Anglais"
     },
     "close": "Fermer"
+  },
+  "footerbar": {
+    "settings": "Paramètres"
   }
 }

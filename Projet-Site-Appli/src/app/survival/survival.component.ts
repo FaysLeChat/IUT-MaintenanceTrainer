@@ -14,7 +14,7 @@ export class SurvivalComponent implements OnInit {
 
 
 
-  constructor() { 
+  constructor() {
   }
 
   ngOnInit(): void {
@@ -27,14 +27,12 @@ export class SurvivalComponent implements OnInit {
         this.tab_create = true;
     }
     }
-    
-  }
 
 
 
   errorMessage = '';
 
-  envoyer() {
+  envoyer()  {
     this.joueurs = this.model;
     if(this.joueurs >= 2 && this.joueurs <= 10) {
       this.tab_create = true;

@@ -12,13 +12,18 @@ export class SurvivalComponent implements OnInit {
   public model: any;
   public tab_create = false;
 
+  public interval: any;
+  public time: number = 0;
+
 
 
   constructor() {
   }
 
   ngOnInit(): void {
+    this.time = 0;
   }
+
   tab(): void {
     var nb_joueur = 0
     //nb_joueur =document.getElementById("nbj");
@@ -26,7 +31,7 @@ export class SurvivalComponent implements OnInit {
     if(nb_joueur >= 2 && nb_joueur <=10){
         this.tab_create = true;
     }
-    }
+  }
 
 
 
@@ -37,7 +42,11 @@ export class SurvivalComponent implements OnInit {
     if(this.joueurs >= 2 && this.joueurs <= 10) {
       this.tab_create = true;
     } else {
-      this.errorMessage = "Le nombre de joueurs doit être compris entre 2 et 10 !"
+      return this.errorMessage = "Le nombre de joueurs doit être compris entre 2 et 10 !"
     }
+    this.interval = setInterval(() => {
+      this.time++;
+    },1000)
+    return true;
   }
 }

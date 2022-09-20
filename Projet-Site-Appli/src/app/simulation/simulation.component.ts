@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./simulation.component.css']
 })
 export class SimulationComponent implements OnInit {
+  public maxscore = 100;
+  public errorMessage = "";
   resultat = 0;
   changement = false;
   constructor() { }
@@ -21,12 +23,14 @@ export class SimulationComponent implements OnInit {
       return (this.changement = true);
     }
   }
-  
-  ajout(score : number){
-    if(document.getElementById('note')){
-      this.resultat += score;
-    }
-    return this.resultat;
-  }
 
+  ajout(score : number) {
+    if (this.resultat < this.maxscore && document.getElementById('note')) {
+      this.resultat += score;
+      return this.resultat;
+    } else {
+      this.errorMessage = "Score maximum atteint !";
+    }
+    return 0;
+  }
 }

@@ -1,0 +1,37 @@
+{
+  "navbar": {
+    "index": "Accueil",
+    "gamemode": "Mode",
+    "gamemodes": {
+      "training": "Entrainement",
+      "test": "Test",
+      "survival": "Survie"
+    }
+  },
+  "home": {
+    "gamemodes": {
+      "survival": {
+        "title": "Survie",
+        "description": "(Description)"
+      },
+      "training": {
+        "title": "Entrainement",
+        "description": "(Description)"
+      },
+      "simulation": {
+        "title": "Simulation",
+        "description": "(Description)"
+      }
+    },
+    "play": "Jouer"
+  },
+  "settings": {
+    "title": "Paramètres",
+    "language": "Langue",
+    "languages": {
+      "french": "Français",
+      "english": "Anglais"
+    },
+    "close": "Fermer"
+  }
+}

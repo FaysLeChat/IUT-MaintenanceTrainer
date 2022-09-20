@@ -41,6 +41,7 @@
           <p class="card-text" style="text-align: center;">Quel est la meilleure réponse ?</p>
           <hr>
           <p class="card-text" style="text-align: center;">Réponse de la question</p>
+          <ngb-alert *ngIf="errorMessage" type="danger" (closed)="errorMessage=''">{{'simulation.error' | translate }}</ngb-alert>
           <div class="row" id="note">
             <div class="col-2">
               <button (click)="ajout(0)" class="btn btn-primary">0</button>
@@ -68,5 +69,5 @@
 </div>
  <div style="position: fixed; bottom: 10px; right: 10px;">
    <button class="btn btn-danger" (click)= "changerQuestion()"><i class="bi bi-plus"></i> {{'simulation.bar.test' | translate }}</button>
-   <button class="btn btn-primary"><i class="bi bi-1-circle"></i> {{'simulation.bar.score' | translate }} : {{resultat}}/100</button>
+   <button class="btn btn-primary"><i class="bi bi-1-circle"></i> {{'simulation.bar.score' | translate }} : {{resultat}}/{{maxscore}}</button>
  </div>

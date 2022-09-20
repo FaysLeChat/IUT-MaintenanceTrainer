@@ -71,9 +71,6 @@ INSERT INTO questions (id_question, label_fr, label_en, id_categorie, id_difficu
 (19, 'Que penses-tu de la programmation en équipe ? L’as-tu déjà fait ou serais-tu intéressé pour essayer ?', 'What do you think about team programming? Have you ever done it or would you be interested in trying?', 9,1,TRUE,FALSE,FALSE,NULL,NULL),
 (20, 'Qu’est-ce que tu trouves le plus difficile dans ton métier ?','What do you find most difficult about your job?',9,1,TRUE,FALSE,FALSE,NULL,NULL),
 (21, 'Parle moi d’un projet dont tu es particulièrement fier et de ce que tu as accompli dans ce projet', 6,1,TRUE,FALSE,FALSE,NULL,NULL),
-<<<<<<< HEAD
-(22, 'Tu bloques sur une ligne de code ou un problème technique. Comment trouves-tu la réponse ?','You are blocking on a line of code or a technical problem. How do you find the answer ?',9,1,TRUE,FALSE,FALSE,NULL,NULL);
-=======
 (22, 'Tu bloques sur une ligne de code ou un problème technique. Comment trouves-tu la réponse ?','You are blocking on a line of code or a technical problem. How do you find the answer ?',9,1,TRUE,FALSE,FALSE,NULL,NULL),
 (23, 'Qu est ce qu une base de données ?','What is a database ?',1,1,TRUE,TRUE,TRUE,NULL,NULL),
 (24, 'Qu est-ce qu un SGBD ?','What is a DBMS ?',1,1,TRUE,TRUE,TRUE,NULL,NULL),
@@ -85,7 +82,6 @@ INSERT INTO questions (id_question, label_fr, label_en, id_categorie, id_difficu
 (30, 'Quelles sont les différences entre HTML et XHTML ?','What are the differences between HTML and XHTML ?',3,2,TRUE,TRUE,TRUE,NULL,NULL),
 (31, 'Quelles sont vos forces et vos faiblesses ?', 'What are your strengths and weaknesses?',7,1,TRUE,FALSE,FALSE,NULL,NULL),
 (32, 'Qu’est-ce que l’ héritage en Programmation Orientée Objet ?', 'What is legacy in Oriented Object Programmation ?',5,2,TRUE,TRUE,TRUE,NULL,NULL);
->>>>>>> 71bb8bbb46e9d2b30f98360e7475ea4e709849b1
 
 CREATE TABLE reponses (
   id_reponse serial PRIMARY KEY NOT NULL, 
@@ -119,7 +115,20 @@ INSERT INTO reponses (id_reponse, id_question, label_fr, label_en, valid) VALUES
 (21, 7, 'Oui','Yes',TRUE),
 (22, 7, 'Non','No',FALSE),
 (23, 7, 'Je ne sais pas','I d''ont know',FALSE),
-(24, 7, 'La réponse D','Answer D');
+(24, 7, 'La réponse D','Answer D',FALSE),
+(25, 9, 'C''est l''utilisation du balisage HTML visant à renforcer la signification des informations contenues dans les pages web, c''est-à-dire leur sens, plutôt que définir leurs présentations','It is the use of HTML element to strengthen the meaning of the information contained in web pages, that is, their meaning, rather than defining their presentations.',TRUE),
+(26, 9, 'C''est de l''HTML qui s''aime de manière antique',FALSE ),
+(27, 9, 'Une convention d''écriture du code HTML', FALSE),
+(28, 9, 'Une façon d''organiser son répertoire de travail',FALSE),
+(29, 10, 'Recréer le site pour chaque appareil','Recreate the website for each device',FALSE),
+(30, 10, 'Je change d''hébergeur','I change host',FALSE),
+(31, 10, 'J''adapte mon CSS', 'I adapt my CSS',TRUE),
+(32, 10, 'Je rends mon site réactif', 'I make my website responsive', TRUE),
+(33, 12, 'Aucune', 'None',FALSE),
+(34, 12, 'L''une est une méthode et l''autre une opération','One is a method and the other one is an operator',TRUE),
+(35, 12, '== est une comparaison d''adresse et equals() une comparaison de contenu','== is an address comparison and equals() a content comparison',TRUE),
+(36, 12, '== est une comparaison de contenu et equals() une comparaison d''adresse','== is a content comparison and equals() an address comparison',FALSE); 
+
 
 
 CREATE TABLE users (

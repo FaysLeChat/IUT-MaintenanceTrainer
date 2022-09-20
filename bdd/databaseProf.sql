@@ -1,4 +1,3 @@
-
 drop schema if exists BaseAppli CASCADE;
 create schema BaseAppli;
 set search_path to BaseAppli;
@@ -55,7 +54,7 @@ INSERT INTO questions (id_question, label_fr, label_en, id_categorie, id_difficu
 (2, 'Lequel de ces protocoles n est qu un protocole d échange de fichiers entre un client et un serveur sur Internet ?', 'Which of these protocols is only a file exchange protocol between a client and a server on the Internet ?', 2, 1, TRUE, TRUE, TRUE, 'FTP pour Protocole de Transport de Fichier', 'FTP for File Trasfert Protocol'),
 (3, 'Comment améliorer une page web qui se charge lentement?', 'How to improve a web page that loads slowly?', 4,2, TRUE,TRUE,TRUE,NULL,NULL ),
 (4,'Comment vous assurez-vous que vos sites Web et applications sont accessibles aux utilisateurs ?','How do you ensure that your websites and applications are accessible to users?',4,2,TRUE,TRUE,TRUE,NULL,NULL ),
-(5,'Quel est votre langage de programmation préféré, et pourquoi ?','What is your favorite programming language, and why?',7,1,TRUE,TRUE,FALSE,NULL,NULL),
+(5,'Quel est votre langage de programmation préféré, et pourquoi ?','What is your favorite programming language, and why?',7,1,TRUE,FALSE,FALSE,NULL,NULL),
 (6,'Quelle est la différence entre les classes et les ID dans les CSS ?','What is the difference between classes and IDs in CSS?',3,2,TRUE,TRUE,TRUE,NULL,NULL),
 (7,'En Java, peut-on surcharger la méthode main() ?','In Java, can we override the main() method?', 5,3,TRUE,TRUE,TRUE,NULL,NULL),
 (8, 'Sur quels sites internet et de quels tailles avez vous travaillé auparavant?','What websites of what size have you worked on before?',6,1,TRUE,FALSE,FALSE,NULL,NULL),
@@ -85,7 +84,7 @@ INSERT INTO questions (id_question, label_fr, label_en, id_categorie, id_difficu
 (32, 'Qu’est-ce que l’ héritage en Programmation Orientée Objet ?', 'What is legacy in Oriented Object Programmation ?',5,2,TRUE,TRUE,TRUE,NULL,NULL);
 
 CREATE TABLE reponses (
-  id_reponse serial PRIMARY KEY NOT NULL,
+  id_reponse serial PRIMARY KEY NOT NULL, 
   id_question int REFERENCES questions(id_question) NOT NULL,
   label_fr varchar(300) NOT NULL,
   label_en varchar(300) NOT NULL,
@@ -100,7 +99,36 @@ INSERT INTO reponses (id_reponse, id_question, label_fr, label_en, valid) VALUES
 (5, 2, 'TCP', 'TCP',  FALSE),
 (6, 2, 'HTTP', 'HTTP',  TRUE),
 (7, 2, 'FTP', 'FTP',  TRUE),
-(8, 2, 'SSH', 'SSH',  TRUE);
+(8, 2, 'SSH', 'SSH',  TRUE),
+(9, 3, 'Trouver le bon hébergeur','Find the right host', TRUE),
+(10, 3, 'Supprimer les extensions inutiles', 'Delete all useless plugins',TRUE),
+(11, 3, 'Réduire le poids des images', 'Reduce pictures size',TRUE),
+(12, 3, 'Supprimer les balises','Delete some elements',TRUE),
+(13, 4, 'Leur demander','Ask them',FALSE),
+(14, 4, 'Utiliser des outils pour vérifier l''accessibilité du site','Use tools to check website accessibility',TRUE),
+(15, 4, 'Vérifier par soi-même une fois le site en ligne','Check by yourself once the website is online',TRUE),
+(16, 4, 'Vérifier à l''aide d''un tuto Youtube','Check with a youtube tutorial',FALSE),
+(17, 6, 'ID s''applique à un objet unique et class à plusieurs objets','ID applies to a single object and class to multiple objects',TRUE),
+(18, 6, 'Class s''applique à un objet unique et ID à plusieurs objets','Class applies to a single object and ID to multiple objects'),
+(19, 6, 'Il n''y a aucune différence', 'There is no difference',FALSE),
+(20, 6, 'Class sert à mieux modulariser le CSS','Class is used to better modularize the CSS',TRUE),
+(21, 7, 'Oui','Yes',TRUE),
+(22, 7, 'Non','No',FALSE),
+(23, 7, 'Je ne sais pas','I d''ont know',FALSE),
+(24, 7, 'La réponse D','Answer D',FALSE),
+(25, 9, 'C''est l''utilisation du balisage HTML visant à renforcer la signification des informations contenues dans les pages web, c''est-à-dire leur sens, plutôt que définir leurs présentations','It is the use of HTML element to strengthen the meaning of the information contained in web pages, that is, their meaning, rather than defining their presentations.',TRUE),
+(26, 9, 'C''est de l''HTML qui s''aime de manière antique',FALSE ),
+(27, 9, 'Une convention d''écriture du code HTML', FALSE),
+(28, 9, 'Une façon d''organiser son répertoire de travail',FALSE),
+(29, 10, 'Recréer le site pour chaque appareil','Recreate the website for each device',FALSE),
+(30, 10, 'Je change d''hébergeur','I change host',FALSE),
+(31, 10, 'J''adapte mon CSS', 'I adapt my CSS',TRUE),
+(32, 10, 'Je rends mon site réactif', 'I make my website responsive', TRUE),
+(33, 12, 'Aucune', 'None',FALSE),
+(34, 12, 'L''une est une méthode et l''autre une opération','One is a method and the other one is an operator',TRUE),
+(35, 12, '== est une comparaison d''adresse et equals() une comparaison de contenu','== is an address comparison and equals() a content comparison',TRUE),
+(36, 12, '== est une comparaison de contenu et equals() une comparaison d''adresse','== is a content comparison and equals() an address comparison',FALSE); 
+
 
 
 CREATE TABLE users (

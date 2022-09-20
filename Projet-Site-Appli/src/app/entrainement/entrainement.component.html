@@ -150,5 +150,6 @@
   </div>
 </ng-template>
 <div style="position: fixed; bottom: 10px; right: 10px;">
-  <button *ngIf="time" class="btn btn-primary"><i class="bi bi-stopwatch"></i> {{ this.time }}s</button>
+  <button *ngIf="!config" class="btn btn-warning"><i class="bi bi-patch-question"></i> Thème : {{theme}}</button>
+  <button *ngIf="!config && time" class="btn btn-primary"><i class="bi bi-stopwatch"></i> {{ this.time }}s</button>
 </div>

@@ -13,15 +13,15 @@
     "gamemodes": {
       "survival": {
         "title": "Survival",
-        "description": "(Description)"
+        "description": "Compete against your friends in a Battle Royale to see who is the best at interview questions."
       },
       "training": {
         "title": "Training",
-        "description": "(Description)"
+        "description": "Practice answering a series of questions on a chosen topic that you may be asked in interviews."
       },
       "simulation": {
         "title": "Simulation",
-        "description": "(Description)"
+        "description": "Do a mock interview with a friend or with the help of a teacher to see how an interview goes."
       }
     },
     "play": "Play"

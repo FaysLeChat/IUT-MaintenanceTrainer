@@ -13,15 +13,15 @@
     "gamemodes": {
       "survival": {
         "title": "Survie",
-        "description": "(Description)"
+        "description": "Affronter vos amis dans un Battle Royal afin de déterminer qui est le meilleur dans les questions lors d'entretiens."
       },
       "training": {
         "title": "Entrainement",
-        "description": "(Description)"
+        "description": "Entraine toi  à répondre à une série de questions sur un thème choisi qui te seront possiblement posées lors d'entretiens."
       },
       "simulation": {
         "title": "Simulation",
-        "description": "(Description)"
+        "description": "Fais une simulation d'entretien avec un de tes amis ou l'aide d'un professeur pour voir comment se déroule un entretien."
       }
     },
     "play": "Jouer"

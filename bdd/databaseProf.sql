@@ -1,4 +1,3 @@
-
 drop schema if exists BaseAppli CASCADE;
 create schema BaseAppli;
 set search_path to BaseAppli;
@@ -17,7 +16,8 @@ INSERT INTO categories (id_categorie, label_fr, label_en) VALUES
 (5,'Prog Objet', 'Oriented Object Programmation'),
 (6, 'Experience','Experience'),
 (7,'Personnel','Personnal'),
-(8, 'PHP', 'PHP');
+(8, 'PHP', 'PHP'),
+(9, 'Soft Skills','Soft Skills');
 
 
 
@@ -54,7 +54,7 @@ INSERT INTO questions (id_question, label_fr, label_en, id_categorie, id_difficu
 (2, 'Lequel de ces protocoles n est qu un protocole d échange de fichiers entre un client et un serveur sur Internet ?', 'Which of these protocols is only a file exchange protocol between a client and a server on the Internet ?', 2, 1, TRUE, TRUE, TRUE, 'FTP pour Protocole de Transport de Fichier', 'FTP for File Trasfert Protocol'),
 (3, 'Comment améliorer une page web qui se charge lentement?', 'How to improve a web page that loads slowly?', 4,2, TRUE,TRUE,TRUE,NULL,NULL ),
 (4,'Comment vous assurez-vous que vos sites Web et applications sont accessibles aux utilisateurs ?','How do you ensure that your websites and applications are accessible to users?',4,2,TRUE,TRUE,TRUE,NULL,NULL ),
-(5,'Quel est votre langage de programmation préféré, et pourquoi ?','What is your favorite programming language, and why?',7,1,TRUE,TRUE,FALSE,NULL,NULL),
+(5,'Quel est votre langage de programmation préféré, et pourquoi ?','What is your favorite programming language, and why?',7,1,TRUE,FALSE,FALSE,NULL,NULL),
 (6,'Quelle est la différence entre les classes et les ID dans les CSS ?','What is the difference between classes and IDs in CSS?',3,2,TRUE,TRUE,TRUE,NULL,NULL),
 (7,'En Java, peut-on surcharger la méthode main() ?','In Java, can we override the main() method?', 5,3,TRUE,TRUE,TRUE,NULL,NULL),
 (8, 'Sur quels sites internet et de quels tailles avez vous travaillé auparavant?','What websites of what size have you worked on before?',6,1,TRUE,FALSE,FALSE,NULL,NULL),
@@ -66,10 +66,15 @@ INSERT INTO questions (id_question, label_fr, label_en, id_categorie, id_difficu
 (14, 'Expliquer _construct() et _destruct()', 'Explain _construct() and _destruct()', 8,2,TRUE,FALSE,FALSE,NULL,NULL),
 (15, 'Comment exporter des données PHP dans Excel ?', 'How to export PHP datas in Excel ?', 8,2,TRUE,FALSE,FALSE,NULL,NULL),
 (16, 'Quelle est la balise la plus courante pour intégrer PHP au HTML?','What is the most common element to integrate PHP into HTML ?',8,1,TRUE,TRUE,TRUE,NULL,NULL),
-(17, 'Quelle est la différence entre «==» et «===»','What is the difference between == and ===?',6,1,TRUE,TRUE,TRUE,NULL,NULL);
+(17, 'Quelle est la différence entre «==» et «===»','What is the difference between == and ===?',6,1,TRUE,TRUE,TRUE,NULL,NULL),
+(18, 'As-tu déjà travaillé en direct avec des clients pour réaliser un projet ? Si non, est-ce que cela t’intéresse ?','Have you ever worked live with clients on a project? If not, are you interested?',9,1,TRUE,FALSE,FALSE,NULL,NULL),
+(19, 'Que penses-tu de la programmation en équipe ? L’as-tu déjà fait ou serais-tu intéressé pour essayer ?', 'What do you think about team programming? Have you ever done it or would you be interested in trying?', 9,1,TRUE,FALSE,FALSE,NULL,NULL),
+(20, 'Qu’est-ce que tu trouves le plus difficile dans ton métier ?','What do you find most difficult about your job?',9,1,TRUE,FALSE,FALSE,NULL,NULL),
+(21, 'Parle moi d’un projet dont tu es particulièrement fier et de ce que tu as accompli dans ce projet', 6,1,TRUE,FALSE,FALSE,NULL,NULL),
+(22, 'Tu bloques sur une ligne de code ou un problème technique. Comment trouves-tu la réponse ?','You are blocking on a line of code or a technical problem. How do you find the answer ?',9,1,TRUE,FALSE,FALSE,NULL,NULL);
 
 CREATE TABLE reponses (
-  id_reponse serial PRIMARY KEY NOT NULL,
+  id_reponse serial PRIMARY KEY NOT NULL, 
   id_question int REFERENCES questions(id_question) NOT NULL,
   label_fr varchar(300) NOT NULL,
   label_en varchar(300) NOT NULL,
@@ -84,7 +89,23 @@ INSERT INTO reponses (id_reponse, id_question, label_fr, label_en, valid) VALUES
 (5, 2, 'TCP', 'TCP',  FALSE),
 (6, 2, 'HTTP', 'HTTP',  TRUE),
 (7, 2, 'FTP', 'FTP',  TRUE),
-(8, 2, 'SSH', 'SSH',  TRUE);
+(8, 2, 'SSH', 'SSH',  TRUE),
+(9, 3, 'Trouver le bon hébergeur','Find the right host', TRUE),
+(10, 3, 'Supprimer les extensions inutiles', 'Delete all useless plugins',TRUE),
+(11, 3, 'Réduire le poids des images', 'Reduce pictures size',TRUE),
+(12, 3, 'Supprimer les balises','Delete some elements',TRUE),
+(13, 4, 'Leur demander','Ask them',FALSE),
+(14, 4, 'Utiliser des outils pour vérifier l''accessibilité du site','Use tools to check website accessibility',TRUE),
+(15, 4, 'Vérifier par soi-même une fois le site en ligne','Check by yourself once the website is online',TRUE),
+(16, 4, 'Vérifier à l''aide d''un tuto Youtube','Check with a youtube tutorial',FALSE),
+(17, 6, 'ID s''applique à un objet unique et class à plusieurs objets','ID applies to a single object and class to multiple objects',TRUE),
+(18, 6, 'Class s''applique à un objet unique et ID à plusieurs objets','Class applies to a single object and ID to multiple objects'),
+(19, 6, 'Il n''y a aucune différence', 'There is no difference',FALSE),
+(20, 6, 'Class sert à mieux modulariser le CSS','Class is used to better modularize the CSS',TRUE),
+(21, 7, 'Oui','Yes',TRUE),
+(22, 7, 'Non','No',FALSE),
+(23, 7, 'Je ne sais pas','I d''ont know',FALSE),
+(24, 7, 'La réponse D','Answer D');
 
 
 CREATE TABLE users (

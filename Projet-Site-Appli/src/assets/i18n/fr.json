@@ -31,6 +31,7 @@
   },
   "simulation": {
     "title": "Mode Simulation",
+    "error": "Score maximum atteint",
     "bar": {
       "test": "Test affichage question",
       "score": "Score"

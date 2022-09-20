@@ -41,7 +41,7 @@
           <p class="card-text" style="text-align: center;">Quel est la meilleure réponse ?</p>
           <hr>
           <p class="card-text" style="text-align: center;">Réponse de la question</p>
-          <ngb-alert *ngIf="errorMessage" type="danger" (closed)="errorMessage=''">{{ errorMessage }}</ngb-alert>
+          <ngb-alert *ngIf="errorMessage" type="danger" (closed)="errorMessage=''">{{'simulation.error' | translate }}</ngb-alert>
           <div class="row" id="note">
             <div class="col-2">
               <button (click)="ajout(0)" class="btn btn-primary">0</button>

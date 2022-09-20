@@ -28,6 +28,10 @@ export class AppComponent {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
   }
 
+  changeTheme(content2: any) {
+    this.modalService.open(content2, {size: 'xl', ariaLabelledBy: 'modal-basic-title-2'});
+  }
+
   onChange(deviceValue: any) {
     this.selectedLang = deviceValue;
     console.log(this.selectedLang)

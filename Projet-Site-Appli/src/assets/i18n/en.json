@@ -1,10 +1,11 @@
 {
   "navbar": {
+    "logotext": "PTE",
     "index": "Home",
     "gamemode": "Gamemode",
     "gamemodes": {
       "training": "Training",
-      "test": "Test",
+      "simulation": "Simulation",
       "survival": "Survival"
     }
   },
@@ -24,6 +25,30 @@
       }
     },
     "play": "Play"
+  },
+  "training": {
+    "title": "Gamemode Training"
+  },
+  "simulation": {
+    "title": "Gamemode Simulation",
+    "bar": {
+      "test": "Test display question",
+      "score": "Score"
+    }
+  },
+  "survival": {
+    "title": "Gamemode Survival",
+    "setup": "Setup",
+    "play": "Play",
+    "nbplayers": {
+      "title": "Number of players",
+      "placeholder": "Between 2 and 10",
+      "error": "The number of players must be between 2 and 10!"
+    },
+    "bar": {
+      "players": "Players",
+      "lives": "Live(s)"
+    }
   },
   "settings": {
     "title": "Settings",

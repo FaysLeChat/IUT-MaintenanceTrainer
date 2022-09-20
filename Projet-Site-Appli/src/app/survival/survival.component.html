@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row" class="bg-dark" style="border-radius: 0% 0% 60px 60px">
     <div class="col">
-      <h5 class="text-light" style="text-align: center;">Mode Survie</h5>
+      <h5 class="text-light" style="text-align: center;">{{'survival.title' | translate }}</h5>
     </div>
   </div>
   <div class="row" *ngIf="tab_create">
@@ -10,29 +10,22 @@
         <div class="card-body">
           <h5 class="card-title" style="text-align: center;">Question 1/99</h5>
           <p class="card-text" style="text-align: center;">Quel est la meilleure réponse ?</p>
+          <hr>
           <div class="row">
             <div class="col">
               <div class="card">
-                <div class="card">
-                  <button class="btn btn-primary">Reponse A</button>
-                </div>
+                <button class="btn btn-primary">Reponse A</button>
               </div>
               <div class="card">
-                <div class="card">
-                  <a href="#" class="btn btn-primary">Reponse B</a>
-                </div>
+                <button class="btn btn-primary">Reponse B</button>
               </div>
             </div>
             <div class="col">
               <div class="card">
-                <div class="card">
-                  <a href="#" class="btn btn-primary">Reponse C</a>
-                </div>
+                <button class="btn btn-primary">Reponse C</button>
               </div>
               <div class="card">
-                <div class="card">
-                  <a href="#" class="btn btn-primary">La Reponse D</a>
-                </div>
+                <button class="btn btn-primary">La Reponse D</button>
               </div>
             </div>
           </div>
@@ -43,20 +36,20 @@
   <div class="row" *ngIf="!tab_create">
     <div class="col">
       <div class="card">
-        <h5 class="card-header"><i class="bi bi-gear"></i> Configuration</h5>
+        <h5 class="card-header"><i class="bi bi-gear"></i> {{'survival.setup' | translate }}</h5>
         <div class="card-body">
           <ngb-alert *ngIf="errorMessage" type="danger" (closed)="errorMessage=''">{{ errorMessage }}</ngb-alert>
-          <label for="typeahead-basic"><i class="bi bi-people"></i> Nombre de joueurs</label>
-          <input id="typeahead-basic" type="text" placeholder="Entre 2 et 10" class="form-control d-flex" style="width: 100%;" [(ngModel)]="model"/>
+          <label for="typeahead-basic"><i class="bi bi-people"></i> {{'survival.nbplayers.title' | translate }}</label>
+          <input id="typeahead-basic" type="text" placeholder="{{'survival.nbplayers.placeholder' | translate }}" class="form-control d-flex" style="width: 100%;" [(ngModel)]="model"/>
           <hr>
-          <button class="btn btn-primary" (click)="envoyer()"><i class="bi bi-send"></i> Envoyer</button>
+          <button class="btn btn-primary" (click)="envoyer()"><i class="bi bi-send"></i> {{'survival.play' | translate }}</button>
         </div>
       </div>
     </div>
   </div>
 </div>
 <div style="position: fixed; bottom: 10px; right: 10px;">
-  <button *ngIf="tab_create" class="btn btn-danger"><i class="bi bi-heart"></i> 10 Vies</button>
-  <button *ngIf="tab_create" class="btn btn-primary"><i class="bi bi-stopwatch"></i> 0 Minutes</button>
-  <button *ngIf="tab_create" class="btn btn-warning"><i class="bi bi-people"></i> {{ this.joueurs }} Joueurs</button>
+  <button *ngIf="tab_create" class="btn btn-primary"><i class="bi bi-stopwatch"></i> {{ this.time }}s</button>
+  <button *ngIf="tab_create" class="btn btn-danger"><i class="bi bi-heart"></i> 10 {{'survival.bar.lives' | translate }}</button>
+  <button *ngIf="tab_create" class="btn btn-warning"><i class="bi bi-people"></i> {{ this.joueurs }} {{'survival.bar.players' | translate }}</button>
 </div>

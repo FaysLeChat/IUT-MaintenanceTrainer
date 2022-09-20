@@ -1,63 +1,62 @@
-<ul *ngIf="tab_create">
-  <div class="container">
-    <div class="row">
-        <div class="col">
-            <p style = "text-align: center; font-size: xx-large;">Mode Survie </p>
-        </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <p style="text-align:center">Question n°1/99</p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <p style="text-align:center">Quel est la meilleure réponse ?</p>
-      </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <p style = "text-align:right;">Vie(s) = 10 <img src="assets/img/images vie.PNG" style="height:25px; margin-right: auto;"></p> 
-        </div>
+<div class="container">
+  <div class="row" class="bg-dark" style="border-radius: 0% 0% 60px 60px">
+    <div class="col">
+      <h5 class="text-light" style="text-align: center;">Mode Survie</h5>
     </div>
   </div>
-  <div class="d-flex justify-content-center text-center align-middle" style="height: 100px;">
-    <div class="row d-flex justify-content-around">
-      <div class="col">
-        <div class="card" style="width: 18rem;">
-          <div class="card" style="width: 18rem;">
-              <a href="#" class="btn btn-primary">Reponse A</a>
-          </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-          <div class="card" style="width: 18rem;">
-            <a href="#" class="btn btn-primary">Reponse B</a>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card" style="width: 18rem;">
-          <div class="card" style="width: 18rem;">
-            <a href="#" class="btn btn-primary">Reponse C</a>
-          </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-          <div class="card" style="width: 18rem;">
-            <a href="#" class="btn btn-primary">La Reponse D</a>
+  <div class="row" *ngIf="tab_create">
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title" style="text-align: center;">Question 1/99</h5>
+          <p class="card-text" style="text-align: center;">Quel est la meilleure réponse ?</p>
+          <div class="row">
+            <div class="col">
+              <div class="card">
+                <div class="card">
+                  <button class="btn btn-primary">Reponse A</button>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card">
+                  <a href="#" class="btn btn-primary">Reponse B</a>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <div class="card">
+                  <a href="#" class="btn btn-primary">Reponse C</a>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card">
+                  <a href="#" class="btn btn-primary">La Reponse D</a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</ul>
-
-
-
-<ul *ngIf="tab_create == false">
-    <div>
-        <form name = "Nombre de Joueurs" >
-          <input type = "number" name = "" value="" id="nbj">
-          <button (click)="tab()">Valider</button>
-        </form>
+  <div class="row" *ngIf="!tab_create">
+    <div class="col">
+      <div class="card">
+        <h5 class="card-header"><i class="bi bi-gear"></i> Configuration</h5>
+        <div class="card-body">
+          <ngb-alert *ngIf="errorMessage" type="danger" (closed)="errorMessage=''">{{ errorMessage }}</ngb-alert>
+          <label for="typeahead-basic"><i class="bi bi-people"></i> Nombre de joueurs</label>
+          <input id="typeahead-basic" type="text" placeholder="Entre 2 et 10" class="form-control d-flex" style="width: 100%;" [(ngModel)]="model"/>
+          <hr>
+          <button class="btn btn-primary" (click)="envoyer()"><i class="bi bi-send"></i> Envoyer</button>
+        </div>
+      </div>
     </div>
-</ul>
+  </div>
+</div>
+<div style="position: fixed; bottom: 10px; right: 10px;">
+  <button *ngIf="tab_create" class="btn btn-danger"><i class="bi bi-heart"></i> 10 Vies</button>
+  <button *ngIf="tab_create" class="btn btn-primary"><i class="bi bi-stopwatch"></i> 0 Minutes</button>
+  <button *ngIf="tab_create" class="btn btn-warning"><i class="bi bi-people"></i> {{ this.joueurs }} Joueurs</button>
+</div>

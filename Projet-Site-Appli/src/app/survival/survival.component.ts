@@ -11,6 +11,7 @@ export class SurvivalComponent implements OnInit {
   public joueurs: any;
   public model: any;
   public tab_create = false;
+  public timer : boolean = false;
 
   public interval: any;
   public time: number = 0;
@@ -33,7 +34,10 @@ export class SurvivalComponent implements OnInit {
     }
   }
 
-
+  switchTimer() {
+    if(this.timer) this.timer = false;
+    else this.timer = true;
+  }
 
   errorMessage = '';
 
@@ -44,9 +48,11 @@ export class SurvivalComponent implements OnInit {
     } else {
       return this.errorMessage = "Le nombre de joueurs doit être compris entre 2 et 10 !"
     }
-    this.interval = setInterval(() => {
-      this.time++;
-    },1000)
+    if(this.timer) {
+      this.interval = setInterval(() => {
+        this.time++;
+      }, 1000)
+    }
     return true;
   }
 }

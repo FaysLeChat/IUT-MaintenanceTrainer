@@ -27,7 +27,61 @@
     "play": "Play"
   },
   "training": {
-    "title": "Gamemode Training"
+    "title": "Gamemode Training",
+    "setup": {
+      "title": "Setup",
+      "addtimer": "Add a timer ?",
+      "baclevel": "BAC Level"
+    },
+    "theme": {
+      "title": "Choice of question topic",
+      "select": "Select",
+      "database": {
+        "title": "Database",
+        "description": "(Description)"
+      },
+      "network": {
+        "title": "Network",
+        "description": "(Description)"
+      },
+      "frontend": {
+        "title": "Web - Front",
+        "description": "(Description)"
+      },
+      "backend": {
+        "title": "Web - Back",
+        "description": "(Description)"
+      },
+      "oop": {
+        "title": "Object-oriented programming",
+        "description": "(Description)"
+      },
+      "experience": {
+        "title": "Experience",
+        "description": "(Description)"
+      },
+      "personnal": {
+        "title": "Personnal",
+        "description": "(Description)"
+      },
+      "php": {
+        "title": "PHP",
+        "description": "(Description)"
+      },
+      "softskills": {
+        "title": "Soft Skills",
+        "description": "(Description)"
+      },
+      "random": {
+        "title": "Random theme",
+        "description": "(Description)"
+      },
+      "all": {
+        "title": "All theme",
+        "description": "(Description)"
+      }
+    },
+    "play": "Play"
   },
   "simulation": {
     "title": "Gamemode Simulation",
@@ -39,7 +93,10 @@
   },
   "survival": {
     "title": "Gamemode Survival",
-    "setup": "Setup",
+    "setup": {
+      "title": "Setup",
+      "addtimer": "Add a timer ?"
+    },
     "play": "Play",
     "nbplayers": {
       "title": "Number of players",

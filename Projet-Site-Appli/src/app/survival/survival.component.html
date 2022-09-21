@@ -36,11 +36,14 @@
   <div class="row" *ngIf="!tab_create">
     <div class="col">
       <div class="card">
-        <h5 class="card-header"><i class="bi bi-gear"></i> {{'survival.setup' | translate }}</h5>
+        <h5 class="card-header"><i class="bi bi-gear"></i> {{'survival.setup.title' | translate }}</h5>
         <div class="card-body">
           <ngb-alert *ngIf="errorMessage" type="danger" (closed)="errorMessage=''">{{ errorMessage }}</ngb-alert>
           <label for="typeahead-basic"><i class="bi bi-people"></i> {{'survival.nbplayers.title' | translate }}</label>
           <input id="typeahead-basic" type="text" placeholder="{{'survival.nbplayers.placeholder' | translate }}" class="form-control d-flex" style="width: 100%;" [(ngModel)]="model"/>
+          <br />
+          <label><i class="bi bi-stopwatch"></i> {{'survival.setup.addtimer' | translate }}</label>&nbsp;
+          <input (change)="switchTimer()" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
           <hr>
           <button class="btn btn-primary" (click)="envoyer()"><i class="bi bi-send"></i> {{'survival.play' | translate }}</button>
         </div>
@@ -49,7 +52,7 @@
   </div>
 </div>
 <div style="position: fixed; bottom: 10px; right: 10px;">
-  <button *ngIf="tab_create" class="btn btn-primary"><i class="bi bi-stopwatch"></i> {{ this.time }}s</button>
+  <button *ngIf="tab_create && time" class="btn btn-primary"><i class="bi bi-stopwatch"></i> {{ this.time }}s</button>
   <button *ngIf="tab_create" class="btn btn-danger"><i class="bi bi-heart"></i> 10 {{'survival.bar.lives' | translate }}</button>
   <button *ngIf="tab_create" class="btn btn-warning"><i class="bi bi-people"></i> {{ this.joueurs }} {{'survival.bar.players' | translate }}</button>
 </div>

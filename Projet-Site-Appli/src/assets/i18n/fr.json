@@ -38,47 +38,47 @@
       "select": "Sélectionner",
       "database": {
         "title": "Base de données",
-        "description": "(Description)"
+        "description": "Deviens une bête en BD pour dévorer tes amis"
       },
       "network": {
         "title": "Réseau",
-        "description": "(Description)"
+        "description": "Deviens une machine de guerre en Réseau pour DDOS tes collègues"
       },
       "frontend": {
         "title": "Web - Front",
-        "description": "(Description)"
+        "description": "Deviens un prophète en Web-Front pour apporter la bonne parole à tes amis "
       },
       "backend": {
         "title": "Web - Back",
-        "description": "(Description)"
+        "description": "Es-tu un amiral du Web-Back ? Shirohige va te mettre à l'épreuve"
       },
       "oop": {
         "title": "Prog Objet",
-        "description": "(Description)"
+        "description": "Quand on veut on peut, mais peux-tu réussir cet entraînement en Prog Objet ?"
       },
       "experience": {
         "title": "Expérience",
-        "description": "(Description)"
+        "description": "'Tu es un noob' disait le rageux, alors viens accumuler de l'éxperience ici "
       },
       "personnal": {
         "title": "Personnel",
-        "description": "(Description)"
+        "description": "Parler de sois-même est un art, le maîtrise-tu ?"
       },
       "php": {
         "title": "PHP",
-        "description": "(Description)"
+        "description": "Langage démoniaque en effet, c'est le moment ou jamais de changer d'avis"
       },
       "softskills": {
         "title": "Soft Skills",
-        "description": "(Description)"
+        "description": "Vérifie ici si tu as des compétences applicables a tous les métiers"
       },
       "random": {
         "title": "Thème aléatoire",
-        "description": "(Description)"
+        "description": "L'entraînement du jeune Padawan"
       },
       "all": {
         "title": "Tous les thèmes",
-        "description": "(Description)"
+        "description": "L'entraînement du Guerrier Shaolin"
       }
     },
     "play": "Jouer"

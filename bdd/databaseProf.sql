@@ -77,7 +77,24 @@ INSERT INTO questions (id_question, label_fr, label_en, id_categorie, id_difficu
 (29, 'Quelle est la différence entre GET et POST ?','What is the difference between GET and POST ?',4,2,TRUE,TRUE,TRUE,NULL,NULL),
 (30, 'Quelles sont les différences entre HTML et XHTML ?','What are the differences between HTML and XHTML ?',3,2,TRUE,TRUE,TRUE,NULL,NULL),
 (31, 'Quelles sont vos forces et vos faiblesses ?', 'What are your strengths and weaknesses?',7,1,TRUE,FALSE,FALSE,NULL,NULL),
-(32, 'Qu’est-ce que l’ héritage en Programmation Orientée Objet ?', 'What is legacy in Oriented Object Programmation ?',5,2,TRUE,TRUE,TRUE,NULL,NULL);
+(32, 'Qu’est-ce que l’ héritage en Programmation Orientée Objet ?', 'What is legacy in Oriented Object Programmation ?',5,2,TRUE,TRUE,TRUE,NULL,NULL),
+(33, 'Quel est la signification de DNS ?', 'What is the meaning of DNS?', 2,1,TRUE,TRUE,TRUE,NULL,NULL),
+(34, 'Pouvez-vous expliquer le principe de requête Client/Serveur ?', 'Can you explain the Client/Server request principle?', 2,2,TRUE,TRUE,TRUE,NULL,NULL),
+(35, 'Qu''est ce qu''un masque de sous-réseau ?','What is a subnet mask?', 3,2,TRUE,TRUE,TRUE,NULL,NULL),
+(36, 'Pouvez-vous indiquer plusieurs protocole réseau ?','Can you indicate several network protocols?', 2,2, TRUE,TRUE,TRUE,NULL,NULL),
+(37, 'Qui est le créateur du Protocole HTTP?','Who is the creator of the HTTP Protocol?',2,3, TRUE,TRUE,TRUE,NULL,NULL),
+(38, 'Que doit-on utiliser pour créer une connexion locale ?', 'What should be used to create a local connection?',2,2,TRUE,TRUE,TRUE,NULL,NULL),
+(39, 'Parmis ces 4 réponses, lesquelles sont des langages orientés Objets?','Which of these 4 answers are Object Oriented languages?', 5,1,TRUE,TRUE,TRUE,NULL,NULL),
+(40, 'Je souhaite mettre en place un bouton pour traduire une page Web, quel est le module le plus adapté?','I want to set up a button to translate a web page, what is the most suitable module?', 3, 2,TRUE,TRUE,TRUE,NULL,NULL),
+(41, 'Qu-est ce que BootStrap ?','What is BootStrap?', 3,1, TRUE,TRUE,TRUE,NULL,NULL),
+(42, 'Quelles sont les qualités à mettre en avant en premier lors d''un entretien ?', 'What are the qualities to put forward first during an interview?', 7,2,TRUE,TRUE,TRUE,NULL,NULL),
+(43, 'Quel est l''utilité première de PHP?','What is the primary use of PHP?',8,1,TRUE,TRUE,TRUE,NULL,NULL),
+(44, 'Comment j''énonce mes expériences professionnelles ?','How do I state my professional experiences?',6,2,TRUE,TRUE,TRUE,NULL,NULL);
+
+
+
+
+
 
 CREATE TABLE reponses (
   id_reponse serial PRIMARY KEY NOT NULL, 

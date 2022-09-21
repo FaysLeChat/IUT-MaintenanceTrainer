@@ -5,7 +5,7 @@ services:
     container_name: 'recruit_postgres'
     restart: always
     volumes:
-      - ./data/postgres:/var/lib/postgresql/jeu:z
+      - ./data/postgres:/var/lib/postgres
     environment:
       POSTGRES_USER: app_user
       POSTGRES_PASSWORD: password

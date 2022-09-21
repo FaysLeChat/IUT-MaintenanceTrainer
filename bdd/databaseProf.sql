@@ -1,7 +1,3 @@
-drop schema if exists BaseAppli CASCADE;
-create schema BaseAppli;
-set search_path to BaseAppli;
-
 CREATE TABLE categories (
   id_categorie serial PRIMARY KEY NOT NULL,
   label_fr varchar(300) NOT NULL,

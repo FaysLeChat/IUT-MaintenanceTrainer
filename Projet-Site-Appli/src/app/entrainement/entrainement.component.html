@@ -40,6 +40,14 @@
         <div class="card-body">
           <label><i class="bi bi-stopwatch"></i> {{'training.setup.addtimer' | translate }}</label>&nbsp;
           <input (change)="switchTimer()" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+          <br /><br />
+          <label><i class="bi bi-lightning"></i> {{'training.setup.baclevel' | translate }}</label>&nbsp;
+          <div class="input-group">
+            <select [(ngModel)]="selectedBac" (ngModelChange)="onChange($event)" name="selectBac" class="form-select" aria-label="Select bac">
+              <option value="bac+2">BAC+2</option>
+              <option value="bac+3">BAC+3</option>
+            </select>
+          </div>
           <hr>
           <button class="btn btn-primary" (click)="changeTheme(content2)"><i class="bi bi-send"></i> {{'training.play' | translate }}</button>
         </div>

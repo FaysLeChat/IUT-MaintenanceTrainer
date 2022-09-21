@@ -30,7 +30,8 @@
     "title": "Gamemode Training",
     "setup": {
       "title": "Setup",
-      "addtimer": "Add a timer ?"
+      "addtimer": "Add a timer ?",
+      "baclevel": "BAC Level"
     },
     "theme": {
       "title": "Choice of question topic",

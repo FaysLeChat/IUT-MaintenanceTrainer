@@ -13,6 +13,7 @@ export class EntrainementComponent implements OnInit {
 
   public interval: any;
   public time: number = 0;
+  public selectedBac: any = "bac+2";
 
   endconf(choix:any) {
     this.theme = choix;
@@ -33,6 +34,11 @@ export class EntrainementComponent implements OnInit {
   switchTimer() {
     if(this.timer) this.timer = false;
     else this.timer = true;
+  }
+
+  onChange(deviceValue: any) {
+    this.selectedBac = deviceValue;
+    console.log(this.selectedBac)
   }
 
   constructor(private modalService: NgbModal) { }

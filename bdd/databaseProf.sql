@@ -89,7 +89,8 @@ CREATE TABLE reponses (
 
 INSERT INTO reponses (id_reponse, id_question, label_fr, label_en, valid) VALUES
 (1, 1, 'Angular', 'Angular',  TRUE),
-(2, 1, 'Laravel', 'Laravel',  TRUE),(3, 1, 'JupyterNotebook', 'JupyterNotebook',  FALSE),
+(2, 1, 'Laravel', 'Laravel',  TRUE),
+(3, 1, 'JupyterNotebook', 'JupyterNotebook',  FALSE),
 (4, 1, 'Aucun', 'None', FALSE),
 (5, 2, 'TCP', 'TCP',  FALSE),
 (6, 2, 'HTTP', 'HTTP',  TRUE),

@@ -30,7 +30,8 @@
     "title": "Mode Entraînement",
     "setup": {
       "title": "Configuration",
-      "addtimer": "Ajouter un timer ?"
+      "addtimer": "Ajouter un timer ?",
+      "baclevel": "Niveau de BAC"
     },
     "theme": {
       "title": "Choix du thème des questions",

@@ -8,7 +8,6 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 })
 export class EntrainementComponent implements OnInit {
   public config = true;
-  public errorMessage : string = "";
   public theme : string = "";
   public timer : boolean = false
 

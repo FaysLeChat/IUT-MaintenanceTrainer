@@ -27,7 +27,60 @@
     "play": "Jouer"
   },
   "training": {
-    "title": "Mode Entraînement"
+    "title": "Mode Entraînement",
+    "setup": {
+      "title": "Configuration",
+      "addtimer": "Ajouter un timer ?"
+    },
+    "theme": {
+      "title": "Choix du thème des questions",
+      "select": "Sélectionner",
+      "database": {
+        "title": "Base de données",
+        "description": "(Description)"
+      },
+      "network": {
+        "title": "Réseau",
+        "description": "(Description)"
+      },
+      "frontend": {
+        "title": "Web - Front",
+        "description": "(Description)"
+      },
+      "backend": {
+        "title": "Web - Back",
+        "description": "(Description)"
+      },
+      "oop": {
+        "title": "Prog Objet",
+        "description": "(Description)"
+      },
+      "experience": {
+        "title": "Expérience",
+        "description": "(Description)"
+      },
+      "personnal": {
+        "title": "Personnel",
+        "description": "(Description)"
+      },
+      "php": {
+        "title": "PHP",
+        "description": "(Description)"
+      },
+      "softskills": {
+        "title": "Soft Skills",
+        "description": "(Description)"
+      },
+      "random": {
+        "title": "Thème aléatoire",
+        "description": "(Description)"
+      },
+      "all": {
+        "title": "Tous les thèmes",
+        "description": "(Description)"
+      }
+    },
+    "play": "Jouer"
   },
   "simulation": {
     "title": "Mode Simulation",
@@ -39,7 +92,10 @@
   },
   "survival": {
     "title": "Mode Survie",
-    "setup": "Configuration",
+    "setup": {
+      "title": "Configuration",
+      "addtimer": "Ajouter un timer ?"
+    },
     "play": "Jouer",
     "nbplayers": {
       "title": "Nombre de joueurs",

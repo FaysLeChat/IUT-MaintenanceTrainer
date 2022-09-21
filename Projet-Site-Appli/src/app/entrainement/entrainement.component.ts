@@ -3,6 +3,7 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {Questions} from "../interfaces/Questions";
+import {Categories} from "../interfaces/Categories";
 
 @Component({
   selector: 'app-entrainement',
@@ -18,7 +19,7 @@ export class EntrainementComponent implements OnInit {
   public time: number = 0;
   public selectedBac: any = "bac+2";
 
-  questions!: Questions[];
+  categorie!: Categories;
 
   endconf(choix:any) {
     this.theme = choix;
@@ -30,7 +31,16 @@ export class EntrainementComponent implements OnInit {
         this.time++;
       },1000)
     }
+    this.getCategorie(this.theme).subscribe(req => this.categorie = req);
   }
+  getCategorie(choix : any): Observable<any> {
+    var url = 'http://45.155.170.233:3000/categories?label_fr=eq.';
+    url = url.concat(choix.toString());
+    console.log(url)
+    return this.http.get(url);
+
+  }
+
 
   changeTheme(content2: any) {
     this.modalService.open(content2, {size: 'xl', ariaLabelledBy: 'modal-basic-title-2'});
@@ -46,12 +56,8 @@ export class EntrainementComponent implements OnInit {
     console.log(this.selectedBac)
   }
 
-  getQuestion(): Observable<any> {
-    return this.http.get('http://45.155.170.233:3000/questions');
-  }
 
   constructor(private modalService: NgbModal, private http: HttpClient) {
-    this.getQuestion().subscribe(req => this.questions = req);
   }
 
   ngOnInit(): void {

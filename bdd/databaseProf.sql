@@ -5,15 +5,15 @@ CREATE TABLE categories (
 );
 
 INSERT INTO categories (id_categorie, label_fr, label_en) VALUES
-(1, 'Base de données', 'Database'),
+(1, 'Basededonnées', 'Database'),
 (2, 'Réseau', 'Network'),
-(3, 'Web - Front', 'Web - Front'),
-(4, 'Web - Back', 'Web - Back'),
-(5,'Prog Objet', 'Oriented Object Programmation'),
+(3, 'Web-Front', 'Web-Front'),
+(4, 'Web-Back', 'Web-Back'),
+(5,'ProgObjet', 'OrientedObjectProgrammation'),
 (6, 'Experience','Experience'),
 (7,'Personnel','Personnal'),
 (8, 'PHP', 'PHP'),
-(9, 'Soft Skills','Soft Skills');
+(9, 'SoftSkills','SoftSkills');
 
 
 

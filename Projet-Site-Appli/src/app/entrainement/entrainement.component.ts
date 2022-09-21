@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {Observable} from "rxjs";
+import {HttpClient} from "@angular/common/http";
+import {Questions} from "../interfaces/Questions";
 
 @Component({
   selector: 'app-entrainement',
@@ -14,6 +17,8 @@ export class EntrainementComponent implements OnInit {
   public interval: any;
   public time: number = 0;
   public selectedBac: any = "bac+2";
+
+  questions!: Questions[];
 
   endconf(choix:any) {
     this.theme = choix;
@@ -41,7 +46,13 @@ export class EntrainementComponent implements OnInit {
     console.log(this.selectedBac)
   }
 
-  constructor(private modalService: NgbModal) { }
+  getQuestion(): Observable<any> {
+    return this.http.get('http://45.155.170.233:3000/questions');
+  }
+
+  constructor(private modalService: NgbModal, private http: HttpClient) {
+    this.getQuestion().subscribe(req => this.questions = req);
+  }
 
   ngOnInit(): void {
     this.time = 0;

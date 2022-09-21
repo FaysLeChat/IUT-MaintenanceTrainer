@@ -8,7 +8,7 @@ INSERT INTO categories (id_categorie, label_fr, label_en) VALUES
 (1, 'Base de données', 'Database'),
 (2, 'Réseau', 'Network'),
 (3, 'Web - Front', 'Web - Front'),
-(4, 'Web - Back ', 'Web - Back '),
+(4, 'Web - Back', 'Web - Back'),
 (5,'Prog Objet', 'Oriented Object Programmation'),
 (6, 'Experience','Experience'),
 (7,'Personnel','Personnal'),

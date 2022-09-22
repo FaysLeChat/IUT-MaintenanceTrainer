@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {Questions} from "../interfaces/Questions";
 import {Categories} from "../interfaces/Categories";
+import {query} from "@angular/animations";
 
 @Component({
   selector: 'app-entrainement',
@@ -19,6 +20,7 @@ export class EntrainementComponent implements OnInit {
   public time: number = 0;
   public selectedBac: any = "bac+2";
 
+  categories!: Categories[];
   categorie!: Categories;
 
   endconf(choix:any) {
@@ -31,7 +33,13 @@ export class EntrainementComponent implements OnInit {
         this.time++;
       },1000)
     }
-    this.getCategorie(this.theme).subscribe(req => this.categorie = req);
+    this.getCategorie(this.theme).subscribe(req => this.categories = req);
+
+    console.log(this.categories[0].id_categorie); // 'liste'
+
+    console.log(this.categories[0]['id_categorie']); // 'titre'
+
+
   }
   getCategorie(choix : any): Observable<any> {
     var url = 'http://45.155.170.233:3000/categories?label_fr=eq.';
@@ -40,7 +48,12 @@ export class EntrainementComponent implements OnInit {
     return this.http.get(url);
 
   }
-
+  getQuestion(id : any){
+    console.log(id);
+    var url = 'http://45.155.170.233:3000/questions?id_categorie=eq.';
+    url = url.concat(id.toString());
+    console.log(url)
+  }
 
   changeTheme(content2: any) {
     this.modalService.open(content2, {size: 'xl', ariaLabelledBy: 'modal-basic-title-2'});

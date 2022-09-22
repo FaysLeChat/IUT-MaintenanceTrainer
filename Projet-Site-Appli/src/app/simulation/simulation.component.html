@@ -9,12 +9,25 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title" style="text-align: center;">Question 1/20</h5>
+      
+          <!--Affichage questions-->
+          <div class="card" *ngFor="let q of questions">
+            <div class="card-header">
+              {{ q.id_question }}
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">{{ q.label_fr }}</h5>
+              <p class="card-text">{{ q.label_en }}</p>
+            </div>
+          </div>
+          <!---->
+          
           <p class="card-text" style="text-align: center;">Quel est la meilleure réponse ?</p>
           <hr>
           <div class="row">
             <div class="col">
               <div class="card">
-                <button class="btn btn-primary">Reponse A</button>
+                <button class="btn btn-primary">{{reponses | json}}</button>
               </div>
               <div class="card">
                 <button class="btn btn-primary">Reponse B</button>
@@ -38,6 +51,7 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title" style="text-align: center;">Question 1/20</h5>
+          <pre>{{questions | json}}</pre>
           <p class="card-text" style="text-align: center;">Quel est la meilleure réponse ?</p>
           <hr>
           <p class="card-text" style="text-align: center;">Réponse de la question</p>

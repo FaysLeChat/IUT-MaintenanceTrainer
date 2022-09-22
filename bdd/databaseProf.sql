@@ -164,7 +164,7 @@ INSERT INTO reponses (id_reponse, id_question, label_fr, label_en, valid) VALUES
 (57, 25, 'Un code de jeu Steam'),
 (58, 25, 'Une base de données relationnelle est une base de données où l information est organisée dans des tableaux à deux dimensions appelés des relations ou tables','A relational database is a database where information is organized in two-dimensional tables called relations or tables',TRUE),
 (59, 25, 'Une relation de base de données est une relation où l information est organisée dans des tableaux à deux dimensions appelés des relations ou tables','A database relationship is a relationship where information is organized in two-dimensional tables called relations or tables',FALSE),
-(60, 25, 'Ton code Izzly','Your Izzly code',FALSE),
+(60, 25, 'Ton code Izzly','Your Izzly code',FALSE);
 
 CREATE TABLE users (
   idU serial PRIMARY KEY NOT NULL,

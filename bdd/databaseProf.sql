@@ -89,7 +89,29 @@ INSERT INTO questions (id_question, label_fr, label_en, id_categorie, id_difficu
 (41, 'Qu-est ce que BootStrap ?','What is BootStrap?', 3,1, TRUE,TRUE,TRUE,NULL,NULL),
 (42, 'Quelles sont les qualités à mettre en avant en premier lors d''un entretien ?', 'What are the qualities to put forward first during an interview?', 7,2,TRUE,TRUE,TRUE,NULL,NULL),
 (43, 'Quel est l''utilité première de PHP?','What is the primary use of PHP?',8,1,TRUE,TRUE,TRUE,NULL,NULL),
-(44, 'Comment j''énonce mes expériences professionnelles ?','How do I state my professional experiences?',6,2,TRUE,TRUE,TRUE,NULL,NULL);
+(44, 'Comment j''énonce mes expériences professionnelles ?','How do I state my professional experiences?',6,2,TRUE,TRUE,TRUE,NULL,NULL),
+(45, 'Dans quel situation est-il préférable de faire une hiérarchie de classe?','In which situation is it better to make a class hierarchy?',5,1,TRUE,TRUE,TRUE,NULL,NULL),
+(46, 'Dans quel situation est-il préférable d''utiliser une énumération en Java ?','In which situation is it better to use an enumeration in Java?',5,1,TRUE,TRUE,TRUE,NULL,NULL),
+(47, 'Dans quel situation est-il préférable d''utiliser une interface en Java ?','In which situation is it better to use an interface in Java?',5,1,TRUE,TRUE,TRUE,NULL,NULL),
+(48, 'Quel est la signification de UDP en réseau?','What is the meaning of UDP in networking?',2,1,TRUE,TRUE,TRUE,NULL,NULL),
+(49, 'Quel est la signification de TC en réseau ?','What is the meaning of networked TC?',2,1,TRUE,TRUE,TRUE,NULL,NULL),
+(50, 'Quel est la particularité du protocole UDP','What is special about the UDP protocol',2,2, TRUE,TRUE,TRUE,NULL,NULL),
+(51, 'A quoi correspond la norme IEE 802 ?','What is the IEEE 802 standard?',2,2,TRUE,TRUE,TRUE,NULL,NULL),
+(52, 'Quelle est la différence entre les mots-clés throw et throws en Java?','What is the difference between throw and throws keywords in Java?',5,2,TRUE,TRUE,TRUE,NULL,NULL),
+(53, 'Peut-on déclarer un constructeur comme final ?','Can a constructor be declared final?',5,2,TRUE,TRUE,TRUE,NULL,NULL),
+(54, 'Peut-on déclarer des variables et méthodes static dans une classe abstraite ?','Can we declare static variables and methods in an abstract class?',5,2,TRUE,TRUE,TRUE,NULL,NULL),
+(55, 'Peut-on déclarer une interface comme final?','Can an interface be declared as final?',5,2,TRUE,TRUE,TRUE,NULL,NULL),
+(56, 'Chaque bloc try doit être suivi d''un bloc catch','Vrai ou faux ?',5,2,TRUE,TRUE,TRUE,NULL,NULL),
+(57, 'Quelle est la différence entre une classe abstraite et une interface ?','What is the difference between an abstract class and an interface?',5,2,TRUE,TRUE,TRUE,NULL,NULL),
+(58, 'La norme HTTP/3.0 utlise le protocole TCP ET UDP, Vrai ou faux ?','The HTTP/3.0 standard uses the TCP AND UDP protocol, True or False?',2,2,TRUE,TRUE,TRUE,NULL,NULL),
+(59, 'Quel est l''identifiant standard du protocole HTTP?','What is the standard HTTP protocol identifier?',2,2,TRUE,TRUE,TRUE,NULL,NULL),
+(60, 'Je souhaite utliser une association clé/valeur en Java, j''utilise un ?','I want to use a key/value association in Java, I use a ?',5,2,TRUE,TRUE,TRUE,NULL,NULL),
+(61, 'Qu''est ce qu''une collection en Java ?','What is a collection in Java?',5,2,TRUE,TRUE,TRUE,NULL,NULL),
+(62, 'Qu''est ce qu''un INNER JOIN ?','What is an INNER JOIN?',1,2,TRUE,TRUE,TRUE,NULL,NULL),
+(63, 'Qu''est ce qu''un OUTER JOIN ?','What is an OUTER JOIN?',1,2,TRUE,TRUE,TRUE,NULL,NULL),
+(63, 'Qu''est ce qu''un NATURAL JOIN ?','What is an NATURAL JOIN?',1,2,TRUE,TRUE,TRUE,NULL,NULL),
+(64, 'Une View c''est ?','A View is?',1,1,TRUE,TRUE,TRUE,NULL,NULL),
+(65, 'Un déclencheur c''est ?','A trigger is ?',1,1,TRUE,TRUE,TRUE,NULL,NULL);
 
 
 
@@ -164,7 +186,7 @@ INSERT INTO reponses (id_reponse, id_question, label_fr, label_en, valid) VALUES
 (57, 25, 'Un code de jeu Steam'),
 (58, 25, 'Une base de données relationnelle est une base de données où l information est organisée dans des tableaux à deux dimensions appelés des relations ou tables','A relational database is a database where information is organized in two-dimensional tables called relations or tables',TRUE),
 (59, 25, 'Une relation de base de données est une relation où l information est organisée dans des tableaux à deux dimensions appelés des relations ou tables','A database relationship is a relationship where information is organized in two-dimensional tables called relations or tables',FALSE),
-(60, 25, 'Ton code Izzly','Your Izzly code',FALSE),
+(60, 25, 'Ton code Izzly','Your Izzly code',FALSE);
 
 CREATE TABLE users (
   idU serial PRIMARY KEY NOT NULL,

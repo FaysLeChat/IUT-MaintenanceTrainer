@@ -35,7 +35,7 @@ export class EntrainementComponent implements OnInit {
         this.time++;
       },1000)
     }
-    this.questionService.getCategorie(this.theme).subscribe(res => console.log(res[0].id_categorie));
+    this.questionService.getCategorie(this.theme).subscribe(res =>this.questionService.getQuestionTraining(res[0].id_categorie).subscribe(res1=>this.categories = res1));
     this.questionService.getCategorie(this.theme).subscribe(res => console.log(res[0].label_fr));
   }
 

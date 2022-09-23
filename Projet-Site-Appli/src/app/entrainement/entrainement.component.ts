@@ -33,7 +33,8 @@ export class EntrainementComponent implements OnInit {
         this.time++;
       },1000)
     }
-    console.log(this.questionService.getCategorie(this.theme).subscribe(req => this.categorie = req));
+    this.questionService.getCategorie(this.theme).subscribe(res => console.log(res[0].id_categorie));
+    this.questionService.getCategorie(this.theme).subscribe(res => console.log(res[0].label_fr));
   }
 
   changeTheme(content2: any) {

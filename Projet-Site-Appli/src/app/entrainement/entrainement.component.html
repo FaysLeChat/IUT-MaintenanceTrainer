@@ -9,11 +9,8 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title" style="text-align: center;">Question 1/20</h5>
-          <p class="card-text" style="text-align: center;">Quel est la meilleure réponse ?</p>{{categories | json}}
+          <p class="card-text" style="text-align: center;">Quel est la meilleure réponse ?</p>
           <div class="row">
-            <div class="card" *ngFor="let q of categories">
-              <div {{getQuestion(q.id_categorie)}}></div>
-            </div>
           </div>
           <hr>
           <div class="row">

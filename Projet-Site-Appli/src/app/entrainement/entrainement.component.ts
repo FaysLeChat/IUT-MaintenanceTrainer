@@ -6,6 +6,8 @@ import {Questions} from "../interfaces/Questions";
 import {Categories} from "../interfaces/Categories";
 import {query} from "@angular/animations";
 
+import {QuestionService} from "../service/question.service";
+
 @Component({
   selector: 'app-entrainement',
   templateUrl: './entrainement.component.html',
@@ -33,6 +35,11 @@ export class EntrainementComponent implements OnInit {
         this.time++;
       },1000)
     }
+<<<<<<< Projet-Site-Appli/src/app/entrainement/entrainement.component.ts
+    this.questionService.getCategorie(this.theme).subscribe(res => console.log(res[0].id_categorie));
+    this.questionService.getCategorie(this.theme).subscribe(res => console.log(res[0].label_fr));
+  }
+=======
     this.getCategorie(this.theme).subscribe(req => this.categories = req);
 
     console.log(this.categories[0].id_categorie); // 'liste'
@@ -54,6 +61,7 @@ export class EntrainementComponent implements OnInit {
     url = url.concat(id.toString());
     console.log(url)
   }
+>>>>>>> Projet-Site-Appli/src/app/entrainement/entrainement.component.ts
 
   changeTheme(content2: any) {
     this.modalService.open(content2, {size: 'xl', ariaLabelledBy: 'modal-basic-title-2'});
@@ -69,8 +77,7 @@ export class EntrainementComponent implements OnInit {
     console.log(this.selectedBac)
   }
 
-
-  constructor(private modalService: NgbModal, private http: HttpClient) {
+  constructor(private modalService: NgbModal, private http: HttpClient, private questionService: QuestionService) {
   }
 
   ngOnInit(): void {

@@ -24,7 +24,7 @@ export class SimulationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+
   }
 
 

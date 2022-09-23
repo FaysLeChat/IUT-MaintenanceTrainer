@@ -37,7 +37,7 @@ export class SurvivalComponent implements OnInit {
       },1000)
     }
   }
-  
+
   getQuestions(): Observable<any> {
     var url = 'http://45.155.170.233:3000/questions?survival_mode=eq.true';
     const tab = [];
@@ -49,7 +49,7 @@ export class SurvivalComponent implements OnInit {
     }
     console.log(tab)
     return this.http.get(url);
-    
+
 
   }
 

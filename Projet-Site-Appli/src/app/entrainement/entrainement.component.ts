@@ -5,6 +5,8 @@ import {HttpClient} from "@angular/common/http";
 import {Questions} from "../interfaces/Questions";
 import {Categories} from "../interfaces/Categories";
 
+import {QuestionService} from "../service/question.service";
+
 @Component({
   selector: 'app-entrainement',
   templateUrl: './entrainement.component.html',
@@ -31,16 +33,8 @@ export class EntrainementComponent implements OnInit {
         this.time++;
       },1000)
     }
-    this.getCategorie(this.theme).subscribe(req => this.categorie = req);
+    console.log(this.questionService.getCategorie(this.theme).subscribe(req => this.categorie = req));
   }
-  getCategorie(choix : any): Observable<any> {
-    var url = 'http://45.155.170.233:3000/categories?label_fr=eq.';
-    url = url.concat(choix.toString());
-    console.log(url)
-    return this.http.get(url);
-
-  }
-
 
   changeTheme(content2: any) {
     this.modalService.open(content2, {size: 'xl', ariaLabelledBy: 'modal-basic-title-2'});
@@ -56,8 +50,7 @@ export class EntrainementComponent implements OnInit {
     console.log(this.selectedBac)
   }
 
-
-  constructor(private modalService: NgbModal, private http: HttpClient) {
+  constructor(private modalService: NgbModal, private http: HttpClient, private questionService: QuestionService) {
   }
 
   ngOnInit(): void {

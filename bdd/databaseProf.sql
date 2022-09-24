@@ -89,7 +89,29 @@ INSERT INTO questions (id_question, label_fr, label_en, id_categorie, id_difficu
 (41, 'Qu-est ce que BootStrap ?','What is BootStrap?', 3,1, TRUE,TRUE,TRUE,NULL,NULL),
 (42, 'Quelles sont les qualités à mettre en avant en premier lors d''un entretien ?', 'What are the qualities to put forward first during an interview?', 7,2,TRUE,TRUE,TRUE,NULL,NULL),
 (43, 'Quel est l''utilité première de PHP?','What is the primary use of PHP?',8,1,TRUE,TRUE,TRUE,NULL,NULL),
-(44, 'Comment j''énonce mes expériences professionnelles ?','How do I state my professional experiences?',6,2,TRUE,TRUE,TRUE,NULL,NULL);
+(44, 'Comment j''énonce mes expériences professionnelles ?','How do I state my professional experiences?',6,2,TRUE,TRUE,TRUE,NULL,NULL),
+(45, 'Dans quel situation est-il préférable de faire une hiérarchie de classe?','In which situation is it better to make a class hierarchy?',5,1,TRUE,TRUE,TRUE,NULL,NULL),
+(46, 'Dans quel situation est-il préférable d''utiliser une énumération en Java ?','In which situation is it better to use an enumeration in Java?',5,1,TRUE,TRUE,TRUE,NULL,NULL),
+(47, 'Dans quel situation est-il préférable d''utiliser une interface en Java ?','In which situation is it better to use an interface in Java?',5,1,TRUE,TRUE,TRUE,NULL,NULL),
+(48, 'Quel est la signification de UDP en réseau?','What is the meaning of UDP in networking?',2,1,TRUE,TRUE,TRUE,NULL,NULL),
+(49, 'Quel est la signification de TC en réseau ?','What is the meaning of networked TC?',2,1,TRUE,TRUE,TRUE,NULL,NULL),
+(50, 'Quel est la particularité du protocole UDP','What is special about the UDP protocol',2,2, TRUE,TRUE,TRUE,NULL,NULL),
+(51, 'A quoi correspond la norme IEE 802 ?','What is the IEEE 802 standard?',2,2,TRUE,TRUE,TRUE,NULL,NULL),
+(52, 'Quelle est la différence entre les mots-clés throw et throws en Java?','What is the difference between throw and throws keywords in Java?',5,2,TRUE,TRUE,TRUE,NULL,NULL),
+(53, 'Peut-on déclarer un constructeur comme final ?','Can a constructor be declared final?',5,2,TRUE,TRUE,TRUE,NULL,NULL),
+(54, 'Peut-on déclarer des variables et méthodes static dans une classe abstraite ?','Can we declare static variables and methods in an abstract class?',5,2,TRUE,TRUE,TRUE,NULL,NULL),
+(55, 'Peut-on déclarer une interface comme final?','Can an interface be declared as final?',5,2,TRUE,TRUE,TRUE,NULL,NULL),
+(56, 'Chaque bloc try doit être suivi d''un bloc catch','Vrai ou faux ?',5,2,TRUE,TRUE,TRUE,NULL,NULL),
+(57, 'Quelle est la différence entre une classe abstraite et une interface ?','What is the difference between an abstract class and an interface?',5,2,TRUE,TRUE,TRUE,NULL,NULL),
+(58, 'La norme HTTP/3.0 utlise le protocole TCP ET UDP, Vrai ou faux ?','The HTTP/3.0 standard uses the TCP AND UDP protocol, True or False?',2,2,TRUE,TRUE,TRUE,NULL,NULL),
+(59, 'Quel est l''identifiant standard du protocole HTTP?','What is the standard HTTP protocol identifier?',2,2,TRUE,TRUE,TRUE,NULL,NULL),
+(60, 'Je souhaite utliser une association clé/valeur en Java, j''utilise un ?','I want to use a key/value association in Java, I use a ?',5,2,TRUE,TRUE,TRUE,NULL,NULL),
+(61, 'Qu''est ce qu''une collection en Java ?','What is a collection in Java?',5,2,TRUE,TRUE,TRUE,NULL,NULL),
+(62, 'Qu''est ce qu''un INNER JOIN ?','What is an INNER JOIN?',1,2,TRUE,TRUE,TRUE,NULL,NULL),
+(63, 'Qu''est ce qu''un OUTER JOIN ?','What is an OUTER JOIN?',1,2,TRUE,TRUE,TRUE,NULL,NULL),
+(63, 'Qu''est ce qu''un NATURAL JOIN ?','What is an NATURAL JOIN?',1,2,TRUE,TRUE,TRUE,NULL,NULL),
+(64, 'Une View c''est ?','A View is?',1,1,TRUE,TRUE,TRUE,NULL,NULL),
+(65, 'Un déclencheur c''est ?','A trigger is ?',1,1,TRUE,TRUE,TRUE,NULL,NULL);
 
 
 
@@ -165,6 +187,27 @@ INSERT INTO reponses (id_reponse, id_question, label_fr, label_en, valid) VALUES
 (58, 25, 'Une base de données relationnelle est une base de données où l information est organisée dans des tableaux à deux dimensions appelés des relations ou tables','A relational database is a database where information is organized in two-dimensional tables called relations or tables',TRUE),
 (59, 25, 'Une relation de base de données est une relation où l information est organisée dans des tableaux à deux dimensions appelés des relations ou tables','A database relationship is a relationship where information is organized in two-dimensional tables called relations or tables',FALSE),
 (60, 25, 'Ton code Izzly','Your Izzly code',FALSE),
+(61, 26, 'Un champ en SQL est une valeur particulière dans une colonne et une tables sont des objets de base de données qui contiennent toutes les données d une base de données','A field in SQL is a particular value in a column and tables are database objects that contain all the data in a database',TRUE),
+(62, 26, 'Un champ en SQL permet de planter des données et une tables permet de ranger les plantations','A field in SQL allows to plant data and a table allows to arrange the plantations',FALSE),
+(63, 26, 'Un champ en SQL est un objet de base de données qui contient toutes les données d une base de données et une table est une valeur particulière dans une colonne','A field in SQL is a database object that contains all the data in a database and a table is a particular value in a column',FALSE),
+(64, 26, 'Fallait suivre tes cours','You should have taken your classes',FALSE),
+(65, 27, 'La clé de l école primaire','The key to the elementary school',FALSE),
+(66, 27, 'Une clé primaire est un champ ou un ensemble de champs de table qui contient des valeurs uniques.','A primary key is a field or set of table fields that contains unique values',TRUE),
+(67, 27, 'Une clé qui ouvre toutes les portes','A key that opens all doors',FALSE),
+(68, 27, 'Une clé primaire est un champ ou un ensemble de champs de table qui contient les valeurs d une autre table','A primary key is a field or set of fields in a table that contains values from another table',FALSE),
+(69, 28, 'Un radar sur la route','A radar on the road',FALSE),
+(70, 28, 'Un routeur permet de connecter des réseaux à Internet','A router allows to connect networks to the Internet',FALSE),
+(71, 28, 'C est ce que vous fournis Orange','This is what Orange provides to you',FALSE),
+(72, 28, 'Un routeur forme des réseaux et gère le flux de données au sein de ces réseaux et entre eux','A router forms networks and manages the flow of data within and between these networks',TRUE),
+(73, 29, 'GET tu guette et POST tu poste','Get you watch and POST you post',FALSE),
+(74, 29, 'La méthode GET permet de récupérer des informations grâce à l''API et POST permet d''insérer des informations dans l''API','The GET method is used to retrieve information from the API and POST is used to insert information into the API',TRUE),
+(75, 29, 'La méthode GET permet d''insérer des informations dans l''API et POST permet de récupérer des informations grâce à l''API','The GET method allows you to insert information in the API and POST allows you to retrieve information through the API',FALSE),
+(76, 29, 'GET c''est obtenir en anglais et POST c''est poster en anglais','GET is to get in English and POST is to post in English',FALSE),
+(77, 30, 'Aucune','None',FALSE),
+(78, 30, 'Il y a un X en plus','There is an extra X',FALSE),
+(79, 30, 'Il n''ya que la syntaxe qui change','There is only the syntax that changes',TRUE),
+(80, 30, 'Il n''y a que des petites fonctionnalités qui change','There are only small features that change',FALSE);
+
 
 CREATE TABLE users (
   idU serial PRIMARY KEY NOT NULL,

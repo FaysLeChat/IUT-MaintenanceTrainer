@@ -1,6 +1,9 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {debounceTime, Subject} from "rxjs";
-import {NgbAlert} from "@ng-bootstrap/ng-bootstrap";
+import {debounceTime, Observable, Subject} from "rxjs";
+import {NgbAlert, NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import { Categories } from '../interfaces/Categories';
+import { HttpClient } from '@angular/common/http';
+import { Questions } from '../interfaces/Questions';
 
 @Component({
   selector: 'app-survival',
@@ -13,12 +16,46 @@ export class SurvivalComponent implements OnInit {
   public tab_create = false;
   public timer : boolean = false;
 
+  public config = true;
+  public theme : string = "";
+
   public interval: any;
   public time: number = 0;
 
+  public aRepondu : boolean = false;
+
+  questions!: Questions [];
+
+  endconf(choix:any) {
+    this.theme = choix;
+    this.config = false;
+    this.modalService.dismissAll();
+    console.log(this.theme);
+    if(this.timer) {
+      this.interval = setInterval(() => {
+        this.time++;
+      },1000)
+    }
+  }
+
+  getQuestions(): Observable<any> {
+    var url = 'http://45.155.170.233:3000/questions?survival_mode=eq.true';
+    const tab = [];
+    tab.push(url);
+    for(var z = 2;z<tab.length;z++){
+      if(this.aRepondu == true){
+        tab[z] = tab[z+1];
+      }
+    }
+    console.log(tab)
+    return this.http.get(url);
 
 
-  constructor() {
+  }
+
+
+  constructor(private modalService: NgbModal, private http: HttpClient) {
+    this.getQuestions().subscribe(req => this.questions = req);
   }
 
   ngOnInit(): void {

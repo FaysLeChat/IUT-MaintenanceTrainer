@@ -186,7 +186,28 @@ INSERT INTO reponses (id_reponse, id_question, label_fr, label_en, valid) VALUES
 (57, 25, 'Un code de jeu Steam'),
 (58, 25, 'Une base de données relationnelle est une base de données où l information est organisée dans des tableaux à deux dimensions appelés des relations ou tables','A relational database is a database where information is organized in two-dimensional tables called relations or tables',TRUE),
 (59, 25, 'Une relation de base de données est une relation où l information est organisée dans des tableaux à deux dimensions appelés des relations ou tables','A database relationship is a relationship where information is organized in two-dimensional tables called relations or tables',FALSE),
-(60, 25, 'Ton code Izzly','Your Izzly code',FALSE);
+(60, 25, 'Ton code Izzly','Your Izzly code',FALSE),
+(61, 26, 'Un champ en SQL est une valeur particulière dans une colonne et une tables sont des objets de base de données qui contiennent toutes les données d une base de données','A field in SQL is a particular value in a column and tables are database objects that contain all the data in a database',TRUE),
+(62, 26, 'Un champ en SQL permet de planter des données et une tables permet de ranger les plantations','A field in SQL allows to plant data and a table allows to arrange the plantations',FALSE),
+(63, 26, 'Un champ en SQL est un objet de base de données qui contient toutes les données d une base de données et une table est une valeur particulière dans une colonne','A field in SQL is a database object that contains all the data in a database and a table is a particular value in a column',FALSE),
+(64, 26, 'Fallait suivre tes cours','You should have taken your classes',FALSE),
+(65, 27, 'La clé de l école primaire','The key to the elementary school',FALSE),
+(66, 27, 'Une clé primaire est un champ ou un ensemble de champs de table qui contient des valeurs uniques.','A primary key is a field or set of table fields that contains unique values',TRUE),
+(67, 27, 'Une clé qui ouvre toutes les portes','A key that opens all doors',FALSE),
+(68, 27, 'Une clé primaire est un champ ou un ensemble de champs de table qui contient les valeurs d une autre table','A primary key is a field or set of fields in a table that contains values from another table',FALSE),
+(69, 28, 'Un radar sur la route','A radar on the road',FALSE),
+(70, 28, 'Un routeur permet de connecter des réseaux à Internet','A router allows to connect networks to the Internet',FALSE),
+(71, 28, 'C est ce que vous fournis Orange','This is what Orange provides to you',FALSE),
+(72, 28, 'Un routeur forme des réseaux et gère le flux de données au sein de ces réseaux et entre eux','A router forms networks and manages the flow of data within and between these networks',TRUE),
+(73, 29, 'GET tu guette et POST tu poste','Get you watch and POST you post',FALSE),
+(74, 29, 'La méthode GET permet de récupérer des informations grâce à l''API et POST permet d''insérer des informations dans l''API','The GET method is used to retrieve information from the API and POST is used to insert information into the API',TRUE),
+(75, 29, 'La méthode GET permet d''insérer des informations dans l''API et POST permet de récupérer des informations grâce à l''API','The GET method allows you to insert information in the API and POST allows you to retrieve information through the API',FALSE),
+(76, 29, 'GET c''est obtenir en anglais et POST c''est poster en anglais','GET is to get in English and POST is to post in English',FALSE),
+(77, 30, 'Aucune','None',FALSE),
+(78, 30, 'Il y a un X en plus','There is an extra X',FALSE),
+(79, 30, 'Il n''ya que la syntaxe qui change','There is only the syntax that changes',TRUE),
+(80, 30, 'Il n''y a que des petites fonctionnalités qui change','There are only small features that change',FALSE);
+
 
 CREATE TABLE users (
   idU serial PRIMARY KEY NOT NULL,

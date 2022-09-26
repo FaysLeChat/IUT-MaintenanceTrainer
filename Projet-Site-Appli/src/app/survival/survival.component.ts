@@ -40,16 +40,14 @@ export class SurvivalComponent implements OnInit {
 
   getQuestions(): Observable<any> {
     var url = 'http://45.155.170.233:3000/questions?survival_mode=eq.true';
-    const tab = [];
-    tab.push(url);
-    for(var z = 2;z<tab.length;z++){
-      if(this.aRepondu == true){
-        tab[z] = tab[z+1];
-      }
-    }
-    console.log(tab)
-    return this.http.get(url);
-
+    let tab: any[];
+    tab = [];
+    var y;
+    var t =  this.http.get(url).subscribe(map =>{
+      tab.push(map);
+    });
+    console.log(tab);
+    return  this.http.get(url);
 
   }
 

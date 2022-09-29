@@ -48,9 +48,7 @@ export class SurvivalComponent implements OnInit {
     });
     console.log(tab);
     return  this.http.get(url);
-
   }
-
 
   constructor(private modalService: NgbModal, private http: HttpClient) {
     this.getQuestions().subscribe(req => this.questions = req);

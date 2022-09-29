@@ -57,10 +57,3 @@
   <button *ngIf="tab_create" class="btn btn-warning"><i class="bi bi-people"></i> {{ this.joueurs }} {{'survival.bar.players' | translate }}</button>
 </div>
 
-<div *ngFor="let q of questions">
-  <div *ngIf="q.id_question == '27'">
-    <p>{{q.id_question}}</p>
-    <p>{{q.label_en}}</p>
-    <p>{{q.label_fr}}</p>
-  </div>
-</div>

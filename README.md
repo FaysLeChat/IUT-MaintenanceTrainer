@@ -49,3 +49,18 @@ __Chef de GIT:__ Corentin Gaspard
 ## Autre
 
 - Déblocage de l'API après la réunion (avec sa mise en ligne), début de l'injection des éléments de la BD sur l'appli.
+
+# Réunion du 26/09/2022  
+
+## Taches réalisées  
+
+- Lucie: Design, traduction avec ngxtranslate,recherche aide API. 
+- Jean-Philippe:  ajout questions dans la bd, recherche aide API.
+- Maxence: Ajout questions + réponses dans la bd, recherche aide API.
+- William: Ajout questions + réponses dans la bd.
+- Corentin: recherche aide API.
+- Allan: Absence maladie, aide avec API.
+
+## Autre
+
+- Déblocage de l'API après la réunion pour recuperation de donnée Json.

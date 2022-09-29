@@ -15,4 +15,14 @@ export class QuestionService {
     console.log(url)
     return this.http.get(url);
   }
+  getQuestionTraining(choix : any): Observable<any> {
+    var url = 'http://45.155.170.233:3000/questions?id_categorie=eq.'+choix+"&training_mode=eq.true";
+    return this.http.get(url);
+  }
+  getReponse(choix : any): Observable<any> {
+    var url = 'http://45.155.170.233:3000/reponses?id_question=eq.';
+    url = url.concat(choix.toString());
+    console.log(url)
+    return this.http.get(url);
+  }
 }

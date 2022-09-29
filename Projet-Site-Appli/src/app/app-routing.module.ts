@@ -10,8 +10,8 @@ const routes: Routes = [
   {path: '', component: AcceuilComponent},
   {path: 'entrainement', component: EntrainementComponent},
   {path: 'simulation', component: SimulationComponent},
-  {path: 'survival', component: SurvivalComponent}, 
-  {path: '**', component: Erreur404Component}, 
+  {path: 'survival', component: SurvivalComponent},
+  {path: '**', component: Erreur404Component},
 ];
 
 @NgModule({

@@ -34,3 +34,18 @@ __Chef de GIT:__ Corentin Gaspard
 
 - Polir ce que l'on a pendant le reste de la semaine (surtout meilleur design, mais aussi peut-être des changements pour le diagramme d'utilisation etc.).  
 - En train de regarder pour l'API, mais pas réussi à faire grand chose pour l'instant.  
+
+# Réunion du 21/09/2022  
+
+## Taches réalisées  
+
+- Lucie: Design, traduction avec ngxtranslate. Timer, niveaux BAC+2 et +3 et thèmes pour la page entrainement. 
+- Jean-Philippe: Page survival + formulaire nombre de joueurs, ajout questions dans la bd.
+- Maxence: Aide William pour le début d'Angular. Ajout questions + réponses dans la bd. Travail sur la page accueil.
+- William: Ajout questions + réponses dans la bd. Page simulation, calcul de score, mode questions ouvertes/fermées, gestion du board issues.
+- Corentin: Aide Jean-Philippe pour le début d'Angular. Gestion de la forge. Page Accueil et entrainement. Travail sur le design.
+- Allan: Absence maladie.
+
+## Autre
+
+- Déblocage de l'API après la réunion (avec sa mise en ligne), début de l'injection des éléments de la BD sur l'appli.

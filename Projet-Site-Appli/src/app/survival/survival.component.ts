@@ -80,6 +80,7 @@ export class SurvivalComponent implements OnInit {
   question : number =  Math.floor(Math.random() * 20);
   IdQuestion : number = 1;
   tabQ : number[] = [this.question];
+  
   incIdQuestion(){
     return this.IdQuestion++;
   }

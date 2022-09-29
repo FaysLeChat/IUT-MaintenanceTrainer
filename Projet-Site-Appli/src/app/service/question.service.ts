@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
+import {Questions} from "../interfaces/Questions";
+import {map} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -19,10 +21,15 @@ export class QuestionService {
     var url = 'http://45.155.170.233:3000/questions?id_categorie=eq.'+choix+"&training_mode=eq.true";
     return this.http.get(url);
   }
+  getQuestionsSurvival(): Observable<any> {
+    var url = 'http://45.155.170.233:3000/questions?survival_mode=eq.true';
+    return  this.http.get(url);
+  }
   getReponse(choix : any): Observable<any> {
     var url = 'http://45.155.170.233:3000/reponses?id_question=eq.';
     url = url.concat(choix.toString());
     console.log(url)
-    return this.http.get(url);
+    return this.http.get<Questions[]>(url).pipe(map(rep => rep[0]));
   }
+
 }

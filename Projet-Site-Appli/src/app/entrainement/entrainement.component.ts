@@ -8,6 +8,7 @@ import {query} from "@angular/animations";
 
 import {QuestionService} from "../service/question.service";
 
+
 @Component({
   selector: 'app-entrainement',
   templateUrl: './entrainement.component.html',
@@ -22,8 +23,9 @@ export class EntrainementComponent implements OnInit {
   public time: number = 0;
   public selectedBac: any = "bac+2";
 
-  categories!: Categories[];
-  categorie!: Categories;
+  questions: Questions = <Questions>{};
+  tab: any[] = [];
+
 
   endconf(choix:any) {
     this.theme = choix;
@@ -35,8 +37,79 @@ export class EntrainementComponent implements OnInit {
         this.time++;
       },1000)
     }
-    this.questionService.getCategorie(this.theme).subscribe(res =>this.questionService.getQuestionTraining(res[0].id_categorie).subscribe(res1=>this.categories = res1));
-    this.questionService.getCategorie(this.theme).subscribe(res => console.log(res[0].label_fr));
+    this.questionService.getCategorie(this.theme).subscribe(res =>this.questionService.getQuestionTraining(res[0].id_categorie).subscribe(map =>{
+      this.questions=map;
+      this.tab.push(map);
+      console.log(this.tab[0])
+
+    }));
+    return this.tab;
+    /*[
+      [
+        {
+          "id_question": 23,
+          "label_fr": "Qu est ce qu une base de données ?",
+          "label_en": "What is a database ?",
+          "id_categorie": 1,
+          "id_difficulte": 1,
+          "eval_mode": true,
+          "training_mode": true,
+          "survival_mode": true,
+          "pro_tips_fr": null,
+          "pro_tips_en": null
+        },
+        {
+          "id_question": 24,
+          "label_fr": "Qu est-ce qu un SGBD ?",
+          "label_en": "What is a DBMS ?",
+          "id_categorie": 1,
+          "id_difficulte": 1,
+          "eval_mode": true,
+          "training_mode": true,
+          "survival_mode": true,
+          "pro_tips_fr": null,
+          "pro_tips_en": null
+        },
+        {
+          "id_question": 25,
+          "label_fr": "Qu est-ce qu un SGBDR ?",
+          "label_en": "What is an RDBMS ?",
+          "id_categorie": 1,
+          "id_difficulte": 2,
+          "eval_mode": true,
+          "training_mode": true,
+          "survival_mode": true,
+          "pro_tips_fr": null,
+          "pro_tips_en": null
+        },
+        {
+          "id_question": 26,
+          "label_fr": "Que sont les tableaux et les champs en SQL ?",
+          "label_en": "What are tables and fields in SQL?",
+          "id_categorie": 1,
+          "id_difficulte": 1,
+          "eval_mode": true,
+          "training_mode": true,
+          "survival_mode": true,
+          "pro_tips_fr": null,
+          "pro_tips_en": null
+        },
+        {
+          "id_question": 27,
+          "label_fr": "Qu est-ce qu une clé primaire ?",
+          "label_en": "What s a primary key ?",
+          "id_categorie": 1,
+          "id_difficulte": 1,
+          "eval_mode": true,
+          "training_mode": true,
+          "survival_mode": true,
+          "pro_tips_fr": null,
+          "pro_tips_en": null
+        }
+      ]
+    ]*/
+
+
   }
 
   changeTheme(content2: any) {
@@ -53,7 +126,7 @@ export class EntrainementComponent implements OnInit {
     console.log(this.selectedBac)
   }
 
-  constructor(private modalService: NgbModal, private http: HttpClient, private questionService: QuestionService) {
+  constructor(private modalService: NgbModal, private http: HttpClient,private questionService: QuestionService ) {
   }
 
   ngOnInit(): void {

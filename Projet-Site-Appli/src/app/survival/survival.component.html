@@ -8,40 +8,27 @@
     <div class="col">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title" style="text-align: center;">Question 1/99</h5>
-          <p class="card-text" style="text-align: center">Quel est la meilleure réponse ?</p>
+          <h5 class="card-title" style="text-align: center;">Question {{IdQuestion}}/20</h5>
+          <p class="card-text" style="text-align: center">{{questions[question].label_fr}}</p>
           <hr>
           <div class="row">
-          <!--C'est ici le carnage mon pote-->
-            <div class="card" *ngFor="let q of questions">
-              <div class="card-header">
-                {{ q.id_question }}
+              <div class="col">
+                <div class="card">
+                  <button class="btn btn-primary" (click)="IncQuestion()">Reponse A</button>
+                </div>
+                <div class="card">
+                  <button class="btn btn-primary" (click)="IncQuestion()">Reponse B</button>
+                </div>
               </div>
-              <div class="card-body">
-                <h5 class="card-title">{{ q.label_fr }}</h5>
-                <p class="card-text">{{ q.label_en }}</p>
-              </div>
-            </div>
-          </div>
-          <!--C'est ici la fin du carnage mon pote-->
-          <div class="row">
-            <div class="col">
-              <div class="card">
-                <button class="btn btn-primary">Reponse A</button>
-              </div>
-              <div class="card">
-                <button class="btn btn-primary">Reponse B</button>
+              <div class="col">
+                <div class="card">
+                  <button class="btn btn-primary" (click)="IncQuestion()">Reponse C</button>
+                </div>
+                <div class="card">
+                  <button class="btn btn-primary" (click)="IncQuestion()">La Reponse D</button>
+                </div>
               </div>
             </div>
-            <div class="col">
-              <div class="card">
-                <button class="btn btn-primary">Reponse C</button>
-              </div>
-              <div class="card">
-                <button class="btn btn-primary">La Reponse D</button>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -69,3 +56,8 @@
   <button *ngIf="tab_create" class="btn btn-danger"><i class="bi bi-heart"></i> 10 {{'survival.bar.lives' | translate }}</button>
   <button *ngIf="tab_create" class="btn btn-warning"><i class="bi bi-people"></i> {{ this.joueurs }} {{'survival.bar.players' | translate }}</button>
 </div>
+
+    <p>{{questions[8].id_question}}</p>
+    <p>{{questions[8].label_en}}</p>
+    <p>{{questions[8].label_fr}}</p>
+

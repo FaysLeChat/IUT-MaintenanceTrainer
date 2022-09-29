@@ -21,6 +21,8 @@ export class EntrainementComponent implements OnInit {
   public time: number = 0;
   public selectedBac: any = "bac+2";
 
+  public test: any;
+
   categorie!: Categories;
 
   endconf(choix:any) {
@@ -33,8 +35,6 @@ export class EntrainementComponent implements OnInit {
         this.time++;
       },1000)
     }
-    this.questionService.getCategorie(this.theme).subscribe(res => console.log(res[0].id_categorie));
-    this.questionService.getCategorie(this.theme).subscribe(res => console.log(res[0].label_fr));
   }
 
   changeTheme(content2: any) {

@@ -5,6 +5,9 @@ import { Categories } from '../interfaces/Categories';
 import { HttpClient } from '@angular/common/http';
 import { Questions } from '../interfaces/Questions';
 import {QuestionService} from "../service/question.service";
+import {ReponseService} from "../service/reponse.service";
+import {Reponses} from "../interfaces/Reponses";
+
 
 @Component({
   selector: 'app-survival',
@@ -26,6 +29,8 @@ export class SurvivalComponent implements OnInit {
   public aRepondu : boolean = false;
 
   questions!: Questions [];
+  reponses!: Reponses [];
+
 
   endconf(choix:any) {
     this.theme = choix;
@@ -53,8 +58,26 @@ export class SurvivalComponent implements OnInit {
   }
 */
 
-  constructor(private modalService: NgbModal, private http: HttpClient,private questionService: QuestionService) {
-    this.questionService.getQuestionsSurvival().subscribe(res => this.questions = res);
+  constructor(private modalService: NgbModal, private http: HttpClient,private questionService: QuestionService,private reponseService: ReponseService) {
+    this.questionService.getQuestionsSurvival().subscribe(res => {
+      this.questions = res;
+      this.reponses = [];
+      console.log(this.questions);
+      let i = [];
+      for (let r of res) {
+        this.reponseService.getReponse(r.id_question).subscribe( resR => {
+          this.reponses.push(resR[0]);
+          this.reponses.push(resR[1]);
+          this.reponses.push(resR[2]);
+          this.reponses.push(resR[3]);
+          console.log(this.reponses);
+        }
+        );
+      }
+    }
+    );
+
+
   }
 
   ngOnInit(): void {
@@ -80,7 +103,7 @@ export class SurvivalComponent implements OnInit {
   question : number =  Math.floor(Math.random() * 20);
   IdQuestion : number = 1;
   tabQ : number[] = [this.question];
-  
+
   incIdQuestion(){
     return this.IdQuestion++;
   }
@@ -109,6 +132,13 @@ export class SurvivalComponent implements OnInit {
       }, 1000)
     }
     return true;
+  }
+  verificationReponse(reponse: Reponses) {
+    if(reponse.valid == true) {
+      console.log("cool");
+    } else {
+      console.log("pas cool :(");
+    }
   }
 }
 

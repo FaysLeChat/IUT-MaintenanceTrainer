@@ -9,23 +9,23 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title" style="text-align: center;">Question {{IdQuestion}}/20</h5>
-          <p class="card-text" style="text-align: center">{{questions[question].label_fr}}</p>
+          <p class="card-text" style="text-align: center">{{questions[question].label_fr}}{{questions[question].id_question}}</p>
           <hr>
           <div class="row">
               <div class="col">
                 <div class="card">
-                  <button class="btn btn-primary" (click)="IncQuestion()">Reponse A</button>
+                  <button class="btn btn-primary" (click)="IncQuestion()">{{reponses[question].label_fr}}|{{reponses[question].id_question}}</button>
                 </div>
                 <div class="card">
-                  <button class="btn btn-primary" (click)="IncQuestion()">Reponse B</button>
+                  <button class="btn btn-primary" (click)="IncQuestion()">{{reponses[question+1].label_fr}}|{{reponses[question+1].id_question}}</button>
                 </div>
               </div>
               <div class="col">
                 <div class="card">
-                  <button class="btn btn-primary" (click)="IncQuestion()">Reponse C</button>
+                  <button class="btn btn-primary" (click)="IncQuestion()">{{reponses[question+2].label_fr}}|{{reponses[question+2].id_question}}</button>
                 </div>
                 <div class="card">
-                  <button class="btn btn-primary" (click)="IncQuestion()">La Reponse D</button>
+                  <button class="btn btn-primary" (click)="IncQuestion()">{{reponses[question+3].label_fr}}|{{reponses[question+3].id_question}}</button>
                 </div>
               </div>
             </div>
@@ -56,4 +56,3 @@
   <button *ngIf="tab_create" class="btn btn-danger"><i class="bi bi-heart"></i> 10 {{'survival.bar.lives' | translate }}</button>
   <button *ngIf="tab_create" class="btn btn-warning"><i class="bi bi-people"></i> {{ this.joueurs }} {{'survival.bar.players' | translate }}</button>
 </div>
-

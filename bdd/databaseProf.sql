@@ -236,8 +236,6 @@ INSERT INTO reponses (id_reponse, id_question, label_fr, label_en, valid) VALUES
 (107, 40, 'Google traduction','Google translate',FALSE),
 (108, 40, 'HTML traduction','HTML translate',FALSE);
 
-
-
 CREATE TABLE users (
   idU serial PRIMARY KEY NOT NULL,
   idRole int NOT NULL,

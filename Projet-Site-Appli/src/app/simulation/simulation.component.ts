@@ -56,4 +56,5 @@ export class SimulationComponent implements OnInit {
     }
     return 0;
   }
+
 }

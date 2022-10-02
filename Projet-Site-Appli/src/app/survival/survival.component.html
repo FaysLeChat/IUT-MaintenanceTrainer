@@ -8,27 +8,27 @@
     <div class="col">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title" style="text-align: center;">Question 1/99</h5>
-          <p class="card-text" style="text-align: center;">Quel est la meilleure réponse ?</p>
+          <h5 class="card-title" style="text-align: center;">Question {{IdQuestion}}/20</h5>
+          <p class="card-text" style="text-align: center">{{questions[question].label_fr}}</p>
           <hr>
           <div class="row">
-            <div class="col">
-              <div class="card">
-                <button class="btn btn-primary">Reponse A</button>
+              <div class="col">
+                <div class="card">
+                  <button class="btn btn-primary" (click)="IncQuestion()">Reponse A</button>
+                </div>
+                <div class="card">
+                  <button class="btn btn-primary" (click)="IncQuestion()">Reponse B</button>
+                </div>
               </div>
-              <div class="card">
-                <button class="btn btn-primary">Reponse B</button>
+              <div class="col">
+                <div class="card">
+                  <button class="btn btn-primary" (click)="IncQuestion()">Reponse C</button>
+                </div>
+                <div class="card">
+                  <button class="btn btn-primary" (click)="IncQuestion()">La Reponse D</button>
+                </div>
               </div>
             </div>
-            <div class="col">
-              <div class="card">
-                <button class="btn btn-primary">Reponse C</button>
-              </div>
-              <div class="card">
-                <button class="btn btn-primary">La Reponse D</button>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -51,16 +51,5 @@
     </div>
   </div>
 </div>
-<!--<div class="container-fluid" style="position: fixed; bottom: 10px;">
-  <div class="row">
-    <div class="col-lg-6">
-      <button (click)="Modal.open(content)" class="btn btn-dark"><i class="bi bi-gear"></i> {{'footerbar.settings' | translate }}</button>
-    </div>
-    <div class="col" style="text-align: right;">
-      <button *ngIf="tab_create && time" class="btn btn-primary"><i class="bi bi-stopwatch"></i> {{ this.time }}s</button>
-      <button *ngIf="tab_create" class="btn btn-danger"><i class="bi bi-heart"></i> 10 {{'survival.bar.lives' | translate }}</button>
-      <button *ngIf="tab_create" class="btn btn-warning"><i class="bi bi-people"></i> {{ this.joueurs }} {{'survival.bar.players' | translate }}</button>
-    </div>
-  </div>
-</div>-->
 <app-overlay></app-overlay>
+

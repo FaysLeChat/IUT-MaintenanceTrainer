@@ -1,8 +1,13 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {debounceTime, Subject} from "rxjs";
-import {NgbAlert} from "@ng-bootstrap/ng-bootstrap";
 import {isNumber} from "@ng-bootstrap/ng-bootstrap/util/util";
 import {toNumbers} from "@angular/compiler-cli/src/version_helpers";
+import {debounceTime, Observable, Subject} from "rxjs";
+import {NgbAlert, NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import { Categories } from '../interfaces/Categories';
+import { HttpClient } from '@angular/common/http';
+import { Questions } from '../interfaces/Questions';
+import {QuestionService} from "../service/question.service";
+import {Reponses} from "../interfaces/Reponses";
 
 @Component({
   selector: 'app-survival',
@@ -20,8 +25,26 @@ export class SurvivalComponent implements OnInit {
   public lives:any;
   public timer:any;
   public nbplayers:any;
+  public tab_create = false;
+  public theme : string = "";
+  public time: number = 0;
+  public aRepondu : boolean = false;
+  questions!: Questions [];
 
-  constructor() {
+  endconf(choix:any) {
+    this.theme = choix;
+    this.config = false;
+    this.modalService.dismissAll();
+    console.log(this.theme);
+    if(this.timer) {
+      this.interval = setInterval(() => {
+        this.time++;
+      },1000)
+    }
+  }
+
+  constructor(private modalService: NgbModal, private http: HttpClient,private questionService: QuestionService) {
+    this.questionService.getQuestionsSurvival().subscribe(res => this.questions = res);
   }
 
   ngOnInit(): void {
@@ -60,6 +83,7 @@ export class SurvivalComponent implements OnInit {
     if(localStorage.getItem('survival_nbplayer') >= 2 && localStorage.getItem('survival_nbplayer') <= 10){
       localStorage.setItem('survival_config', 'true');
       this.config = true;
+
     }
   }
 
@@ -69,6 +93,26 @@ export class SurvivalComponent implements OnInit {
   }
 
   errorMessage = '';
+  bool: boolean = true;
+  question : number =  Math.floor(Math.random() * 20);
+  IdQuestion : number = 1;
+  tabQ : number[] = [this.question];
+
+  incIdQuestion(){
+    return this.IdQuestion++;
+  }
+  IncQuestion(){
+    let r =  Math.floor((Math.random() * 20));
+    while(true) {
+      if (!this.tabQ.includes(r)) {
+        this.tabQ.push(r);
+        this.incIdQuestion();
+        return this.question = r;
+      }
+      r =  Math.floor((Math.random() * 20));
+    }
+    return 0;
+  }
 
   envoyer()  {
     // @ts-ignore
@@ -110,4 +154,12 @@ export class SurvivalComponent implements OnInit {
     this.activetimer = 'false';
     this.timer = '0';
   }
+  verificationReponse(reponse: Reponses) {
+    if(reponse.valid == true) {
+      console.log("cool");
+    } else {
+      console.log("pas cool :(");
+    }
+  }
 }
+

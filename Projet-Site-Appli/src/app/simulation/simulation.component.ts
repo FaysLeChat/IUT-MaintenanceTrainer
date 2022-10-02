@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {Questions} from "../interfaces/Questions";
+import { Reponses } from '../interfaces/Reponses';
 
 @Component({
   selector: 'app-simulation',
@@ -10,9 +15,27 @@ export class SimulationComponent implements OnInit {
   public errorMessage = "";
   resultat = 0;
   changement = false;
-  constructor() { }
+  questions!: Questions [];
+  reponses!: Reponses [];
+
+  constructor(private modalService: NgbModal, private http: HttpClient) {
+    this.getQuestions().subscribe(req => this.questions = req);
+    this.getReponses().subscribe(req => this.reponses = req);
+  }
 
   ngOnInit(): void {
+
+  }
+
+
+  getQuestions(): Observable<any> {
+    let url = 'http://45.155.170.233:3000/questions?eval_mode=eq.true&id_question=eq.1';
+    return this.http.get(url);
+  }
+
+  getReponses(): Observable<any>{
+    let url = 'http://45.155.170.233:3000/reponses?id_question=eq.1';
+    return this.http.get(url);
   }
 
   changerQuestion(){

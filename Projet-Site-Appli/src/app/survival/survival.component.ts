@@ -5,6 +5,7 @@ import { Categories } from '../interfaces/Categories';
 import { HttpClient } from '@angular/common/http';
 import { Questions } from '../interfaces/Questions';
 import {QuestionService} from "../service/question.service";
+import {Reponses} from "../interfaces/Reponses";
 
 @Component({
   selector: 'app-survival',
@@ -38,20 +39,6 @@ export class SurvivalComponent implements OnInit {
       },1000)
     }
   }
-/*
-
- getQuestions(): Observable<any> {
-    var url = 'http://45.155.170.233:3000/questions?survival_mode=eq.true';
-    let tab: any[];
-    tab = [];
-    var y;
-    var t =  this.http.get(url).subscribe(map =>{
-      tab.push(map);
-    });
-    console.log(tab);
-    return  this.http.get(url);
-  }
-*/
 
   constructor(private modalService: NgbModal, private http: HttpClient,private questionService: QuestionService) {
     this.questionService.getQuestionsSurvival().subscribe(res => this.questions = res);
@@ -80,7 +67,7 @@ export class SurvivalComponent implements OnInit {
   question : number =  Math.floor(Math.random() * 20);
   IdQuestion : number = 1;
   tabQ : number[] = [this.question];
-  
+
   incIdQuestion(){
     return this.IdQuestion++;
   }
@@ -96,6 +83,7 @@ export class SurvivalComponent implements OnInit {
     }
     return 0;
   }
+
   envoyer()  {
     this.joueurs = this.model;
     if(this.joueurs >= 2 && this.joueurs <= 10) {
@@ -109,6 +97,14 @@ export class SurvivalComponent implements OnInit {
       }, 1000)
     }
     return true;
+  }
+
+  verificationReponse(reponse: Reponses) {
+    if(reponse.valid == true) {
+      console.log("cool");
+    } else {
+      console.log("pas cool :(");
+    }
   }
 }
 

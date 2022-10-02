@@ -4,7 +4,7 @@
       <h5 class="text-light" style="text-align: center;">{{'survival.title' | translate }}</h5>
     </div>
   </div>
-  <div class="row" *ngIf="tab_create">
+  <div class="row" *ngIf="this.config == 'true'">
     <div class="col">
       <div class="card">
         <div class="card-body">
@@ -33,7 +33,7 @@
       </div>
     </div>
   </div>
-  <div class="row" *ngIf="!tab_create">
+  <div class="row" *ngIf="this.config == 'false'">
     <div class="col">
       <div class="card">
         <h5 class="card-header"><i class="bi bi-gear"></i> {{'survival.setup.title' | translate }}</h5>
@@ -51,8 +51,5 @@
     </div>
   </div>
 </div>
-<div style="position: fixed; bottom: 10px; right: 10px;">
-  <button *ngIf="tab_create && time" class="btn btn-primary"><i class="bi bi-stopwatch"></i> {{ this.time }}s</button>
-  <button *ngIf="tab_create" class="btn btn-danger"><i class="bi bi-heart"></i> 10 {{'survival.bar.lives' | translate }}</button>
-  <button *ngIf="tab_create" class="btn btn-warning"><i class="bi bi-people"></i> {{ this.joueurs }} {{'survival.bar.players' | translate }}</button>
-</div>
+<app-overlay></app-overlay>
+

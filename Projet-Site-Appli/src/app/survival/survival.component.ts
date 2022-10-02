@@ -1,4 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
+import {isNumber} from "@ng-bootstrap/ng-bootstrap/util/util";
+import {toNumbers} from "@angular/compiler-cli/src/version_helpers";
 import {debounceTime, Observable, Subject} from "rxjs";
 import {NgbAlert, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import { Categories } from '../interfaces/Categories';
@@ -14,20 +16,21 @@ import {Reponses} from "../interfaces/Reponses";
   templateUrl: './survival.component.html',
   styleUrls: ['./survival.component.css']
 })
+
 export class SurvivalComponent implements OnInit {
-  public joueurs: any;
   public model: any;
+
+  // Variables de jeu
+  public config:any;
+  public activetimer:any;
+  public interval:any;
+  public lives:any;
+  public timer:any;
+  public nbplayers:any;
   public tab_create = false;
-  public timer : boolean = false;
-
-  public config = true;
   public theme : string = "";
-
-  public interval: any;
   public time: number = 0;
-
   public aRepondu : boolean = false;
-
   questions!: Questions [];
   reponses!: Reponses [];
 
@@ -43,20 +46,6 @@ export class SurvivalComponent implements OnInit {
       },1000)
     }
   }
-/*
-
- getQuestions(): Observable<any> {
-    var url = 'http://45.155.170.233:3000/questions?survival_mode=eq.true';
-    let tab: any[];
-    tab = [];
-    var y;
-    var t =  this.http.get(url).subscribe(map =>{
-      tab.push(map);
-    });
-    console.log(tab);
-    return  this.http.get(url);
-  }
-*/
 
   constructor(private modalService: NgbModal, private http: HttpClient,private questionService: QuestionService,private reponseService: ReponseService) {
     this.questionService.getQuestionsSurvival().subscribe(res => {
@@ -81,21 +70,48 @@ export class SurvivalComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.time = 0;
+    if(localStorage.getItem('survival_config')) { // Si une partie existante est trouvée
+      console.log("Une game est déjà enregistrée, retour à la partie précédente... Cliquez sur RESET pour en recommencer une nouvelle");
+
+      // Récupération de la configuration
+      this.config = localStorage.getItem('survival_config');
+      console.log("DEBUG: La config actuelle est à ", this.config);
+
+      // Récupération si le timer est activé ou non
+      this.activetimer = localStorage.getItem('survival_activetimer');
+      console.log("DEBUG: L'activation du timer est à ", this.config);
+
+      this.nbplayers = localStorage.getItem('survival_nbplayers');
+      this.lives = localStorage.getItem('survival_lives');
+
+      // Si le timer est activé, on va recréer la boucle pour incrémenter le nombre de secondes
+      if(this.activetimer == 'true') {
+        // @ts-ignore
+        this.timer = parseInt(localStorage.getItem('survival_timer'));
+        this.interval = setInterval(() => {
+          localStorage.setItem('survival_timer', String(this.timer++));
+        }, 1000)
+      }
+    } else { // Sinon si la partie n'est pas crée
+      // On réinitialise la partie
+      this.resetGame();
+    }
   }
 
   tab(): void {
-    var nb_joueur = 0
     //nb_joueur =document.getElementById("nbj");
     //var tabSurvie = new Array(nb_joueur);
-    if(nb_joueur >= 2 && nb_joueur <=10){
-      this.tab_create = true;
+    // @ts-ignore
+    if(localStorage.getItem('survival_nbplayer') >= 2 && localStorage.getItem('survival_nbplayer') <= 10){
+      localStorage.setItem('survival_config', 'true');
+      this.config = true;
+
     }
   }
 
   switchTimer() {
-    if(this.timer) this.timer = false;
-    else this.timer = true;
+    if(this.activetimer == 'true') this.activetimer = 'false';
+    else if(this.activetimer == 'false') this.activetimer = 'true';
   }
 
   errorMessage = '';
@@ -119,19 +135,46 @@ export class SurvivalComponent implements OnInit {
     }
     return 0;
   }
+
   envoyer()  {
-    this.joueurs = this.model;
-    if(this.joueurs >= 2 && this.joueurs <= 10) {
-      this.tab_create = true;
+    // @ts-ignore
+    if(this.model >= 2 && this.model <= 10) { // Si les conditions obligatoires de la configuration sont remplises
+      // Ajout du nombre de joueurs en sauvegarde locale + var
+      this.nbplayers = this.model;
+      localStorage.setItem('survival_nbplayer', this.nbplayers);
+
+      // Ajout du nombre de vies en sauvegarde locale + var
+      this.lives = '0';
+      localStorage.setItem('survival_lives', this.lives);
+
+      // Si le timer est coché dans la configuration
+      if(this.activetimer == 'true') {
+        localStorage.setItem('survival_activetimer', "true");
+        this.timer = '0';
+        localStorage.setItem('survival_timer', this.timer);
+        this.interval = setInterval(() => {
+          localStorage.setItem('survival_timer', String(this.timer++));
+        }, 1000)
+      }
+
+      // Validation de la configuration actuelle
+      this.config = 'true';
+      localStorage.setItem('survival_config', this.config);
     } else {
       return this.errorMessage = "Le nombre de joueurs doit être compris entre 2 et 10 !"
     }
-    if(this.timer) {
-      this.interval = setInterval(() => {
-        this.time++;
-      }, 1000)
-    }
     return true;
+  }
+
+  resetGame() {
+    localStorage.setItem('survival_config', 'false');
+    localStorage.setItem('survival_activetimer', 'false');
+    localStorage.removeItem('survival_nbplayer');
+    localStorage.removeItem('survival_timer');
+    localStorage.removeItem('survival_lives');
+    this.config = 'false';
+    this.activetimer = 'false';
+    this.timer = '0';
   }
   verificationReponse(reponse: Reponses) {
     if(reponse.valid == true) {

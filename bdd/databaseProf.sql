@@ -111,7 +111,22 @@ INSERT INTO questions (id_question, label_fr, label_en, id_categorie, id_difficu
 (63, 'Qu''est ce qu''un OUTER JOIN ?','What is an OUTER JOIN?',1,2,TRUE,TRUE,TRUE,NULL,NULL),
 (63, 'Qu''est ce qu''un NATURAL JOIN ?','What is an NATURAL JOIN?',1,2,TRUE,TRUE,TRUE,NULL,NULL),
 (64, 'Une View c''est ?','A View is?',1,1,TRUE,TRUE,TRUE,NULL,NULL),
-(65, 'Un déclencheur c''est ?','A trigger is ?',1,1,TRUE,TRUE,TRUE,NULL,NULL);
+(65, 'Un déclencheur c''est ?','A trigger is ?',1,1,TRUE,TRUE,TRUE,NULL,NULL),
+(66, 'Qu''est ce qu''un cookie ?','What is a cookie ?',2,2,TRUE,TRUE,TRUE,NULL,NULL),
+(67, 'Quelle couche est responsable pour traiter la livraison du paquet?','Which layer is responsible for handling packet delivery?',2,2,TRUE,TRUE,TRUE,NULL,NULL),
+(68, 'Quel média de transmission a la vitesse de transmission la plus élevée dans un réseau?','Which transmission medium has the highest transmission speed in a network?',2,1,TRUE,TRUE,TRUE,NULL,NULL),
+(69, 'Quelle technique de multiplexage transmet des signaux numériques?','Which multiplexing technique transmits digital signals?',2,2,TRUE,TRUE,TRUE,NULL,NULL),
+(70, 'Quel est le délai suivant auquel le paquet est confronté lorsqu’il se déplace d’un système à un autre?','What is the next delay the packet faces when moving from one system to another?',2,2,TRUE,TRUE,TRUE,NULL,NULL),
+(71, 'Comment récupérer l’erreur en cas de problème lors du upload d’un fichier?','How to recover the error if there is a problem while uploading a file?',8,1,TRUE,TRUE,TRUE,NULL,NULL),
+(72, 'Quelle est la différence entre $a != $b et $a !== $b?','What is the difference between $a != $b and $a !== $b?',8,1,TRUE,TRUE,TRUE,NULL,NULL),
+(73, 'A quoi sert la fonction constant()?','What is the constant() function for?',8,1,TRUE,TRUE,TRUE,NULL,NULL),
+(74, 'Qu’est-ce que « URL rewriting »?','What is “URL rewriting”?',8,2,TRUE,TRUE,TRUE,NULL,NULL),
+(75, 'Qu’est-ce que le garbage collection?','What is Garbage Collection?',8,2,TRUE,TRUE,TRUE,NULL,NULL),
+(76, 'Comment empêcher une attaque de cross-site scripting(XSS) en PHP?','How to prevent cross-site scripting(XSS) attack in PHP?',8,3,TRUE,TRUE,TRUE,NULL,NULL),
+(77, 'Pouvez-vous expliquer le cycle de vie d’un thread Java ?','Can you explain the life cycle of a Java thread?',5,2,TRUE,TRUE,TRUE,NULL,NULL),
+(78, 'Quel est le moyen possible de rendre un objet éligible au garbage collection (GC) en Java ?','What is the possible way to make an object eligible for garbage collection (GC) in Java?',5,2,TRUE,TRUE,TRUE,NULL,NULL),
+(79, 'Quelle est la meilleure façon d’injecter une dépendance ?','What is the best way to inject a dependency?',5,1,TRUE,TRUE,TRUE,NULL,NULL),
+(80, 'Comment empêcher la sérialisation des attributs d’une classe en Java ?','How to prevent serialization of attributes of a class in Java?',5,3,TRUE,TRUE,TRUE,NULL,NULL);
 
 
 

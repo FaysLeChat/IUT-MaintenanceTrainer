@@ -29,6 +29,11 @@
               </div>
             </div>
           </div>
+          <div class="row">
+            <div class="col">
+
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -177,7 +182,14 @@
     </form>
   </div>
 </ng-template>
-<div style="position: fixed; bottom: 10px; right: 10px;">
-  <button *ngIf="!config" class="btn btn-warning"><i class="bi bi-patch-question"></i> Thème : {{theme}}</button>
-  <button *ngIf="!config && time" class="btn btn-primary"><i class="bi bi-stopwatch"></i> {{ this.time }}s</button>
-</div>
+<!--<div class="container-fluid" style="position: fixed; bottom: 10px;">
+  <div class="row">
+    <div class="col-lg-6">
+      <button (click)="open(content)" class="btn btn-dark"><i class="bi bi-gear"></i> {{'footerbar.settings' | translate }}</button>
+    </div>
+    <div class="col" style="text-align: right;">
+      <button *ngIf="!config" class="btn btn-warning"><i class="bi bi-patch-question"></i> Thème : {{theme}}</button>
+      <button *ngIf="!config && time" class="btn btn-primary"><i class="bi bi-stopwatch"></i> {{ this.time }}s</button>
+    </div>
+  </div>
+</div>-->

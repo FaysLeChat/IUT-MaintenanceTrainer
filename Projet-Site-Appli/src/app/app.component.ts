@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {TranslateService} from "@ngx-translate/core";
+import {Overlay} from "./overlay";
 
 @Component({
   selector: 'app-root',
@@ -11,30 +12,22 @@ export class AppComponent {
   title = 'Projet-Site-Appli';
   nb_joueur = 0;
 
-
-
-
-  constructor(private translate: TranslateService, private modalService: NgbModal) {
+  constructor(private translate: TranslateService) {
     translate.addLangs(['fr', 'en']);
-    translate.setDefaultLang('fr');
-    translate.use('fr');
-    this.selectedLang = "fr";
+    if (localStorage.getItem('locale')) {
+      // @ts-ignore: Object is possibly 'null'.
+      var local: string = localStorage.getItem('locale').toString();
+      translate.setDefaultLang(local);
+      translate.use(local);
+    } else {
+      translate.setDefaultLang('fr');
+      translate.use('fr');
+      localStorage.setItem('locale', 'fr');
+      // @ts-ignore: Object is possibly 'null'.
+      this.choice = localStorage.getItem('locale').toString();
+    }
   }
+
 
   public isCollapsed = false;
-  selectedLang: any;
-
-  open(content: any) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
-  }
-
-  changeTheme(content2: any) {
-    this.modalService.open(content2, {size: 'xl', ariaLabelledBy: 'modal-basic-title-2'});
-  }
-
-  onChange(deviceValue: any) {
-    this.selectedLang = deviceValue;
-    console.log(this.selectedLang)
-    this.translate.use(deviceValue);
-  }
 }

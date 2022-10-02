@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {Observable} from "rxjs";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Questions} from "../interfaces/Questions";
 import {Categories} from "../interfaces/Categories";
 
@@ -32,12 +32,13 @@ export class EntrainementComponent implements OnInit {
       },1000)
     }
     this.getCategorie(this.theme).subscribe(req => this.categorie = req);
+    console.log(JSON.stringify(this.categorie));
   }
   getCategorie(choix : any): Observable<any> {
     var url = 'http://45.155.170.233:3000/categories?label_fr=eq.';
     url = url.concat(choix.toString());
     console.log(url)
-    return this.http.get(url);
+    return this.http.get<any>(url);
 
   }
 

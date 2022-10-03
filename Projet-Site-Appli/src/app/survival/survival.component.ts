@@ -53,6 +53,7 @@ export class SurvivalComponent implements OnInit {
       this.reponses = [];
       console.log(this.questions);
       let i = [];
+      let y = 0;
       for (let r of res) {
         this.reponseService.getReponse(r.id_question).subscribe( resR => {
           this.reponses.push(resR[0]);
@@ -60,6 +61,18 @@ export class SurvivalComponent implements OnInit {
           this.reponses.push(resR[2]);
           this.reponses.push(resR[3]);
           console.log(this.reponses);
+          if(y !=0){
+            for(let i = 0; i< this.reponses.length ; i++){ 
+            if(this.reponses[i].id_question > this.reponses[i+1].id_question){
+              var temp;
+              temp = this.reponses[i].id_question;
+              this.reponses[i].id_question = this.reponses[i+1].id_question;
+              this.reponses[i+1].id_question = temp;
+            }
+          }  
+          }
+          y++;
+              
         }
         );
       }

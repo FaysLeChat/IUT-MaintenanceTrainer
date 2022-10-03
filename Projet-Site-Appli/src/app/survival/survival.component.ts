@@ -136,17 +136,26 @@ export class SurvivalComponent implements OnInit {
   incIdQuestion(){
     return this.IdQuestion++;
   }
-  IncQuestion(reponse: Reponses){
-    this.verificationReponse(reponse);
+  IncQuestion(reponse: Reponses, n : number){
+    this.verificationReponse(reponse, n);
 
-    let r =  Math.floor((Math.random() * 20));
-    while(true) {
+    let r =  Math.floor((Math.random() * n));
+    let boucle: boolean;
+
+    if(this.tabQ.length == n){
+      boucle = false;
+    } else {
+      boucle = true;
+    }
+
+    while(boucle) {
       if (!this.tabQ.includes(r)) {
         this.tabQ.push(r);
         this.incIdQuestion();
+
         return this.question = r;
       }
-      r =  Math.floor((Math.random() * 20));
+      r =  Math.floor((Math.random() * n));
     }
     return 0;
   }
@@ -159,7 +168,7 @@ export class SurvivalComponent implements OnInit {
       localStorage.setItem('survival_nbplayer', this.nbplayers);
 
       // Ajout du nombre de vies en sauvegarde locale + var
-      this.lives = 3;
+      this.lives = 99999;
       localStorage.setItem('survival_lives', String(this.lives));
 
       // Si le timer est coché dans la configurationw
@@ -192,7 +201,13 @@ export class SurvivalComponent implements OnInit {
     this.timer = '0';
   }
 
-  verificationReponse(reponse: Reponses) {
+  verificationReponse(reponse: Reponses, n: number) {
+    if(this.tabQ.length == n){
+      alert("ggwp");
+      this.resetGame();
+      this.router.navigateByUrl('');
+    }
+
     if(reponse.valid != true) {
       if(this.lives == 1) {
         alert("Game Over");
@@ -202,6 +217,8 @@ export class SurvivalComponent implements OnInit {
         localStorage.setItem('survival_lives', String(this.lives--));
       }
     }
+
+
   }
 }
 

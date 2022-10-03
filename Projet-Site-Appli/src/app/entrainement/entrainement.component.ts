@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {Questions} from "../interfaces/Questions";
 import {QuestionService} from "../service/question.service";
+import {ReponseService} from "../service/reponse.service";
 import {Categories} from "../interfaces/Categories";
 import {query} from "@angular/animations";
 import {Reponses} from "../interfaces/Reponses";
@@ -15,9 +16,9 @@ import {Reponses} from "../interfaces/Reponses";
 })
 export class EntrainementComponent implements OnInit {
   public config = true;
-  public errorMessage = '';
+  public errorMessage :string = "";
   public theme : string = "";
-  public timer : boolean = false
+  public timer : boolean = false;
 
   public interval: any;
   public time: number = 0;
@@ -37,12 +38,38 @@ export class EntrainementComponent implements OnInit {
         this.time++;
       },1000)
     }
-    this.questionService.getCategorie(this.theme).subscribe(res =>this.questionService.getQuestionTraining(res[0].id_categorie).subscribe(map =>{
-      this.questions=map;
-      this.tab.push(map);
-      console.log(this.tab[0])
-
-    }));
+    this.questionService.getCategorie(choix).subscribe(r => {
+      this.questionService.getQuestionTraining(r[0].id_categorie).subscribe(res => {
+        this.questions = res;
+        this.reponses = [];
+        console.log(this.questions);
+        let i = [];
+        let y = 0;
+        for (let r of res) {
+          this.reponseService.getReponse(r.id_question).subscribe( resR => {
+              this.reponses.push(resR[0]);
+              this.reponses.push(resR[1]);
+              this.reponses.push(resR[2]);
+              this.reponses.push(resR[3]);
+              console.log(this.reponses);
+              if(y !=0){
+                for(let i = 0; i< this.reponses.length ; i++){
+                    if(this.reponses[i].id_question > this.reponses[i+1].id_question){
+                      var temp;
+                      temp = this.reponses[i].id_question;
+                      this.reponses[i].id_question = this.reponses[i+1].id_question;
+                      this.reponses[i+1].id_question = temp;
+                    }
+                  }
+                }
+                y++;
+              }
+            );
+          }
+        }
+      );
+    });
+    
     return this.tab;
   }
 
@@ -60,18 +87,15 @@ export class EntrainementComponent implements OnInit {
     console.log(this.selectedBac)
   }
 
-  constructor(private modalService: NgbModal, private http: HttpClient,private questionService: QuestionService ) {
-    this.questionService.getQuestionTraining(this.questionService.getCategorie(this.theme)).subscribe(res => {
-      this.questions = res;
-    }
-    );
+  constructor(private modalService: NgbModal, private http: HttpClient,private questionService: QuestionService,private reponseService: ReponseService) {
   }
 
   ngOnInit(): void {
     this.time = 0;
   }
+
   
-  bool: boolean = true;
+  
   question : number =  Math.floor(Math.random() * 20);
   IdQuestion : number = 1;
   tabQ : number[] = [this.question];
@@ -81,17 +105,22 @@ export class EntrainementComponent implements OnInit {
   }
 
   IncQuestion(questions: Questions[]){
-    let r =  Math.floor((Math.random() * questions.length));
-    while(true) {
+    let bool= true;
+    var r =  Math.floor((Math.random() * questions.length));
+    while(bool) {
       if (!this.tabQ.includes(r)) {
         this.tabQ.push(r);
         this.incIdQuestion();
         return this.question = r;
-      }else{
-        this.errorMessage = 'MAX QUESTIONS ATTEINT';
       }
       r =  Math.floor((Math.random() * questions.length));
+      bool = false;
     }
+    if(this.IdQuestion == questions.length){
+      this.errorMessage = 'MAX ATTEINT';
+    }
+    
     return 0;
   }
+  
 }

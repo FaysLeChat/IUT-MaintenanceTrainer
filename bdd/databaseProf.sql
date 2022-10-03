@@ -249,7 +249,11 @@ INSERT INTO reponses (id_reponse, id_question, label_fr, label_en, valid) VALUES
 (105, 40, 'Bah traduction','Bah translation',FALSE),
 (106, 40, 'ngx-translate','ngx-translate',TRUE),
 (107, 40, 'Google traduction','Google translate',FALSE),
-(108, 40, 'HTML traduction','HTML translate',FALSE);
+(108, 40, 'HTML traduction','HTML translate',FALSE),
+(109, 41, 'Bootstrap est une collection d''outils utiles à la création du design de sites et d''applications web','Bootstrap is a collection of tools useful for creating web design and web applications',TRUE),
+(110, 41, 'Bootstrap est un environnement de développement intégré destiné au développement de logiciels informatiques reposant sur la technologie Java','Bootstrap is an integrated development environment for developing computer software based on Java',FALSE),
+(111, 41, 'Bootstrap est un éditeur pour PHP, HTML, CSS et JavaScript, édité par JetBrains','Bootstrap is an editor for PHP, HTML, CSS and JavaScript, published by JetBrains',FALSE),
+(112, 41, 'Bootstrap est un environnement de développement intégré pour JavaScript et les technologies connexes','Bootstrap is an integrated development environment for JavaScript and related technologies',FALSE);
 
 CREATE TABLE users (
   idU serial PRIMARY KEY NOT NULL,

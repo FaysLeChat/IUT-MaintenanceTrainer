@@ -3,11 +3,10 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {Questions} from "../interfaces/Questions";
+import {QuestionService} from "../service/question.service";
 import {Categories} from "../interfaces/Categories";
 import {query} from "@angular/animations";
-
-import {QuestionService} from "../service/question.service";
-
+import {Reponses} from "../interfaces/Reponses";
 
 @Component({
   selector: 'app-entrainement',
@@ -16,6 +15,7 @@ import {QuestionService} from "../service/question.service";
 })
 export class EntrainementComponent implements OnInit {
   public config = true;
+  public errorMessage = '';
   public theme : string = "";
   public timer : boolean = false
 
@@ -23,9 +23,9 @@ export class EntrainementComponent implements OnInit {
   public time: number = 0;
   public selectedBac: any = "bac+2";
 
-  questions: Questions = <Questions>{};
+  questions!: Questions [];
+  reponses!: Reponses [];
   tab: any[] = [];
-
 
   endconf(choix:any) {
     this.theme = choix;
@@ -44,72 +44,6 @@ export class EntrainementComponent implements OnInit {
 
     }));
     return this.tab;
-    /*[
-      [
-        {
-          "id_question": 23,
-          "label_fr": "Qu est ce qu une base de données ?",
-          "label_en": "What is a database ?",
-          "id_categorie": 1,
-          "id_difficulte": 1,
-          "eval_mode": true,
-          "training_mode": true,
-          "survival_mode": true,
-          "pro_tips_fr": null,
-          "pro_tips_en": null
-        },
-        {
-          "id_question": 24,
-          "label_fr": "Qu est-ce qu un SGBD ?",
-          "label_en": "What is a DBMS ?",
-          "id_categorie": 1,
-          "id_difficulte": 1,
-          "eval_mode": true,
-          "training_mode": true,
-          "survival_mode": true,
-          "pro_tips_fr": null,
-          "pro_tips_en": null
-        },
-        {
-          "id_question": 25,
-          "label_fr": "Qu est-ce qu un SGBDR ?",
-          "label_en": "What is an RDBMS ?",
-          "id_categorie": 1,
-          "id_difficulte": 2,
-          "eval_mode": true,
-          "training_mode": true,
-          "survival_mode": true,
-          "pro_tips_fr": null,
-          "pro_tips_en": null
-        },
-        {
-          "id_question": 26,
-          "label_fr": "Que sont les tableaux et les champs en SQL ?",
-          "label_en": "What are tables and fields in SQL?",
-          "id_categorie": 1,
-          "id_difficulte": 1,
-          "eval_mode": true,
-          "training_mode": true,
-          "survival_mode": true,
-          "pro_tips_fr": null,
-          "pro_tips_en": null
-        },
-        {
-          "id_question": 27,
-          "label_fr": "Qu est-ce qu une clé primaire ?",
-          "label_en": "What s a primary key ?",
-          "id_categorie": 1,
-          "id_difficulte": 1,
-          "eval_mode": true,
-          "training_mode": true,
-          "survival_mode": true,
-          "pro_tips_fr": null,
-          "pro_tips_en": null
-        }
-      ]
-    ]*/
-
-
   }
 
   changeTheme(content2: any) {
@@ -127,9 +61,38 @@ export class EntrainementComponent implements OnInit {
   }
 
   constructor(private modalService: NgbModal, private http: HttpClient,private questionService: QuestionService ) {
+    this.questionService.getQuestionTraining(this.questionService.getCategorie(this.theme)).subscribe(res => {
+      this.questions = res;
+    }
+    );
   }
 
   ngOnInit(): void {
     this.time = 0;
+  }
+
+  errorMessage = '';
+  bool: boolean = true;
+  question : number =  Math.floor(Math.random() * 20);
+  IdQuestion : number = 1;
+  tabQ : number[] = [this.question];
+
+  incIdQuestion(){
+    return this.IdQuestion++;
+  }
+
+  IncQuestion(questions: Questions[]){
+    let r =  Math.floor((Math.random() * questions.length));
+    while(true) {
+      if (!this.tabQ.includes(r)) {
+        this.tabQ.push(r);
+        this.incIdQuestion();
+        return this.question = r;
+      }else{
+        this.errorMessage = 'MAX QUESTIONS ATTEINT';
+      }
+      r =  Math.floor((Math.random() * questions.length));
+    }
+    return 0;
   }
 }

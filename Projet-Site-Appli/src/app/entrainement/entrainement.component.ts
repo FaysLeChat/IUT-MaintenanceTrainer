@@ -125,13 +125,15 @@ export class EntrainementComponent implements OnInit {
   }
 
   verificationReponse(reponse: Reponses, n: number) {
-    if(this.tabQ.length == n){
-      alert("Entraînement terminé !");
-      this.router.navigateByUrl('');
-    }
-
     if(reponse.valid == true) {
       this.score += 1;
     }
+
+    if(this.tabQ.length == n){
+      alert("Entraînement terminé ! Ton score est de : "+this.score+"/"+this.questions.length);
+      this.router.navigateByUrl('');
+    }
+
+    
   }
 }

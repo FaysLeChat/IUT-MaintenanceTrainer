@@ -8,6 +8,7 @@ import {ReponseService} from "../service/reponse.service";
 import {Categories} from "../interfaces/Categories";
 import {query} from "@angular/animations";
 import {Reponses} from "../interfaces/Reponses";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-entrainement',
@@ -19,6 +20,7 @@ export class EntrainementComponent implements OnInit {
   public errorMessage :string = "";
   public theme : string = "";
   public timer : boolean = false;
+  public score :number = 0;
 
   public interval: any;
   public time: number = 0;
@@ -87,7 +89,7 @@ export class EntrainementComponent implements OnInit {
     console.log(this.selectedBac)
   }
 
-  constructor(private modalService: NgbModal, private http: HttpClient,private questionService: QuestionService,private reponseService: ReponseService) {
+  constructor(private modalService: NgbModal, private http: HttpClient,private questionService: QuestionService,private reponseService: ReponseService,private router:Router) {
   }
 
   ngOnInit(): void {
@@ -104,23 +106,38 @@ export class EntrainementComponent implements OnInit {
     return this.IdQuestion++;
   }
 
-  IncQuestion(questions: Questions[]){
-    let bool= true;
-    var r =  Math.floor((Math.random() * questions.length));
-    while(bool) {
+  IncQuestion(reponse: Reponses, n = this.questions.length){
+    this.verificationReponse(reponse, n);
+
+    let r =  Math.floor((Math.random() * n));
+    let boucle: boolean;
+
+    if(this.tabQ.length == n){
+      boucle = false;
+    } else {
+      boucle = true;
+    }
+
+    while(boucle) {
       if (!this.tabQ.includes(r)) {
         this.tabQ.push(r);
         this.incIdQuestion();
         return this.question = r;
       }
-      r =  Math.floor((Math.random() * questions.length));
-      bool = false;
+      r =  Math.floor((Math.random() * n));
     }
-    if(this.IdQuestion == questions.length){
-      this.errorMessage = 'MAX ATTEINT';
-    }
-    
     return 0;
+  }
+
+
+  verificationReponse(reponse : Reponses, n : number){
+    if(reponse.valid == true){
+      this.score += 5;
+    }
+    if(this.tabQ.length == n){
+      alert("Entraînement terminé !");
+      this.router.navigate(['']);
+    }
   }
   
 }

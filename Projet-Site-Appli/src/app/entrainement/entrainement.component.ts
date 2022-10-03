@@ -15,9 +15,9 @@ import {Reponses} from "../interfaces/Reponses";
 })
 export class EntrainementComponent implements OnInit {
   public config = true;
-  public errorMessage = '';
+  public errorMessage :string = "";
   public theme : string = "";
-  public timer : boolean = false
+  public timer : boolean = false;
 
   public interval: any;
   public time: number = 0;
@@ -71,8 +71,8 @@ export class EntrainementComponent implements OnInit {
     this.time = 0;
   }
 
-  errorMessage = '';
-  bool: boolean = true;
+  
+  
   question : number =  Math.floor(Math.random() * 20);
   IdQuestion : number = 1;
   tabQ : number[] = [this.question];
@@ -82,17 +82,19 @@ export class EntrainementComponent implements OnInit {
   }
 
   IncQuestion(questions: Questions[]){
-    let r =  Math.floor((Math.random() * questions.length));
-    while(true) {
+    let bool= true;
+    var r =  Math.floor((Math.random() * questions.length));
+    while(bool) {
       if (!this.tabQ.includes(r)) {
         this.tabQ.push(r);
         this.incIdQuestion();
         return this.question = r;
-      }else{
-        this.errorMessage = 'MAX QUESTIONS ATTEINT';
       }
       r =  Math.floor((Math.random() * questions.length));
+      bool = false;
     }
-    return 0;
+    this.errorMessage = 'MAX ATTEINT';
+    return this.errorMessage;
   }
+  
 }

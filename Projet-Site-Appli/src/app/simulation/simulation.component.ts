@@ -14,7 +14,7 @@ export class SimulationComponent implements OnInit {
   // Variables de jeu
   public config:any;
   public maxscore = 100;
-  public resultat:any;
+  public resultat:number = 0;
   public theme:String[] = [];
 
 
@@ -32,11 +32,19 @@ export class SimulationComponent implements OnInit {
     if(localStorage.getItem('simulation_config')) { // Si une partie existante est trouvée
       console.log("Une game est déjà enregistrée, retour à la partie précédente... Cliquez sur RESET pour en recommencer une nouvelle");
 
+      // Récupération des thèmes précédents sélectionnés
+      // @ts-ignore
+      this.theme = localStorage.getItem('simulation_themes').split(',');
+      console.log("DEBUG: Affichage tableau des thèmes récupérés = ", this.theme);
+
+      // Récupération du score sauvegardé en local
+      // @ts-ignore
+      this.resultat = parseInt(localStorage.getItem('simulation_score'));
+
       // Récupération de la configuration
       this.config = localStorage.getItem('simulation_config');
       console.log("DEBUG: La config actuelle est à ", this.config);
 
-      this.resultat = localStorage.getItem('simulation_score');
     } else { // Sinon si la partie n'est pas crée
       // On réinitialise la partie
       this.resetGame();
@@ -66,6 +74,7 @@ export class SimulationComponent implements OnInit {
   ajout(score : number) {
     if (this.resultat < this.maxscore && document.getElementById('note')) {
       this.resultat += score;
+      localStorage.setItem('simulation_score', String(this.resultat));
       return this.resultat;
     } else {
       this.errorMessage = "Score maximum atteint !";
@@ -84,21 +93,29 @@ export class SimulationComponent implements OnInit {
   }
 
   envoyer()  {
-    // Initialisation du score en sauvegarde locale + var
-    this.resultat = 0;
-    localStorage.setItem('simulation_score', this.resultat);
+    if(this.theme.length == 0) {
+      console.log("Erreur : Aucun thème sélectionné");
+    } else {
+      // Initialisation du score en sauvegarde locale + var
+      this.resultat = 0;
+      localStorage.setItem('simulation_score', String(this.resultat));
 
-    // Validation de la configuration actuelle
-    this.config = 'true';
-    localStorage.setItem('simulation_config', this.config);
+      // Sauvegarde des thèmes sélectionnés en local
+      localStorage.setItem('simulation_themes', this.theme.toString());
 
-    this.modalService.dismissAll();
+      // Validation de la configuration actuelle
+      this.config = 'true';
+      localStorage.setItem('simulation_config', this.config);
+
+      this.modalService.dismissAll();
+    }
     return true;
   }
 
   resetGame() {
     localStorage.setItem('simulation_config', 'false');
     localStorage.removeItem('simulation_score');
+    this.theme = [];
     this.config = 'false';
   }
 

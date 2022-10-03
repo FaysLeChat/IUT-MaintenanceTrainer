@@ -93,8 +93,11 @@ export class EntrainementComponent implements OnInit {
       r =  Math.floor((Math.random() * questions.length));
       bool = false;
     }
-    this.errorMessage = 'MAX ATTEINT';
-    return this.errorMessage;
+    if(this.IdQuestion == questions.length){
+      this.errorMessage = 'MAX ATTEINT';
+    }
+    
+    return 0;
   }
   
 }

@@ -17,25 +17,24 @@
           <div class="row">
             <div class="col">
               <div class="card">
-                <button class="btn btn-primary" (click)="IncQuestion(reponses[question*4])">{{reponses[question*4].label_fr}}|{{reponses[question*4].id_question}}</button>
+                <button class="btn btn-primary" (click)="IncQuestion(this.questions)">{{reponses[question*4].label_fr}}|{{reponses[question*4].id_question}}</button>
               </div>
               <div class="card">
-                <button class="btn btn-primary" (click)="IncQuestion(reponses[question*4+1])">{{reponses[question*4+1].label_fr}}|{{reponses[question*4+1].id_question}}</button>
+                <button class="btn btn-primary" (click)="IncQuestion(this.questions)">{{reponses[question*4+1].label_fr}}|{{reponses[question*4+1].id_question}}</button>
               </div>
             </div>
             <div class="col">
               <div class="card">
-                <button class="btn btn-primary" (click)="IncQuestion(reponses[question*4+2])">{{reponses[question*4+2].label_fr}}|{{reponses[question*4+2].id_question}}</button>
+                <button class="btn btn-primary" (click)="IncQuestion(this.questions)">{{reponses[question*4+2].label_fr}}|{{reponses[question*4+2].id_question}}</button>
               </div>
               <div class="card">
-                <button class="btn btn-primary" (click)="IncQuestion(reponses[question*4+3])">{{reponses[question*4+3].label_fr}}|{{reponses[question*4+3].id_question}}</button>
+                <button class="btn btn-primary" (click)="IncQuestion(this.questions)">{{reponses[question*4+3].label_fr}}|{{reponses[question*4+3].id_question}}</button>
               </div>
             </div>
-            <button class ="btn btn-primary" type="info">{{this.score}}</button>
           </div>
           <div class="row">
             <div class="col">
-
+              <button class = "btn btn-primary">Score : {{this.score}} / {{questions.length}}</button>
             </div>
           </div>
         </div>

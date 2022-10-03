@@ -8,24 +8,24 @@
     <div class="col">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title" style="text-align: center;">Question {{IdQuestion}}/20</h5>
-          <p class="card-text" style="text-align: center">{{questions[question].label_fr}}{{questions[question].id_question}}</p>
+          <h5 class="card-title" style="text-align: center;">Question {{IdQuestion}}</h5>
+          <p class="card-text" style="text-align: center">{{questions[question].label_fr}}</p>
           <hr>
           <div class="row">
               <div class="col">
                 <div class="card">
-                  <button class="btn btn-primary" (click)="IncQuestion()">{{reponses[question].label_fr}}|{{reponses[question].id_question}}</button>
+                  <button class="btn btn-primary" (click)="IncQuestion()">{{reponses[question*4].label_fr}}|{{reponses[question*4].id_question}}</button>
                 </div>
                 <div class="card">
-                  <button class="btn btn-primary" (click)="IncQuestion()">{{reponses[question+1].label_fr}}|{{reponses[question+1].id_question}}</button>
+                  <button class="btn btn-primary" (click)="IncQuestion()">{{reponses[question*4+1].label_fr}}|{{reponses[question*4+1].id_question}}</button>
                 </div>
               </div>
               <div class="col">
                 <div class="card">
-                  <button class="btn btn-primary" (click)="IncQuestion()">{{reponses[question+2].label_fr}}|{{reponses[question+2].id_question}}</button>
+                  <button class="btn btn-primary" (click)="IncQuestion()">{{reponses[question*4+2].label_fr}}|{{reponses[question*4+2].id_question}}</button>
                 </div>
                 <div class="card">
-                  <button class="btn btn-primary" (click)="IncQuestion()">{{reponses[question+3].label_fr}}|{{reponses[question+3].id_question}}</button>
+                  <button class="btn btn-primary" (click)="IncQuestion()">{{reponses[question*4+3].label_fr}}|{{reponses[question*4+3].id_question}}</button>
                 </div>
               </div>
             </div>

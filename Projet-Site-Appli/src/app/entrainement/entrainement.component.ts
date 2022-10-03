@@ -70,8 +70,7 @@ export class EntrainementComponent implements OnInit {
   ngOnInit(): void {
     this.time = 0;
   }
-
-  errorMessage = '';
+  
   bool: boolean = true;
   question : number =  Math.floor(Math.random() * 20);
   IdQuestion : number = 1;

@@ -11,9 +11,14 @@ import { Reponses } from '../interfaces/Reponses';
   styleUrls: ['./simulation.component.css']
 })
 export class SimulationComponent implements OnInit {
+  // Variables de jeu
+  public config:any;
   public maxscore = 100;
+  public resultat:any;
+  public theme:String[] = [];
+
+
   public errorMessage = "";
-  resultat = 0;
   changement = false;
   questions!: Questions [];
   reponses!: Reponses [];
@@ -24,7 +29,18 @@ export class SimulationComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(localStorage.getItem('simulation_config')) { // Si une partie existante est trouvée
+      console.log("Une game est déjà enregistrée, retour à la partie précédente... Cliquez sur RESET pour en recommencer une nouvelle");
 
+      // Récupération de la configuration
+      this.config = localStorage.getItem('simulation_config');
+      console.log("DEBUG: La config actuelle est à ", this.config);
+
+      this.resultat = localStorage.getItem('simulation_score');
+    } else { // Sinon si la partie n'est pas crée
+      // On réinitialise la partie
+      this.resetGame();
+    }
   }
 
 
@@ -55,6 +71,35 @@ export class SimulationComponent implements OnInit {
       this.errorMessage = "Score maximum atteint !";
     }
     return 0;
+  }
+
+  openmodal(content: any) {
+    this.modalService.open(content, {size: 'xl', ariaLabelledBy: 'modal-basic-title-2'});
+  }
+
+  switchTheme(theme:any) {
+    if(this.theme.includes(theme)) this.theme.splice(this.theme.indexOf(theme), 1);
+    else this.theme.push(theme);
+    console.log(this.theme);
+  }
+
+  envoyer()  {
+    // Initialisation du score en sauvegarde locale + var
+    this.resultat = 0;
+    localStorage.setItem('simulation_score', this.resultat);
+
+    // Validation de la configuration actuelle
+    this.config = 'true';
+    localStorage.setItem('simulation_config', this.config);
+
+    this.modalService.dismissAll();
+    return true;
+  }
+
+  resetGame() {
+    localStorage.setItem('simulation_config', 'false');
+    localStorage.removeItem('simulation_score');
+    this.config = 'false';
   }
 
 }

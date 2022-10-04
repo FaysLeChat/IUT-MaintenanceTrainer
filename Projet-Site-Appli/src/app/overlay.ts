@@ -76,7 +76,7 @@ export class Overlay {
         this.simulation_maxscore = injector.get(SimulationComponent).maxscore;
       }
       if(this.router.url == '/survival') {
-        this.survival_lives = injector.get(SurvivalComponent).lives;
+        this.survival_lives = injector.get(SurvivalComponent).playersLives[injector.get(SurvivalComponent).actualPlayer-1];
         this.survival_config = injector.get(SurvivalComponent).config;
         this.survival_activetimer = localStorage.getItem('survival_activetimer');
         this.survival_timer = injector.get(SurvivalComponent).timer;

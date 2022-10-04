@@ -8,6 +8,7 @@ import {ReponseService} from "../service/reponse.service";
 import {Categories} from "../interfaces/Categories";
 import {query} from "@angular/animations";
 import {Reponses} from "../interfaces/Reponses";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-entrainement',
@@ -19,6 +20,7 @@ export class EntrainementComponent implements OnInit {
   public errorMessage :string = "";
   public theme : string = "";
   public timer : boolean = false;
+  public score :number = 0;
 
   public interval: any;
   public time: number = 0;
@@ -27,6 +29,8 @@ export class EntrainementComponent implements OnInit {
   questions!: Questions [];
   reponses!: Reponses [];
   tab: any[] = [];
+  // @ts-ignore
+  langue : string = localStorage.getItem('locale').toString();
 
   endconf(choix:any) {
     this.theme = choix;
@@ -45,7 +49,7 @@ export class EntrainementComponent implements OnInit {
         console.log(this.questions);
         let i = [];
         let y = 0;
-        for (let r of res) {
+        for (let r of this.questions) {
           this.reponseService.getReponse(r.id_question).subscribe( resR => {
               this.reponses.push(resR[0]);
               this.reponses.push(resR[1]);
@@ -53,7 +57,7 @@ export class EntrainementComponent implements OnInit {
               this.reponses.push(resR[3]);
               console.log(this.reponses);
               if(y !=0){
-                for(let i = 0; i< this.reponses.length ; i++){
+                for(let i = 0; i< this.reponses.length-1 ; i++){
                     if(this.reponses[i].id_question > this.reponses[i+1].id_question){
                       var temp;
                       temp = this.reponses[i].id_question;
@@ -66,7 +70,7 @@ export class EntrainementComponent implements OnInit {
               }
             );
           }
-        }
+         }
       );
     });
 
@@ -87,40 +91,69 @@ export class EntrainementComponent implements OnInit {
     console.log(this.selectedBac)
   }
 
-  constructor(private modalService: NgbModal, private http: HttpClient,private questionService: QuestionService,private reponseService: ReponseService) {
+  constructor(private modalService: NgbModal, private http: HttpClient,private questionService: QuestionService,private reponseService: ReponseService, private router: Router) {
   }
 
   ngOnInit(): void {
     this.time = 0;
   }
 
+  creerQuestion() : number{
+    let cul = Math.random();
+    if(cul == 0){
+      cul = 1;
+    }
+    let question : number = Math.floor(cul * 10);
+    return question;
+  }
 
-
-  question : number =  Math.floor(Math.random() * 20);
+  question : number = this.creerQuestion();
   IdQuestion : number = 1;
   tabQ : number[] = [this.question];
+
 
   incIdQuestion(){
     return this.IdQuestion++;
   }
 
-  IncQuestion(questions: Questions[]){
-    let bool= true;
-    var r =  Math.floor((Math.random() * questions.length));
-    while(bool) {
+  IncQuestion(reponse: Reponses, n: number){
+    this.verificationReponse(reponse, n);
+
+    let r =  Math.floor((Math.random() * n));
+    let boucle: boolean;
+
+    if(this.tabQ.length == n){
+      boucle = false;
+    } else {
+      boucle = true;
+    }
+
+    while(boucle) {
       if (!this.tabQ.includes(r)) {
         this.tabQ.push(r);
         this.incIdQuestion();
+        console.log(r)
         return this.question = r;
       }
-      r =  Math.floor((Math.random() * questions.length));
-      bool = false;
+      r =  Math.floor((Math.random() * n));
     }
-    if(this.IdQuestion == questions.length){
-      this.errorMessage = 'MAX ATTEINT';
-    }
-
     return 0;
   }
-  // push
+
+  verificationReponse(reponse: Reponses, n: number) {
+    if(reponse.valid == true) {
+      this.score += 1;
+    }
+
+    if(this.tabQ.length == n && this.langue == "fr"){
+      alert("Entraînement terminé ! Ton score est de : "+this.score+"/"+this.questions.length);
+      this.router.navigateByUrl('');
+    }
+    if(this.tabQ.length == n && this.langue == "en"){
+      alert("Training complete! Your score is : "+this.score+"/"+this.questions.length);
+      this.router.navigateByUrl('');
+    }
+
+
+  }
 }

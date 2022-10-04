@@ -9,7 +9,7 @@ import { Questions } from '../interfaces/Questions';
 import {QuestionService} from "../service/question.service";
 import {ReponseService} from "../service/reponse.service";
 import {Reponses} from "../interfaces/Reponses";
-
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-survival',
@@ -24,7 +24,7 @@ export class SurvivalComponent implements OnInit {
   public config:any;
   public activetimer:any;
   public interval:any;
-  public lives:any;
+  public lives:number = 0;
   public timer:any;
   public nbplayers:any;
   public tab_create = false;
@@ -34,6 +34,11 @@ export class SurvivalComponent implements OnInit {
   questions!: Questions [];
   reponses!: Reponses [];
   private Qtaille: any;
+
+  public playersLives: number[] = [];
+  public actualPlayer: number = 0;
+  public playerAlive: number[] =  [];
+
 
 
   endconf(choix:any) {
@@ -48,7 +53,7 @@ export class SurvivalComponent implements OnInit {
     }
   }
 
-  constructor(private modalService: NgbModal, private http: HttpClient,private questionService: QuestionService,private reponseService: ReponseService) {
+  constructor(private modalService: NgbModal, private http: HttpClient,private questionService: QuestionService,private reponseService: ReponseService, private router: Router) {
     this.questionService.getQuestionsSurvival().subscribe(res => {
         this.questions = res;
         this.reponses = [];
@@ -93,7 +98,8 @@ export class SurvivalComponent implements OnInit {
       console.log("DEBUG: L'activation du timer est à ", this.config);
 
       this.nbplayers = localStorage.getItem('survival_nbplayers');
-      this.lives = localStorage.getItem('survival_lives');
+      // @ts-ignore
+      this.lives = parseInt(localStorage.getItem('survival_lives'));
 
       // Si le timer est activé, on va recréer la boucle pour incrémenter le nombre de secondes
       if(this.activetimer == 'true') {
@@ -134,15 +140,28 @@ export class SurvivalComponent implements OnInit {
   incIdQuestion(){
     return this.IdQuestion++;
   }
-  IncQuestion(){
-    let r =  Math.floor((Math.random() * 20));
-    while(true) {
+
+  
+  IncQuestion(reponse: Reponses, n : number){
+    this.valid(reponse, n);
+
+    let r =  Math.floor((Math.random() * n));
+    let boucle: boolean;
+
+    if(this.tabQ.length == n){
+      boucle = false;
+    } else {
+      boucle = true;
+    }
+
+    while(boucle) {
       if (!this.tabQ.includes(r)) {
         this.tabQ.push(r);
         this.incIdQuestion();
+
         return this.question = r;
       }
-      r =  Math.floor((Math.random() * 20));
+      r =  Math.floor((Math.random() * n));
     }
     return 0;
   }
@@ -155,10 +174,15 @@ export class SurvivalComponent implements OnInit {
       localStorage.setItem('survival_nbplayer', this.nbplayers);
 
       // Ajout du nombre de vies en sauvegarde locale + var
-      this.lives = '0';
-      localStorage.setItem('survival_lives', this.lives);
+      this.lives = 99999;
+      localStorage.setItem('survival_lives', String(this.lives));
 
-      // Si le timer est coché dans la configuration
+      for(let i = 0; i < this.model; i++) {
+        // @ts-ignore
+        this.playersLives.push(5);
+      }
+
+      // Si le timer est coché dans la configurationw
       if(this.activetimer == 'true') {
         localStorage.setItem('survival_activetimer', "true");
         this.timer = '0';
@@ -167,6 +191,15 @@ export class SurvivalComponent implements OnInit {
           localStorage.setItem('survival_timer', String(this.timer++));
         }, 1000)
       }
+
+      // Joueur actuel
+      this.actualPlayer = 1;
+
+      // Joueurs en vie
+      for(let i = 1; i <= this.model; i++) {
+        this.playerAlive.push(i);
+      }
+      console.log("Joueurs actuellement en vie " + this.playerAlive);
 
       // Validation de la configuration actuelle
       this.config = 'true';
@@ -187,11 +220,70 @@ export class SurvivalComponent implements OnInit {
     this.activetimer = 'false';
     this.timer = '0';
   }
-  verificationReponse(reponse: Reponses) {
-    if(reponse.valid == true) {
-      console.log("cool");
+
+  verificationReponse(reponse: Reponses, n: number) {
+    if(this.tabQ.length == n){
+      alert("ggwp");
+      this.resetGame();
+      this.router.navigateByUrl('');
+    }
+
+    if(reponse.valid != true) {
+      if(this.lives == 1) {
+        alert("Game Over");
+        this.resetGame();
+        this.router.navigateByUrl('');
+        console.log("Bonne réponse !")
+      } else {
+        localStorage.setItem('survival_lives', String(this.lives--));
+        this.playersLives[this.actualPlayer-1]--;
+        console.log("Le joueur", this.actualPlayer, "a perdu une vie, il lui en reste maintenant", this.playersLives[this.actualPlayer-1]);
+      }
+    }
+
+
+    if(this.actualPlayer >= this.nbplayers) this.actualPlayer = 1;
+    else this.actualPlayer++;
+    while(this.playersLives[this.actualPlayer-1] <= 0) {
+      if(this.actualPlayer >= this.nbplayers) this.actualPlayer = 1;
+      else this.actualPlayer++;
+      console.log('Le joueur ' + this.actualPlayer-- + ' a été skip, il n\'a plus de vies');
+    }
+  }
+
+  isAlive(i:number) {
+    console.log("Le joueur " + i + " : " + this.playerAlive.includes(i));
+    console.log(this.playerAlive);
+    return this.playerAlive.includes(i);
+  }
+  valid(reponse: Reponses, n: number) {
+    if(this.tabQ.length == n){
+      alert("Fin");
+      this.resetGame();
+      this.router.navigateByUrl('');
+    }
+
+    if(reponse.valid != true) {
+      this.playersLives[this.actualPlayer - 1]--;
+      if (this.playersLives[this.actualPlayer - 1] > 1) {
+        alert("Mauvaise réponse ! Tu as perdu une vie");
+      } else {
+        alert("Game Over");
+        this.playerAlive.splice(this.playerAlive.indexOf(this.actualPlayer), 1);
+      }
+    }
+
+    if(this.playerAlive.length != 0) {
+      if(this.actualPlayer > this.nbplayers) this.actualPlayer = 1;
+      else this.actualPlayer++;
+      while (!this.isAlive(this.actualPlayer)) {
+        if(this.actualPlayer > this.nbplayers) this.actualPlayer = 1;
+        else this.actualPlayer++;
+      }
     } else {
-      console.log("pas cool :(");
+      alert("Tous les joueurs sont mort");
+      this.resetGame();
+      this.router.navigateByUrl('');
     }
   }
 }

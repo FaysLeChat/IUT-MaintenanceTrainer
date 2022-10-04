@@ -69,7 +69,7 @@ export class EntrainementComponent implements OnInit {
         }
       );
     });
-    
+
     return this.tab;
   }
 
@@ -94,8 +94,8 @@ export class EntrainementComponent implements OnInit {
     this.time = 0;
   }
 
-  
-  
+
+
   question : number =  Math.floor(Math.random() * 20);
   IdQuestion : number = 1;
   tabQ : number[] = [this.question];
@@ -119,8 +119,8 @@ export class EntrainementComponent implements OnInit {
     if(this.IdQuestion == questions.length){
       this.errorMessage = 'MAX ATTEINT';
     }
-    
+
     return 0;
   }
-  
+  // push
 }

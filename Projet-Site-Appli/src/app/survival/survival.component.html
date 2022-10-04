@@ -12,23 +12,25 @@
           <p class="card-text" style="text-align: center">{{questions[question].label_fr}} | {{questions[question].id_question}}</p>
           <hr>
           <div class="row">
-              <div class="col">
-                <div class="card">
-                  <button class="btn btn-primary" (click)="IncQuestion(reponses[question*4],questions.length)">{{reponses[question*4].label_fr}}|{{reponses[question*4].id_question}}</button>
-                </div>
-                <div class="card">
-                  <button class="btn btn-primary" (click)="IncQuestion(reponses[question*4+1],questions.length)">{{reponses[question*4+1].label_fr}}|{{reponses[question*4+1].id_question}}</button>
-                </div>
+            <div class="col">
+              <div class="card">
+                <button class="btn btn-primary" (click)="IncQuestion(reponses[question*4],questions.length)">{{reponses[question*4].label_fr}}|{{reponses[question*4].id_question}}</button>
               </div>
-              <div class="col">
-                <div class="card">
-                  <button class="btn btn-primary" (click)="IncQuestion(reponses[question*4+2],questions.length)">{{reponses[question*4+2].label_fr}}|{{reponses[question*4+2].id_question}}</button>
-                </div>
-                <div class="card">
-                  <button class="btn btn-primary" (click)="IncQuestion(reponses[question*4+3],questions.length)">{{reponses[question*4+3].label_fr}}|{{reponses[question*4+3].id_question}}</button>
-                </div>
+              <div class="card">
+                <button class="btn btn-primary" (click)="IncQuestion(reponses[question*4+1],questions.length)">{{reponses[question*4+1].label_fr}}|{{reponses[question*4+1].id_question}}</button>
               </div>
             </div>
+            <div class="col">
+              <div class="card">
+                <button class="btn btn-primary" (click)="IncQuestion(reponses[question*4+2],questions.length)">{{reponses[question*4+2].label_fr}}|{{reponses[question*4+2].id_question}}</button>
+              </div>
+              <div class="card">
+                <button class="btn btn-primary" (click)="IncQuestion(reponses[question*4+3],questions.length)">{{reponses[question*4+3].label_fr}}|{{reponses[question*4+3].id_question}}</button>
+              </div>
+            </div>
+          </div>
+          <hr>
+          Vous êtes le joueur {{ actualPlayer }}, il vous reste {{ playersLives[actualPlayer-1] }} vies.
         </div>
       </div>
     </div>

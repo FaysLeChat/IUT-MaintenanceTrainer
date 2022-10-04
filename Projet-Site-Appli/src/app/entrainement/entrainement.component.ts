@@ -73,7 +73,7 @@ export class EntrainementComponent implements OnInit {
          }
       );
     });
-    
+
     return this.tab;
   }
 

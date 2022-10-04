@@ -10,6 +10,8 @@ import {QuestionService} from "../service/question.service";
 import {ReponseService} from "../service/reponse.service";
 import {Reponses} from "../interfaces/Reponses";
 import {Router} from "@angular/router";
+import {bootstrapApplication} from "@angular/platform-browser";
+import {ToastService} from "../service/toast-service";
 
 @Component({
   selector: 'app-survival',
@@ -39,8 +41,6 @@ export class SurvivalComponent implements OnInit {
   public actualPlayer: number = 0;
   public playerAlive: number[] =  [];
 
-
-
   endconf(choix:any) {
     this.theme = choix;
     this.config = false;
@@ -53,7 +53,7 @@ export class SurvivalComponent implements OnInit {
     }
   }
 
-  constructor(private modalService: NgbModal, private http: HttpClient,private questionService: QuestionService,private reponseService: ReponseService, private router: Router) {
+  constructor(private modalService: NgbModal, private http: HttpClient,private questionService: QuestionService,private reponseService: ReponseService, private router: Router, private toastService: ToastService) {
     this.questionService.getQuestionsSurvival().subscribe(res => {
         this.questions = res;
         this.reponses = [];
@@ -136,12 +136,13 @@ export class SurvivalComponent implements OnInit {
   question : number =  Math.floor(Math.random() * 20);
   IdQuestion : number = 1;
   tabQ : number[] = [this.question];
+  show: any;
 
   incIdQuestion(){
     return this.IdQuestion++;
   }
 
-  
+
   IncQuestion(reponse: Reponses, n : number){
     this.valid(reponse, n);
 
@@ -167,6 +168,7 @@ export class SurvivalComponent implements OnInit {
   }
 
   envoyer()  {
+    this.show = true;
     // @ts-ignore
     if(this.model >= 2 && this.model <= 10) { // Si les conditions obligatoires de la configuration sont remplises
       // Ajout du nombre de joueurs en sauvegarde locale + var
@@ -179,7 +181,7 @@ export class SurvivalComponent implements OnInit {
 
       for(let i = 0; i < this.model; i++) {
         // @ts-ignore
-        this.playersLives.push(5);
+        this.playersLives.push(2);
       }
 
       // Si le timer est coché dans la configurationw
@@ -221,36 +223,6 @@ export class SurvivalComponent implements OnInit {
     this.timer = '0';
   }
 
-  verificationReponse(reponse: Reponses, n: number) {
-    if(this.tabQ.length == n){
-      alert("ggwp");
-      this.resetGame();
-      this.router.navigateByUrl('');
-    }
-
-    if(reponse.valid != true) {
-      if(this.lives == 1) {
-        alert("Game Over");
-        this.resetGame();
-        this.router.navigateByUrl('');
-        console.log("Bonne réponse !")
-      } else {
-        localStorage.setItem('survival_lives', String(this.lives--));
-        this.playersLives[this.actualPlayer-1]--;
-        console.log("Le joueur", this.actualPlayer, "a perdu une vie, il lui en reste maintenant", this.playersLives[this.actualPlayer-1]);
-      }
-    }
-
-
-    if(this.actualPlayer >= this.nbplayers) this.actualPlayer = 1;
-    else this.actualPlayer++;
-    while(this.playersLives[this.actualPlayer-1] <= 0) {
-      if(this.actualPlayer >= this.nbplayers) this.actualPlayer = 1;
-      else this.actualPlayer++;
-      console.log('Le joueur ' + this.actualPlayer-- + ' a été skip, il n\'a plus de vies');
-    }
-  }
-
   isAlive(i:number) {
     console.log("Le joueur " + i + " : " + this.playerAlive.includes(i));
     console.log(this.playerAlive);
@@ -265,12 +237,14 @@ export class SurvivalComponent implements OnInit {
 
     if(reponse.valid != true) {
       this.playersLives[this.actualPlayer - 1]--;
-      if (this.playersLives[this.actualPlayer - 1] > 1) {
-        alert("Mauvaise réponse ! Tu as perdu une vie");
+      if (this.playersLives[this.actualPlayer - 1] >= 1) {
+        this.toastService.show("Le Joueur " + this.actualPlayer + " a perdu une vie. Il lui reste encore " + this.playersLives[this.actualPlayer-1] + " vie(s) !", { classname: 'bg-danger text-light', delay: 10000 });
       } else {
-        alert("Game Over");
+        this.toastService.show("Le Joueur " + this.actualPlayer + " est éliminé.", { classname: 'bg-dark text-light', delay: 10000 });
         this.playerAlive.splice(this.playerAlive.indexOf(this.actualPlayer), 1);
       }
+    } else {
+      this.toastService.show("Réponse correcte pour le Joueur " + this.actualPlayer + " !", { classname: 'bg-success text-light', delay: 10000 });
     }
 
     if(this.playerAlive.length != 0) {

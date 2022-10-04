@@ -16,6 +16,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {Overlay} from "./overlay";
+import {ToastsContainer} from "./toasts-container.component";
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import {Overlay} from "./overlay";
     SimulationComponent,
     SurvivalComponent,
     Overlay,
+    ToastsContainer
 
   ],
   imports: [

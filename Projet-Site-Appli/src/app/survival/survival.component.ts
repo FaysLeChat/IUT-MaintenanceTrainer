@@ -11,7 +11,6 @@ import {ReponseService} from "../service/reponse.service";
 import {Reponses} from "../interfaces/Reponses";
 import {Router} from "@angular/router";
 
-
 @Component({
   selector: 'app-survival',
   templateUrl: './survival.component.html',
@@ -35,6 +34,9 @@ export class SurvivalComponent implements OnInit {
   questions!: Questions [];
   reponses!: Reponses [];
   private Qtaille: any;
+
+  public playersLives: number[] = [];
+  public actualPlayer: number = 0;
 
 
   endconf(choix:any) {
@@ -171,6 +173,11 @@ export class SurvivalComponent implements OnInit {
       this.lives = 99999;
       localStorage.setItem('survival_lives', String(this.lives));
 
+      for(let i = 0; i < this.model; i++) {
+        // @ts-ignore
+        this.playersLives.push(1);
+      }
+
       // Si le timer est coché dans la configurationw
       if(this.activetimer == 'true') {
         localStorage.setItem('survival_activetimer', "true");
@@ -180,6 +187,9 @@ export class SurvivalComponent implements OnInit {
           localStorage.setItem('survival_timer', String(this.timer++));
         }, 1000)
       }
+
+      // Joueur actuel
+      this.actualPlayer = 1;
 
       // Validation de la configuration actuelle
       this.config = 'true';
@@ -213,12 +223,22 @@ export class SurvivalComponent implements OnInit {
         alert("Game Over");
         this.resetGame();
         this.router.navigateByUrl('');
+        console.log("Bonne réponse !")
       } else {
         localStorage.setItem('survival_lives', String(this.lives--));
+        this.playersLives[this.actualPlayer-1]--;
+        console.log("Le joueur", this.actualPlayer, "a perdu une vie, il lui en reste maintenant", this.playersLives[this.actualPlayer-1]);
       }
     }
 
 
+    if(this.actualPlayer >= this.nbplayers) this.actualPlayer = 1;
+    else this.actualPlayer++;
+    while(this.playersLives[this.actualPlayer-1] <= 0) {
+      if(this.actualPlayer >= this.nbplayers) this.actualPlayer = 1;
+      else this.actualPlayer++;
+      console.log('Le joueur ' + this.actualPlayer-- + ' a été skip, il n\'a plus de vies');
+    }
   }
 }
 

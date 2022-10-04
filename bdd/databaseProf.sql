@@ -62,7 +62,7 @@ INSERT INTO questions (id_question, label_fr, label_en, id_categorie, id_difficu
 (14, 'Expliquer _construct() et _destruct()', 'Explain _construct() and _destruct()', 8,2,TRUE,FALSE,FALSE,NULL,NULL),
 (15, 'Comment exporter des données PHP dans Excel ?', 'How to export PHP datas in Excel ?', 8,2,TRUE,FALSE,FALSE,NULL,NULL),
 (16, 'Quelle est la balise la plus courante pour intégrer PHP au HTML?','What is the most common element to integrate PHP into HTML ?',8,1,TRUE,TRUE,TRUE,NULL,NULL),
-(17, 'Quelle est la différence entre «==» et «===»','What is the difference between == and ===?',6,1,TRUE,TRUE,TRUE,NULL,NULL),
+(17, 'Quelle est la différence entre «==» et «===»','What is the difference between == and ===?',5,1,TRUE,TRUE,TRUE,NULL,NULL),
 (18, 'As-tu déjà travaillé en direct avec des clients pour réaliser un projet ? Si non, est-ce que cela t''intéresse ?','Have you ever worked live with clients on a project? If not, are you interested?',9,1,TRUE,FALSE,FALSE,NULL,NULL),
 (19, 'Que penses-tu de la programmation en équipe ? L''as-tu déjà fait ou serais-tu intéressé pour essayer ?', 'What do you think about team programming? Have you ever done it or would you be interested in trying?', 9,1,TRUE,FALSE,FALSE,NULL,NULL),
 (20, 'Qu''est-ce que tu trouves le plus difficile dans ton métier ?','What do you find most difficult about your job?',9,1,TRUE,FALSE,FALSE,NULL,NULL),
@@ -127,7 +127,6 @@ INSERT INTO questions (id_question, label_fr, label_en, id_categorie, id_difficu
 (78, 'Quel est le moyen possible de rendre un objet éligible au garbage collection (GC) en Java ?','What is the possible way to make an object eligible for garbage collection (GC) in Java?',5,2,TRUE,TRUE,TRUE,NULL,NULL),
 (79, 'Quelle est la meilleure façon d’injecter une dépendance ?','What is the best way to inject a dependency?',5,1,TRUE,TRUE,TRUE,NULL,NULL),
 (80, 'Comment empêcher la sérialisation des attributs d’une classe en Java ?','How to prevent serialization of attributes of a class in Java?',5,3,TRUE,TRUE,TRUE,NULL,NULL);
-'fff'
 
 
 

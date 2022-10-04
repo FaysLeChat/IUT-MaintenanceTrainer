@@ -18,7 +18,7 @@ export class QuestionService {
     return this.http.get(url);
   }
   getQuestionTraining(choix : any): Observable<any> {
-    var url = 'http://45.155.170.233:3000/questions?id_categorie=eq.'+choix+"&training_mode=eq.true";
+    var url = 'http://45.155.170.233:3000/questions?id_categorie=eq.'+choix+'&training_mode=eq.true';
     return this.http.get(url);
   }
   getQuestionsSurvival(): Observable<any> {

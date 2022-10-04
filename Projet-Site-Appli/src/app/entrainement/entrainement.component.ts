@@ -30,6 +30,8 @@ export class EntrainementComponent implements OnInit {
   reponses!: Reponses [];
   tab: any[] = [];
 
+  
+
   endconf(choix:any) {
     this.theme = choix;
     this.config = false;
@@ -55,7 +57,7 @@ export class EntrainementComponent implements OnInit {
               this.reponses.push(resR[3]);
               console.log(this.reponses);
               if(y !=0){
-                for(let i = 0; i< this.reponses.length ; i++){
+                for(let i = 0; i< this.reponses.length-1 ; i++){
                     if(this.reponses[i].id_question > this.reponses[i+1].id_question){
                       var temp;
                       temp = this.reponses[i].id_question;
@@ -68,7 +70,7 @@ export class EntrainementComponent implements OnInit {
               }
             );
           }
-        }
+         }
       );
     });
     
@@ -96,31 +98,45 @@ export class EntrainementComponent implements OnInit {
     this.time = 0;
   }
 
-  
-  
-  question : number =  Math.floor(Math.random() * 20);
+  creerQuestion() : number{
+    let cul = Math.random();
+    if(cul == 0){
+      cul = 1;
+    }
+    let question : number = Math.floor(cul * 10);
+    return question;
+  }
+
+  question : number = this.creerQuestion();
   IdQuestion : number = 1;
   tabQ : number[] = [this.question];
+  
 
   incIdQuestion(){
     return this.IdQuestion++;
   }
 
-  IncQuestion(questions: Questions[]){
-    //this.verificationReponse(reponse, n);
-    let bool= true;
-    var r =  Math.floor((Math.random() * questions.length));
-    while(bool) {
+  IncQuestion(reponse: Reponses, n: number){
+    this.verificationReponse(reponse, n);
+
+    let r =  Math.floor((Math.random() * n));
+    let boucle: boolean;
+
+    if(this.tabQ.length == n){
+      boucle = false;
+    } else {
+      boucle = true;
+    }
+
+    while(boucle) {
       if (!this.tabQ.includes(r)) {
         this.tabQ.push(r);
         this.incIdQuestion();
+        console.log(r)
         return this.question = r;
       }
-      r =  Math.floor((Math.random() * questions.length));
-      bool = false;
+      r =  Math.floor((Math.random() * n));
     }
-
-    
     return 0;
   }
 

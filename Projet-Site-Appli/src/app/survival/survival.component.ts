@@ -34,6 +34,8 @@ export class SurvivalComponent implements OnInit {
   questions!: Questions [];
   reponses!: Reponses [];
   private Qtaille: any;
+  // @ts-ignore
+  langue: string = localStorage.getItem('locale').toString();
 
   public playersLives: number[] = [];
   public actualPlayer: number = 0;
@@ -45,7 +47,6 @@ export class SurvivalComponent implements OnInit {
     this.theme = choix;
     this.config = false;
     this.modalService.dismissAll();
-    console.log(this.theme);
     if(this.timer) {
       this.interval = setInterval(() => {
         this.time++;
@@ -57,7 +58,6 @@ export class SurvivalComponent implements OnInit {
     this.questionService.getQuestionsSurvival().subscribe(res => {
         this.questions = res;
         this.reponses = [];
-        console.log(this.questions);
         let i = [];
         let y = 0;
         for (let r of res) {
@@ -66,9 +66,9 @@ export class SurvivalComponent implements OnInit {
               this.reponses.push(resR[1]);
               this.reponses.push(resR[2]);
               this.reponses.push(resR[3]);
-              console.log(this.reponses);
               if(y !=0){
                 for(let i = 0; i< this.reponses.length ; i++){
+                  // @ts-ignore
                   if(this.reponses[i].id_question > this.reponses[i+1].id_question){
                     var temp;
                     temp = this.reponses[i].id_question;
@@ -87,15 +87,15 @@ export class SurvivalComponent implements OnInit {
 
   ngOnInit(): void {
     if(localStorage.getItem('survival_config')) { // Si une partie existante est trouvée
-      console.log("Une game est déjà enregistrée, retour à la partie précédente... Cliquez sur RESET pour en recommencer une nouvelle");
+      // console.log("Une game est déjà enregistrée, retour à la partie précédente... Cliquez sur RESET pour en recommencer une nouvelle");
 
       // Récupération de la configuration
       this.config = localStorage.getItem('survival_config');
-      console.log("DEBUG: La config actuelle est à ", this.config);
+      // console.log("DEBUG: La config actuelle est à ", this.config);
 
       // Récupération si le timer est activé ou non
       this.activetimer = localStorage.getItem('survival_activetimer');
-      console.log("DEBUG: L'activation du timer est à ", this.config);
+      // console.log("DEBUG: L'activation du timer est à ", this.config);
 
       this.nbplayers = localStorage.getItem('survival_nbplayers');
       // @ts-ignore
@@ -141,7 +141,7 @@ export class SurvivalComponent implements OnInit {
     return this.IdQuestion++;
   }
 
-  
+
   IncQuestion(reponse: Reponses, n : number){
     this.valid(reponse, n);
 
@@ -179,7 +179,7 @@ export class SurvivalComponent implements OnInit {
 
       for(let i = 0; i < this.model; i++) {
         // @ts-ignore
-        this.playersLives.push(5);
+        this.playersLives.push(3);
       }
 
       // Si le timer est coché dans la configurationw
@@ -199,7 +199,7 @@ export class SurvivalComponent implements OnInit {
       for(let i = 1; i <= this.model; i++) {
         this.playerAlive.push(i);
       }
-      console.log("Joueurs actuellement en vie " + this.playerAlive);
+      // console.log("Joueurs actuellement en vie " + this.playerAlive);
 
       // Validation de la configuration actuelle
       this.config = 'true';
@@ -221,44 +221,19 @@ export class SurvivalComponent implements OnInit {
     this.timer = '0';
   }
 
-  verificationReponse(reponse: Reponses, n: number) {
-    if(this.tabQ.length == n){
-      alert("ggwp");
-      this.resetGame();
-      this.router.navigateByUrl('');
-    }
-
-    if(reponse.valid != true) {
-      if(this.lives == 1) {
-        alert("Game Over");
-        this.resetGame();
-        this.router.navigateByUrl('');
-        console.log("Bonne réponse !")
-      } else {
-        localStorage.setItem('survival_lives', String(this.lives--));
-        this.playersLives[this.actualPlayer-1]--;
-        console.log("Le joueur", this.actualPlayer, "a perdu une vie, il lui en reste maintenant", this.playersLives[this.actualPlayer-1]);
-      }
-    }
-
-
-    if(this.actualPlayer >= this.nbplayers) this.actualPlayer = 1;
-    else this.actualPlayer++;
-    while(this.playersLives[this.actualPlayer-1] <= 0) {
-      if(this.actualPlayer >= this.nbplayers) this.actualPlayer = 1;
-      else this.actualPlayer++;
-      console.log('Le joueur ' + this.actualPlayer-- + ' a été skip, il n\'a plus de vies');
-    }
-  }
-
   isAlive(i:number) {
-    console.log("Le joueur " + i + " : " + this.playerAlive.includes(i));
-    console.log(this.playerAlive);
+    // console.log("Le joueur " + i + " : " + this.playerAlive.includes(i));
+    // console.log(this.playerAlive);
     return this.playerAlive.includes(i);
   }
   valid(reponse: Reponses, n: number) {
     if(this.tabQ.length == n){
-      alert("Fin");
+      if(this.langue == 'fr') {
+        alert("Fin de la partie.");
+      }
+      if(this.langue == 'en') {
+        alert("The game has ended.");
+      }
       this.resetGame();
       this.router.navigateByUrl('');
     }
@@ -266,7 +241,12 @@ export class SurvivalComponent implements OnInit {
     if(reponse.valid != true) {
       this.playersLives[this.actualPlayer - 1]--;
       if (this.playersLives[this.actualPlayer - 1] > 1) {
-        alert("Mauvaise réponse ! Tu as perdu une vie");
+        if(this.langue == 'fr') {
+          alert("Mauvaise réponse ! Tu as perdu une vie!");
+        }
+        if(this.langue == 'en') {
+          alert("Wrong answer ! You lost a life!");
+        }
       } else {
         alert("Game Over");
         this.playerAlive.splice(this.playerAlive.indexOf(this.actualPlayer), 1);
@@ -281,7 +261,13 @@ export class SurvivalComponent implements OnInit {
         else this.actualPlayer++;
       }
     } else {
-      alert("Tous les joueurs sont mort");
+      if(this.langue == 'fr') {
+        alert("Tous les joueurs sont /");
+      }
+      if(this.langue == 'en') {
+        alert("Everybody is DEAD.");
+      }
+
       this.resetGame();
       this.router.navigateByUrl('');
     }

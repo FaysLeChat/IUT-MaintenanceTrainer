@@ -9,6 +9,7 @@ import { Questions } from '../interfaces/Questions';
 import {QuestionService} from "../service/question.service";
 import {ReponseService} from "../service/reponse.service";
 import {Reponses} from "../interfaces/Reponses";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -24,7 +25,7 @@ export class SurvivalComponent implements OnInit {
   public config:any;
   public activetimer:any;
   public interval:any;
-  public lives:any;
+  public lives:number = 0;
   public timer:any;
   public nbplayers:any;
   public tab_create = false;
@@ -48,7 +49,7 @@ export class SurvivalComponent implements OnInit {
     }
   }
 
-  constructor(private modalService: NgbModal, private http: HttpClient,private questionService: QuestionService,private reponseService: ReponseService) {
+  constructor(private modalService: NgbModal, private http: HttpClient,private questionService: QuestionService,private reponseService: ReponseService, private router: Router) {
     this.questionService.getQuestionsSurvival().subscribe(res => {
         this.questions = res;
         this.reponses = [];
@@ -93,7 +94,8 @@ export class SurvivalComponent implements OnInit {
       console.log("DEBUG: L'activation du timer est à ", this.config);
 
       this.nbplayers = localStorage.getItem('survival_nbplayers');
-      this.lives = localStorage.getItem('survival_lives');
+      // @ts-ignore
+      this.lives = parseInt(localStorage.getItem('survival_lives'));
 
       // Si le timer est activé, on va recréer la boucle pour incrémenter le nombre de secondes
       if(this.activetimer == 'true') {
@@ -134,15 +136,26 @@ export class SurvivalComponent implements OnInit {
   incIdQuestion(){
     return this.IdQuestion++;
   }
-  IncQuestion(){
-    let r =  Math.floor((Math.random() * 20));
-    while(true) {
+  IncQuestion(reponse: Reponses, n : number){
+    this.verificationReponse(reponse, n);
+
+    let r =  Math.floor((Math.random() * n));
+    let boucle: boolean;
+
+    if(this.tabQ.length == n){
+      boucle = false;
+    } else {
+      boucle = true;
+    }
+
+    while(boucle) {
       if (!this.tabQ.includes(r)) {
         this.tabQ.push(r);
         this.incIdQuestion();
+
         return this.question = r;
       }
-      r =  Math.floor((Math.random() * 20));
+      r =  Math.floor((Math.random() * n));
     }
     return 0;
   }
@@ -155,10 +168,10 @@ export class SurvivalComponent implements OnInit {
       localStorage.setItem('survival_nbplayer', this.nbplayers);
 
       // Ajout du nombre de vies en sauvegarde locale + var
-      this.lives = '0';
-      localStorage.setItem('survival_lives', this.lives);
+      this.lives = 99999;
+      localStorage.setItem('survival_lives', String(this.lives));
 
-      // Si le timer est coché dans la configuration
+      // Si le timer est coché dans la configurationw
       if(this.activetimer == 'true') {
         localStorage.setItem('survival_activetimer', "true");
         this.timer = '0';
@@ -187,12 +200,25 @@ export class SurvivalComponent implements OnInit {
     this.activetimer = 'false';
     this.timer = '0';
   }
-  verificationReponse(reponse: Reponses) {
-    if(reponse.valid == true) {
-      console.log("cool");
-    } else {
-      console.log("pas cool :(");
+
+  verificationReponse(reponse: Reponses, n: number) {
+    if(this.tabQ.length == n){
+      alert("ggwp");
+      this.resetGame();
+      this.router.navigateByUrl('');
     }
+
+    if(reponse.valid != true) {
+      if(this.lives == 1) {
+        alert("Game Over");
+        this.resetGame();
+        this.router.navigateByUrl('');
+      } else {
+        localStorage.setItem('survival_lives', String(this.lives--));
+      }
+    }
+
+
   }
 }
 

@@ -127,7 +127,7 @@ INSERT INTO questions (id_question, label_fr, label_en, id_categorie, id_difficu
 (78, 'Quel est le moyen possible de rendre un objet éligible au garbage collection (GC) en Java ?','What is the possible way to make an object eligible for garbage collection (GC) in Java?',5,2,TRUE,TRUE,TRUE,NULL,NULL),
 (79, 'Quelle est la meilleure façon d’injecter une dépendance ?','What is the best way to inject a dependency?',5,1,TRUE,TRUE,TRUE,NULL,NULL),
 (80, 'Comment empêcher la sérialisation des attributs d’une classe en Java ?','How to prevent serialization of attributes of a class in Java?',5,3,TRUE,TRUE,TRUE,NULL,NULL);
-
+'fff'
 
 
 

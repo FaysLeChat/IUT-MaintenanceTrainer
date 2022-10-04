@@ -29,8 +29,8 @@ export class EntrainementComponent implements OnInit {
   questions!: Questions [];
   reponses!: Reponses [];
   tab: any[] = [];
-
-  
+  // @ts-ignore
+  langue : string = localStorage.getItem('locale').toString();
 
   endconf(choix:any) {
     this.theme = choix;
@@ -110,7 +110,7 @@ export class EntrainementComponent implements OnInit {
   question : number = this.creerQuestion();
   IdQuestion : number = 1;
   tabQ : number[] = [this.question];
-  
+
 
   incIdQuestion(){
     return this.IdQuestion++;
@@ -145,11 +145,15 @@ export class EntrainementComponent implements OnInit {
       this.score += 1;
     }
 
-    if(this.tabQ.length == n){
+    if(this.tabQ.length == n && this.langue == "fr"){
       alert("Entraînement terminé ! Ton score est de : "+this.score+"/"+this.questions.length);
       this.router.navigateByUrl('');
     }
+    if(this.tabQ.length == n && this.langue == "en"){
+      alert("Training complete! Your score is : "+this.score+"/"+this.questions.length);
+      this.router.navigateByUrl('');
+    }
 
-    
+
   }
 }

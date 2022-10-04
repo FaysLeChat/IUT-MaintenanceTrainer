@@ -49,7 +49,7 @@ export class EntrainementComponent implements OnInit {
         console.log(this.questions);
         let i = [];
         let y = 0;
-        for (let r of res) {
+        for (let r of this.questions) {
           this.reponseService.getReponse(r.id_question).subscribe( resR => {
               this.reponses.push(resR[0]);
               this.reponses.push(resR[1]);

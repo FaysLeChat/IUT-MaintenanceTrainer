@@ -136,6 +136,8 @@ export class SurvivalComponent implements OnInit {
   incIdQuestion(){
     return this.IdQuestion++;
   }
+
+  
   IncQuestion(reponse: Reponses, n : number){
     this.verificationReponse(reponse, n);
 

@@ -38,47 +38,47 @@
       "select": "Select",
       "database": {
         "title": "Database",
-        "description": "(Description)"
+        "description": "Become a database beast to devour your friends"
       },
       "network": {
         "title": "Network",
-        "description": "(Description)"
+        "description": "Become a networked war machine to DDOS your colleagues"
       },
       "frontend": {
         "title": "Web - Front",
-        "description": "(Description)"
+        "description": "Become a prophet in Web-Front to bring the good word to your friends"
       },
       "backend": {
         "title": "Web - Back",
-        "description": "(Description)"
+        "description": "Are you a Web-Back admiral? Shirohige will put you to the test "
       },
       "oop": {
         "title": "Object-oriented programming",
-        "description": "(Description)"
+        "description": "Where there's a will there's a way, but can you do this training in Prog Object?"
       },
       "experience": {
         "title": "Experience",
-        "description": "(Description)"
+        "description": "You're a noob' said the rager, so come and get some experience here "
       },
       "personnal": {
         "title": "Personnal",
-        "description": "(Description)"
+        "description": "Talking about yourself is an art, have you mastered it?"
       },
       "php": {
         "title": "PHP",
-        "description": "(Description)"
+        "description": "Demonic language indeed, now is the time to change your mind"
       },
       "softskills": {
         "title": "Soft Skills",
-        "description": "(Description)"
+        "description": "Check here if you have skills applicable to all trades"
       },
       "random": {
         "title": "Random theme",
-        "description": "(Description)"
+        "description": "The training of the young Padawan"
       },
       "all": {
         "title": "All theme",
-        "description": "(Description)"
+        "description": "The training of the Shaolin Warrior"
       }
     },
     "play": "Play"

@@ -5,7 +5,7 @@
     </div>
   </div>
   <div class="row" *ngIf="!config">
-    <div class="col">
+    <div class="col" *ngIf="langue == 'fr'">
       <div class="card">
         <div class="card-body">
           <h5 class="card-title" style="text-align: center;">Question {{IdQuestion}}/{{questions.length}}</h5>
@@ -29,6 +29,41 @@
               </div>
               <div class="card">
                 <button class="btn btn-primary" (click)="IncQuestion(reponses[question*4+3],questions.length)">{{reponses[question*4+3].label_fr}}|{{reponses[question*4+3].id_question}}</button>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <button class = "btn btn-primary">Score : {{this.score}} / {{questions.length}}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col" *ngIf="langue == 'en'">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title" style="text-align: center;">Question {{IdQuestion}}/{{questions.length}}</h5>
+          <p class="card-text" style="text-align: center;">{{questions[question].label_en}}{{questions[question].id_question}}</p>
+          <ngb-alert *ngIf="errorMessage" type="info" (closed)="errorMessage=''">{{errorMessage | translate }}</ngb-alert>
+          <div class="row">
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col">
+              <div class="card">
+                <button class="btn btn-primary" (click)="IncQuestion(reponses[question*4],questions.length)">{{reponses[question*4].label_en}}|{{reponses[question*4].id_question}}</button>
+              </div>
+              <div class="card">
+                <button class="btn btn-primary" (click)="IncQuestion(reponses[question*4+1],questions.length)">{{reponses[question*4+1].label_en}}|{{reponses[question*4+1].id_question}}</button>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <button class="btn btn-primary" (click)="IncQuestion(reponses[question*4+2],questions.length)">{{reponses[question*4+2].label_en}}|{{reponses[question*4+2].id_question}}</button>
+              </div>
+              <div class="card">
+                <button class="btn btn-primary" (click)="IncQuestion(reponses[question*4+3],questions.length)">{{reponses[question*4+3].label_en}}|{{reponses[question*4+3].id_question}}</button>
               </div>
             </div>
           </div>

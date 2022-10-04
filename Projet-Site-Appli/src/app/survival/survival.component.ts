@@ -140,6 +140,8 @@ export class SurvivalComponent implements OnInit {
   incIdQuestion(){
     return this.IdQuestion++;
   }
+
+  
   IncQuestion(reponse: Reponses, n : number){
     this.valid(reponse, n);
 

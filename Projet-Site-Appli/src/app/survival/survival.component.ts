@@ -37,6 +37,8 @@ export class SurvivalComponent implements OnInit {
 
   public playersLives: number[] = [];
   public actualPlayer: number = 0;
+  public playerAlive: number[] =  [];
+
 
 
   endconf(choix:any) {
@@ -139,7 +141,7 @@ export class SurvivalComponent implements OnInit {
     return this.IdQuestion++;
   }
   IncQuestion(reponse: Reponses, n : number){
-    this.verificationReponse(reponse, n);
+    this.valid(reponse, n);
 
     let r =  Math.floor((Math.random() * n));
     let boucle: boolean;
@@ -175,7 +177,7 @@ export class SurvivalComponent implements OnInit {
 
       for(let i = 0; i < this.model; i++) {
         // @ts-ignore
-        this.playersLives.push(1);
+        this.playersLives.push(5);
       }
 
       // Si le timer est coché dans la configurationw
@@ -190,6 +192,12 @@ export class SurvivalComponent implements OnInit {
 
       // Joueur actuel
       this.actualPlayer = 1;
+
+      // Joueurs en vie
+      for(let i = 1; i <= this.model; i++) {
+        this.playerAlive.push(i);
+      }
+      console.log("Joueurs actuellement en vie " + this.playerAlive);
 
       // Validation de la configuration actuelle
       this.config = 'true';
@@ -238,6 +246,42 @@ export class SurvivalComponent implements OnInit {
       if(this.actualPlayer >= this.nbplayers) this.actualPlayer = 1;
       else this.actualPlayer++;
       console.log('Le joueur ' + this.actualPlayer-- + ' a été skip, il n\'a plus de vies');
+    }
+  }
+
+  isAlive(i:number) {
+    console.log("Le joueur " + i + " : " + this.playerAlive.includes(i));
+    console.log(this.playerAlive);
+    return this.playerAlive.includes(i);
+  }
+  valid(reponse: Reponses, n: number) {
+    if(this.tabQ.length == n){
+      alert("Fin");
+      this.resetGame();
+      this.router.navigateByUrl('');
+    }
+
+    if(reponse.valid != true) {
+      this.playersLives[this.actualPlayer - 1]--;
+      if (this.playersLives[this.actualPlayer - 1] > 1) {
+        alert("Mauvaise réponse ! Tu as perdu une vie");
+      } else {
+        alert("Game Over");
+        this.playerAlive.splice(this.playerAlive.indexOf(this.actualPlayer), 1);
+      }
+    }
+
+    if(this.playerAlive.length != 0) {
+      if(this.actualPlayer > this.nbplayers) this.actualPlayer = 1;
+      else this.actualPlayer++;
+      while (!this.isAlive(this.actualPlayer)) {
+        if(this.actualPlayer > this.nbplayers) this.actualPlayer = 1;
+        else this.actualPlayer++;
+      }
+    } else {
+      alert("Tous les joueurs sont mort");
+      this.resetGame();
+      this.router.navigateByUrl('');
     }
   }
 }

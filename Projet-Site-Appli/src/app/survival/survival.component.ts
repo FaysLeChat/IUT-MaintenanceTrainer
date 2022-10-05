@@ -247,6 +247,9 @@ export class SurvivalComponent implements OnInit {
       } else {
         this.toastService.show("Le Joueur " + this.actualPlayer + " est éliminé.", { classname: 'bg-dark text-light', delay: 10000 });
         this.playerAlive.splice(this.playerAlive.indexOf(this.actualPlayer), 1);
+        if(this.playerAlive.length == 1) {
+          this.dernierSurvivant();
+        }
       }
     } else {
       this.toastService.show("Réponse correcte pour le Joueur " + this.actualPlayer + " !", { classname: 'bg-success text-light', delay: 10000 });
@@ -270,6 +273,12 @@ export class SurvivalComponent implements OnInit {
       this.resetGame();
       this.router.navigateByUrl('');
     }
+  }
+
+  dernierSurvivant() {
+    alert("Le joueur " + this.playerAlive[0] + " a gagné!");
+    this.resetGame();
+    this.router.navigateByUrl('');
   }
 }
 

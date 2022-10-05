@@ -63,7 +63,7 @@ export class EntrainementComponent implements OnInit {
             this.reponses.push(resR[2]);
             this.reponses.push(resR[3]);
             console.log(this.reponses);
-            if(y !=0){
+            
                 // for(let i = 0; i< this.reponses.length-1 ; i++){
                 //     if(this.reponses[i].id_question > this.reponses[i+1].id_question){
                 //       var temp;
@@ -88,7 +88,7 @@ export class EntrainementComponent implements OnInit {
                     this.reponses[j+1] = tmp
                   }
             }
-          }
+          
           );
         }
       });

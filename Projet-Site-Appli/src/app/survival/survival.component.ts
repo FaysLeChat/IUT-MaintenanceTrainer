@@ -61,7 +61,6 @@ export class SurvivalComponent implements OnInit {
           this.reponses.push(resR[2]);
           this.reponses.push(resR[3]);
           console.log(this.reponses);
-          if(y !=0){
             // for(let i = 0; i< this.reponses.length ; i++){
             //   // @ts-ignore
             //   if(this.reponses[i].id_question > this.reponses[i+1].id_question){
@@ -86,8 +85,7 @@ export class SurvivalComponent implements OnInit {
                   //correcte dans la partie triée.
                   this.reponses[j+1] = tmp
                 }
-          }
-          y++;
+          
         });
       }
     });

@@ -4,76 +4,33 @@
       <h5 class="text-light" style="text-align: center;">{{'simulation.title' | translate }}</h5>
     </div>
   </div>
-  <div class="row" *ngIf="this.config == 'true' && !changement">
+  <div class="row" *ngIf="this.config == 'true'">
     <div class="col">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title" style="text-align: center;">Question 1/20</h5>
-
-          <!--Affichage questions-->
-          <div class="card" *ngFor="let q of questions">
-            <div class="card-header">
-              {{ q.id_question }}
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">{{ q.label_fr }}</h5>
-              <p class="card-text">{{ q.label_en }}</p>
-            </div>
-          </div>
-          <!---->
-
-          <p class="card-text" style="text-align: center;">Quel est la meilleure réponse ?</p>
+          <h5 class="card-title" style="text-align: center;">Question {{IdQuestion}}/{{questions.length}}</h5>
+          <p class="card-text" style="text-align: center;">{{questions[question].label_fr}}</p>
+          <ngb-alert *ngIf="errorMessage" type="info" (closed)="errorMessage=''">{{errorMessage | translate }}</ngb-alert>
           <hr>
-          <div class="row">
-            <div class="col">
-              <div class="card">
-                <button class="btn btn-primary">{{reponses | json}}</button>
-              </div>
-              <div class="card">
-                <button class="btn btn-primary">Reponse B</button>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <button class="btn btn-primary">Reponse C</button>
-              </div>
-              <div class="card">
-                <button class="btn btn-primary" (click)="ajout(5)">La Reponse D</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row" *ngIf="this.config == 'true' && changement">
-    <div class="col">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title" style="text-align: center;">Question 1/20</h5>
-          <pre>{{questions | json}}</pre>
-          <p class="card-text" style="text-align: center;">Quel est la meilleure réponse ?</p>
-          <hr>
-          <p class="card-text" style="text-align: center;">Réponse de la question</p>
           <ngb-alert *ngIf="errorMessage" type="danger" (closed)="errorMessage=''">{{'simulation.error' | translate }}</ngb-alert>
           <div class="row" id="note">
             <div class="col-2">
-              <button (click)="ajout(0)" class="btn btn-primary">0</button>
+              <button (click)="IncQuestion(questions.length)" class="btn btn-primary">0</button>
             </div>
             <div class="col-2">
-              <button (click)="ajout(1)" class="btn btn-primary">1</button>
+              <button (click)="IncQuestion(questions.length)" class="btn btn-primary">1</button>
             </div>
             <div class="col-2">
-              <button (click)="ajout(2)" class="btn btn-primary">2</button>
+              <button (click)="IncQuestion(questions.length)" class="btn btn-primary">2</button>
             </div>
             <div class="col-2">
-              <button (click)="ajout(3)" class="btn btn-primary">3</button>
+              <button (click)="IncQuestion(questions.length)" class="btn btn-primary">3</button>
             </div>
             <div class="col-2">
-              <button (click)="ajout(4)" class="btn btn-primary">4</button>
+              <button (click)="IncQuestion(questions.length)" class="btn btn-primary">4</button>
             </div>
             <div class="col-2">
-              <button (click)="ajout(5)" class="btn btn-primary">5</button>
+              <button (click)="IncQuestion(questions.length)" class="btn btn-primary">5</button>
             </div>
           </div>
         </div>

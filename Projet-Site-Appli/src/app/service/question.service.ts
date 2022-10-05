@@ -31,5 +31,10 @@ export class QuestionService {
     console.log(url)
     return this.http.get<Questions[]>(url).pipe(map(rep => rep[0]));
   }
+  getQuestionSimulation(choix : any): Observable<any> {
+    var url = 'http://45.155.170.233:3000/questions?id_categorie=eq.'+choix+"&eval_mode=eq.true";
+    return this.http.get(url);
+  }
+
 
 }

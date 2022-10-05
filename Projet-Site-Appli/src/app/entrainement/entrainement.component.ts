@@ -58,12 +58,12 @@ export class EntrainementComponent implements OnInit {
         let y = 0;
         for (let r of this.questions) {
           this.reponseService.getReponse(r.id_question).subscribe( resR => {
-              this.reponses.push(resR[0]);
-              this.reponses.push(resR[1]);
-              this.reponses.push(resR[2]);
-              this.reponses.push(resR[3]);
-              console.log(this.reponses);
-              if(y !=0){
+            this.reponses.push(resR[0]);
+            this.reponses.push(resR[1]);
+            this.reponses.push(resR[2]);
+            this.reponses.push(resR[3]);
+            console.log(this.reponses);
+            if(y !=0){
                 // for(let i = 0; i< this.reponses.length-1 ; i++){
                 //     if(this.reponses[i].id_question > this.reponses[i+1].id_question){
                 //       var temp;
@@ -72,10 +72,9 @@ export class EntrainementComponent implements OnInit {
                 //       this.reponses[i+1].id_question = temp;
                 //     }
                 //   }
-                  var len = this.reponses.length;
-                  var tmp, i, j;
-
-                  for(i = 1; i < len; i++) {
+              var len = this.reponses.length;
+              var tmp, i, j;
+              for(i = 1; i < len; i++) {
                     //stocker la valeur actuelle
                     tmp = this.reponses[i];
                     j = i - 1
@@ -88,14 +87,12 @@ export class EntrainementComponent implements OnInit {
                     //correcte dans la partie triée.
                     this.reponses[j+1] = tmp
                   }
-                
-              }
-            );
+            }
           }
-         }
-      );
+          );
+        }
+      });
     });
-
   }
 
   changeTheme(content2: any) {
@@ -112,7 +109,7 @@ export class EntrainementComponent implements OnInit {
     console.log(this.selectedBac)
   }
 
-  
+
 
   creerQuestion() : number{
     let cul = Math.random();

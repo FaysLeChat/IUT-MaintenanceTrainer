@@ -26,6 +26,8 @@ export class SurvivalComponent implements OnInit {
   public nbplayers:any;
   public theme : string = "";
   public time: number = 0;
+  public notifs: boolean = true;
+  public ended: boolean = false;
   questions!: Questions [];
   reponses!: Reponses [];
 
@@ -40,6 +42,7 @@ export class SurvivalComponent implements OnInit {
   show: any;
 
   public lang = localStorage.getItem('locale');
+  mlives: any;
 
   constructor(private modalService: NgbModal,
               private http: HttpClient,
@@ -123,6 +126,11 @@ export class SurvivalComponent implements OnInit {
     else if(this.activetimer == 'false') this.activetimer = 'true';
   }
 
+  switchNotifs() {
+    if(this.notifs == true) this.notifs = false;
+    else this.notifs = true;
+  }
+
   incIdQuestion(){
     this.IdQuestion++;
     localStorage.setItem('survival_idquestion', String(this.IdQuestion));
@@ -153,45 +161,49 @@ export class SurvivalComponent implements OnInit {
   envoyer()  {
     this.show = true;
     // @ts-ignore
-    if(this.model >= 2 && this.model <= 10) { // Si les conditions obligatoires de la configuration sont remplises
-      // Ajout du nombre de joueurs en sauvegarde locale + var
-      this.nbplayers = this.model;
-      localStorage.setItem('survival_nbplayer', this.nbplayers);
+    if((this.model >= 2 && this.model <= 10)) { // Si les conditions obligatoires de la configuration sont remplises
+      if(Number(this.mlives)) {
+        // Ajout du nombre de joueurs en sauvegarde locale + var
+        this.nbplayers = this.model;
+        localStorage.setItem('survival_nbplayer', this.nbplayers);
 
-      // Ajout du nombre de vies en sauvegarde locale + var
-      for(let i = 0; i < this.model; i++) {
-        // @ts-ignore
-        this.playersLives.push(2);
+        // Ajout du nombre de vies en sauvegarde locale + var
+        for (let i = 0; i < this.model; i++) {
+          // @ts-ignore
+          this.playersLives.push(this.mlives);
+        }
+        localStorage.setItem('survival_lives', this.playersLives.toString());
+
+        // Si le timer est coché dans la configurationw
+        if (this.activetimer == 'true') {
+          localStorage.setItem('survival_activetimer', "true");
+          this.timer = '0';
+          localStorage.setItem('survival_timer', this.timer);
+          this.interval = setInterval(() => {
+            localStorage.setItem('survival_timer', String(this.timer++));
+          }, 1000)
+        }
+
+        // Joueur actuel
+        this.actualPlayer = 1;
+        localStorage.setItem('survival_actualplayer', String(this.actualPlayer));
+
+        // Joueurs en vie
+        for (let i = 1; i <= this.model; i++) {
+          this.playerAlive.push(i);
+        }
+        localStorage.setItem('survival_playeralive', this.playerAlive.toString());
+
+        // ID Question
+        this.IdQuestion = 1;
+        localStorage.setItem('survival_idquestion', String(this.IdQuestion));
+
+        // Validation de la configuration actuelle
+        this.config = 'true';
+        localStorage.setItem('survival_config', this.config);
+      } else {
+        return this.errorMessage = "Le nombre de vies doit être un nombre !"
       }
-      localStorage.setItem('survival_lives', this.playersLives.toString());
-
-      // Si le timer est coché dans la configurationw
-      if(this.activetimer == 'true') {
-        localStorage.setItem('survival_activetimer', "true");
-        this.timer = '0';
-        localStorage.setItem('survival_timer', this.timer);
-        this.interval = setInterval(() => {
-          localStorage.setItem('survival_timer', String(this.timer++));
-        }, 1000)
-      }
-
-      // Joueur actuel
-      this.actualPlayer = 1;
-      localStorage.setItem('survival_actualplayer', String(this.actualPlayer));
-
-      // Joueurs en vie
-      for(let i = 1; i <= this.model; i++) {
-        this.playerAlive.push(i);
-      }
-      localStorage.setItem('survival_playeralive', this.playerAlive.toString());
-
-      // ID Question
-      this.IdQuestion = 1;
-      localStorage.setItem('survival_idquestion', String(this.IdQuestion));
-
-      // Validation de la configuration actuelle
-      this.config = 'true';
-      localStorage.setItem('survival_config', this.config);
     } else {
       return this.errorMessage = "Le nombre de joueurs doit être compris entre 2 et 10 !"
     }
@@ -212,6 +224,7 @@ export class SurvivalComponent implements OnInit {
     this.config = 'false';
     this.activetimer = 'false';
     this.timer = '0';
+    this.ended = false;
   }
 
   isAlive(i:number) {
@@ -228,16 +241,13 @@ export class SurvivalComponent implements OnInit {
     if(reponse.valid != true) {
       this.playersLives[this.actualPlayer - 1]--;
       if (this.playersLives[this.actualPlayer - 1] >= 1) {
-        this.toastService.show("Le Joueur " + this.actualPlayer + " a perdu une vie. Il lui reste encore " + this.playersLives[this.actualPlayer-1] + " vie(s) !", { classname: 'bg-danger text-light', delay: 10000 });
+        if(this.notifs) this.toastService.show("Le Joueur " + this.actualPlayer + " a perdu une vie. Il lui reste encore " + this.playersLives[this.actualPlayer-1] + " vie(s) !", { classname: 'bg-danger text-light', delay: 10000 });
       } else {
-        this.toastService.show("Le Joueur " + this.actualPlayer + " est éliminé.", { classname: 'bg-dark text-light', delay: 10000 });
+        if(this.notifs) this.toastService.show("Le Joueur " + this.actualPlayer + " est éliminé.", { classname: 'bg-dark text-light', delay: 10000 });
         this.playerAlive.splice(this.playerAlive.indexOf(this.actualPlayer), 1);
-        if(this.playerAlive.length == 1) {
-          this.dernierSurvivant();
-        }
       }
     } else {
-      this.toastService.show("Réponse correcte pour le Joueur " + this.actualPlayer + " !", { classname: 'bg-success text-light', delay: 10000 });
+      if(this.notifs) this.toastService.show("Réponse correcte pour le Joueur " + this.actualPlayer + " !", { classname: 'bg-success text-light', delay: 10000 });
     }
 
     if(this.playerAlive.length != 0) {
@@ -256,12 +266,14 @@ export class SurvivalComponent implements OnInit {
     localStorage.setItem('survival_actualplayer', String(this.actualPlayer));
     localStorage.setItem('survival_lives', this.playersLives.toString());
     localStorage.setItem('survival_playeralive', this.playerAlive.toString());
+
+    this.dernierSurvivant();
   }
 
   dernierSurvivant() {
-    alert("Le joueur " + this.playerAlive[0] + " a gagné!");
-    this.resetGame();
-    this.router.navigateByUrl('');
+    if(this.playerAlive.length == 1) {
+      this.ended = true;
+    }
   }
 }
 

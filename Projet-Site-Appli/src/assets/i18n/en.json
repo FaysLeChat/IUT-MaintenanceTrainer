@@ -33,54 +33,6 @@
       "addtimer": "Add a timer ?",
       "baclevel": "BAC Level"
     },
-    "theme": {
-      "title": "Choice of question topic",
-      "select": "Select",
-      "database": {
-        "title": "Database",
-        "description": "Become a database beast to devour your friends"
-      },
-      "network": {
-        "title": "Network",
-        "description": "Become a networked war machine to DDOS your colleagues"
-      },
-      "frontend": {
-        "title": "Web - Front",
-        "description": "Become a prophet in Web-Front to bring the good word to your friends"
-      },
-      "backend": {
-        "title": "Web - Back",
-        "description": "Are you a Web-Back admiral? Shirohige will put you to the test "
-      },
-      "oop": {
-        "title": "Object-oriented programming",
-        "description": "Where there's a will there's a way, but can you do this training in Prog Object?"
-      },
-      "experience": {
-        "title": "Experience",
-        "description": "You're a noob' said the rager, so come and get some experience here "
-      },
-      "personnal": {
-        "title": "Personnal",
-        "description": "Talking about yourself is an art, have you mastered it?"
-      },
-      "php": {
-        "title": "PHP",
-        "description": "Demonic language indeed, now is the time to change your mind"
-      },
-      "softskills": {
-        "title": "Soft Skills",
-        "description": "Check here if you have skills applicable to all trades"
-      },
-      "random": {
-        "title": "Random theme",
-        "description": "The training of the young Padawan"
-      },
-      "all": {
-        "title": "All theme",
-        "description": "The training of the Shaolin Warrior"
-      }
-    },
     "play": "Play"
   },
   "simulation": {
@@ -106,6 +58,10 @@
     "bar": {
       "players": "Players",
       "lives": "Live(s)"
+    },
+    "alert": {
+      "endgame": "The game is ended",
+      "allplayereliminated": "All players are eliminated"
     }
   },
   "settings": {
@@ -119,5 +75,53 @@
   },
   "footerbar": {
     "settings": "Settings"
+  },
+  "theme": {
+    "title": "Choice of question topic",
+    "select": "Select",
+    "database": {
+      "title": "Database",
+      "description": "Become a database beast to devour your friends"
+    },
+    "network": {
+      "title": "Network",
+      "description": "Become a networked war machine to DDOS your colleagues"
+    },
+    "frontend": {
+      "title": "Web - Front",
+      "description": "Become a prophet in Web-Front to bring the good word to your friends"
+    },
+    "backend": {
+      "title": "Web - Back",
+      "description": "Are you a Web-Back admiral? Shirohige will put you to the test "
+    },
+    "oop": {
+      "title": "Object-oriented programming",
+      "description": "Where there's a will there's a way, but can you do this training in Prog Object?"
+    },
+    "experience": {
+      "title": "Experience",
+      "description": "You're a noob' said the rager, so come and get some experience here "
+    },
+    "personnal": {
+      "title": "Personnal",
+      "description": "Talking about yourself is an art, have you mastered it?"
+    },
+    "php": {
+      "title": "PHP",
+      "description": "Demonic language indeed, now is the time to change your mind"
+    },
+    "softskills": {
+      "title": "Soft Skills",
+      "description": "Check here if you have skills applicable to all trades"
+    },
+    "random": {
+      "title": "Random theme",
+      "description": "The training of the young Padawan"
+    },
+    "all": {
+      "title": "All theme",
+      "description": "The training of the Shaolin Warrior"
+    }
   }
 }

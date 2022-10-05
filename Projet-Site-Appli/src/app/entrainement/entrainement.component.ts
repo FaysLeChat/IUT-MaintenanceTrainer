@@ -32,6 +32,13 @@ export class EntrainementComponent implements OnInit {
   // @ts-ignore
   langue : string = localStorage.getItem('locale').toString();
 
+  constructor(private modalService: NgbModal, private http: HttpClient,private questionService: QuestionService,private reponseService: ReponseService, private router: Router) {
+  }
+
+  ngOnInit(): void {
+    this.time = 0;
+  }
+
   endconf(choix:any) {
     this.theme = choix;
     this.config = false;
@@ -81,8 +88,7 @@ export class EntrainementComponent implements OnInit {
                     //correcte dans la partie triée.
                     this.reponses[j+1] = tmp
                   }
-                }
-                y++;
+                
               }
             );
           }
@@ -106,12 +112,7 @@ export class EntrainementComponent implements OnInit {
     console.log(this.selectedBac)
   }
 
-  constructor(private modalService: NgbModal, private http: HttpClient,private questionService: QuestionService,private reponseService: ReponseService, private router: Router) {
-  }
-
-  ngOnInit(): void {
-    this.time = 0;
-  }
+  
 
   creerQuestion() : number{
     let cul = Math.random();
@@ -148,7 +149,7 @@ export class EntrainementComponent implements OnInit {
       if (!this.tabQ.includes(r)) {
         this.tabQ.push(r);
         this.incIdQuestion();
-        console.log(r)
+        //console.log(r)
         return this.question = r;
       }
       r =  Math.floor((Math.random() * n));

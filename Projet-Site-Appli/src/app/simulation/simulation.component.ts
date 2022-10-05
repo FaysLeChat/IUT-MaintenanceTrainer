@@ -52,7 +52,6 @@ export class SimulationComponent implements OnInit {
       // On réinitialise la partie
       this.resetGame();
     }
-    this.RecupQuestion()
   }
 
   creerQuestion() : number{
@@ -162,6 +161,7 @@ export class SimulationComponent implements OnInit {
       localStorage.setItem('simulation_config', this.config);
 
       this.modalService.dismissAll();
+      this.RecupQuestion();
     }
     return true;
   }

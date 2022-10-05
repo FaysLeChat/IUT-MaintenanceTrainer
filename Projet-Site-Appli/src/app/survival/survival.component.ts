@@ -66,15 +66,31 @@ export class SurvivalComponent implements OnInit {
               this.reponses.push(resR[1]);
               this.reponses.push(resR[2]);
               this.reponses.push(resR[3]);
-              if(y !=0){
-                for(let i = 0; i< this.reponses.length ; i++){
-                  // @ts-ignore
-                  if(this.reponses[i].id_question > this.reponses[i+1].id_question){
-                    var temp;
-                    temp = this.reponses[i].id_question;
-                    this.reponses[i].id_question = this.reponses[i+1].id_question;
-                    this.reponses[i+1].id_question = temp;
+            if(y !=0){
+                // for(let i = 0; i< this.reponses.length ; i++){
+                //   // @ts-ignore
+                //   if(this.reponses[i].id_question > this.reponses[i+1].id_question){
+                //     var temp;
+                //     temp = this.reponses[i].id_question;
+                //     this.reponses[i].id_question = this.reponses[i+1].id_question;
+                //     this.reponses[i+1].id_question = temp;
+                //   }
+                // }
+                var len = this.reponses.length;
+                var tmp, i, j;
+
+                for(i = 1; i < len; i++) {
+                  //stocker la valeur actuelle
+                  tmp = this.reponses[i].id_question;
+                  j = i - 1
+                  while (j >= 0 && this.reponses[j].id_question > tmp) {
+                    // déplacer le nombre
+                    this.reponses[j+1].id_question = this.reponses[j].id_question
+                    j--
                   }
+                  //Insère la valeur temporaire à la position
+                  //correcte dans la partie triée.
+                  this.reponses[j+1].id_question = tmp
                 }
               }
               y++;

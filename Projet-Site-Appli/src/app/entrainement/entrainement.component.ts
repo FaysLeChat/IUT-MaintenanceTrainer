@@ -57,13 +57,29 @@ export class EntrainementComponent implements OnInit {
               this.reponses.push(resR[3]);
               console.log(this.reponses);
               if(y !=0){
-                for(let i = 0; i< this.reponses.length-1 ; i++){
-                    if(this.reponses[i].id_question > this.reponses[i+1].id_question){
-                      var temp;
-                      temp = this.reponses[i].id_question;
-                      this.reponses[i].id_question = this.reponses[i+1].id_question;
-                      this.reponses[i+1].id_question = temp;
+                // for(let i = 0; i< this.reponses.length-1 ; i++){
+                //     if(this.reponses[i].id_question > this.reponses[i+1].id_question){
+                //       var temp;
+                //       temp = this.reponses[i].id_question;
+                //       this.reponses[i].id_question = this.reponses[i+1].id_question;
+                //       this.reponses[i+1].id_question = temp;
+                //     }
+                //   }
+                  var len = this.reponses.length;
+                  var tmp, i, j;
+
+                  for(i = 1; i < len; i++) {
+                    //stocker la valeur actuelle
+                    tmp = this.reponses[i].id_question;
+                    j = i - 1
+                    while (j >= 0 && this.reponses[j].id_question > tmp) {
+                      // déplacer le nombre
+                      this.reponses[j+1].id_question = this.reponses[j].id_question
+                      j--
                     }
+                    //Insère la valeur temporaire à la position
+                    //correcte dans la partie triée.
+                    this.reponses[j+1].id_question = tmp
                   }
                 }
                 y++;
@@ -74,7 +90,6 @@ export class EntrainementComponent implements OnInit {
       );
     });
 
-    return this.tab;
   }
 
   changeTheme(content2: any) {
@@ -103,7 +118,8 @@ export class EntrainementComponent implements OnInit {
     if(cul == 0){
       cul = 1;
     }
-    let question : number = Math.floor(cul * 10);
+    // let question : number = Math.floor(cul * 10);
+    let question : number = 0;
     return question;
   }
 

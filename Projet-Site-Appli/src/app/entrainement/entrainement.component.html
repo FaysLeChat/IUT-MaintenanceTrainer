@@ -5,41 +5,75 @@
     </div>
   </div>
   <div class="row" *ngIf="!config">
-    <div class="col">
+    <div class="col" *ngIf="langue == 'fr'">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title" style="text-align: center;">Question 1/20</h5>
-          <p class="card-text" style="text-align: center;">Quel est la meilleure réponse ?</p>
+          <h5 class="card-title" style="text-align: center;">Question {{IdQuestion}}/{{questions.length}}</h5>
+          <p class="card-text" style="text-align: center;">{{questions[question].label_fr}}{{questions[question].id_question}}</p>
+          <ngb-alert *ngIf="errorMessage" type="info" (closed)="errorMessage=''">{{errorMessage | translate }}</ngb-alert>
           <div class="row">
           </div>
           <hr>
           <div class="row">
             <div class="col">
               <div class="card">
-                <button class="btn btn-primary">Reponse A</button>
+                <button class="btn btn-primary" (click)="IncQuestion(reponses[question*4],questions.length)">{{reponses[question*4].label_fr}}|{{reponses[question*4].id_question}}</button>
               </div>
               <div class="card">
-                <button class="btn btn-primary">Reponse B</button>
+                <button class="btn btn-primary" (click)="IncQuestion(reponses[question*4+1],questions.length)">{{reponses[question*4+1].label_fr}}|{{reponses[question*4+1].id_question}}</button>
               </div>
             </div>
             <div class="col">
               <div class="card">
-                <button class="btn btn-primary">Reponse C</button>
+                <button class="btn btn-primary" (click)="IncQuestion(reponses[question*4+2],questions.length)">{{reponses[question*4+2].label_fr}}|{{reponses[question*4+2].id_question}}</button>
               </div>
               <div class="card">
-                <button class="btn btn-primary">La Reponse D</button>
+                <button class="btn btn-primary" (click)="IncQuestion(reponses[question*4+3],questions.length)">{{reponses[question*4+3].label_fr}}|{{reponses[question*4+3].id_question}}</button>
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col">
-
+              <button class = "btn btn-primary">Score : {{this.score}} / {{questions.length}}</button>
             </div>
           </div>
         </div>
       </div>
-
-      getReponse({{tab[0].id_question}}
+    </div>
+    <div class="col" *ngIf="langue == 'en'">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title" style="text-align: center;">Question {{IdQuestion}}/{{questions.length}}</h5>
+          <p class="card-text" style="text-align: center;">{{questions[question].label_en}}{{questions[question].id_question}}</p>
+          <ngb-alert *ngIf="errorMessage" type="info" (closed)="errorMessage=''">{{errorMessage | translate }}</ngb-alert>
+          <div class="row">
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col">
+              <div class="card">
+                <button class="btn btn-primary" (click)="IncQuestion(reponses[question*4],questions.length)">{{reponses[question*4].label_en}}|{{reponses[question*4].id_question}}</button>
+              </div>
+              <div class="card">
+                <button class="btn btn-primary" (click)="IncQuestion(reponses[question*4+1],questions.length)">{{reponses[question*4+1].label_en}}|{{reponses[question*4+1].id_question}}</button>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <button class="btn btn-primary" (click)="IncQuestion(reponses[question*4+2],questions.length)">{{reponses[question*4+2].label_en}}|{{reponses[question*4+2].id_question}}</button>
+              </div>
+              <div class="card">
+                <button class="btn btn-primary" (click)="IncQuestion(reponses[question*4+3],questions.length)">{{reponses[question*4+3].label_en}}|{{reponses[question*4+3].id_question}}</button>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <button class = "btn btn-primary">Score : {{this.score}} / {{questions.length}}</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="row" *ngIf="config">
@@ -78,7 +112,7 @@
               <div class="card-body" style="background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(assets/img/themes/mysql.jpg); background-repeat: no-repeat; background-size: 100%;">
                 <h5 class="card-title">{{'training.theme.database.title' | translate }}</h5>
                 <p class="card-text">{{'training.theme.database.description' | translate }}</p>
-                <button (click)="endconf('Basededonnées')" class="btn btn-primary">{{'training.theme.select' | translate }}</button>
+                <button (click)="endconf('Basededonnees')" class="btn btn-primary">{{'training.theme.select' | translate }}</button>
               </div>
             </div>
           </div>
@@ -87,7 +121,7 @@
               <div class="card-body" style="background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(assets/img/themes/reseau.jpg); background-repeat: no-repeat; background-size: 100%;">
                 <h5 class="card-title">{{'training.theme.network.title' | translate }}</h5>
                 <p class="card-text">{{'training.theme.network.description' | translate }}</p>
-                <button (click)="endconf('Réseau')" class="btn btn-primary">{{'training.theme.select' | translate }}</button>
+                <button (click)="endconf('Reseau')" class="btn btn-primary">{{'training.theme.select' | translate }}</button>
               </div>
             </div>
           </div>
@@ -123,40 +157,10 @@
           </div>
           <div class="col-4">
             <div class="card">
-              <div class="card-body" style="background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(assets/img/themes/experience.jpg); background-repeat: no-repeat; background-size: 100%;">
-                <h5 class="card-title">{{'training.theme.experience.title' | translate }}</h5>
-                <p class="card-text">{{'training.theme.experience.description' | translate }}</p>
-                <button (click)="endconf('Experience')" class="btn btn-primary">{{'training.theme.select' | translate }}</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <hr>
-        <div class="row">
-          <div class="col-4">
-            <div class="card">
-              <div class="card-body" style="background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(assets/img/themes/personnel.jpg); background-repeat: no-repeat; background-size: 100%;">
-                <h5 class="card-title">{{'training.theme.personnal.title' | translate }}</h5>
-                <p class="card-text">{{'training.theme.personnal.description' | translate }}</p>
-                <button (click)="endconf('Personnel')" class="btn btn-primary">{{'training.theme.select' | translate }}</button>
-              </div>
-            </div>
-          </div>
-          <div class="col-4">
-            <div class="card">
               <div class="card-body" style="background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(assets/img/themes/php.jpg); background-repeat: no-repeat; background-size: 100%;">
                 <h5 class="card-title">{{'training.theme.php.title' | translate }}</h5>
                 <p class="card-text">{{'training.theme.php.description' | translate }}</p>
                 <button (click)="endconf('PHP')" class="btn btn-primary">{{'training.theme.select' | translate }}</button>
-              </div>
-            </div>
-          </div>
-          <div class="col-4">
-            <div class="card">
-              <div class="card-body" style="background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(assets/img/themes/softskills.webp); background-repeat: no-repeat; background-size: 100%;">
-                <h5 class="card-title">{{'training.theme.softskills.title' | translate }}</h5>
-                <p class="card-text">{{'training.theme.softskills.description' | translate }}</p>
-                <button (click)="endconf('SoftSkills')" class="btn btn-primary">{{'training.theme.select' | translate }}</button>
               </div>
             </div>
           </div>

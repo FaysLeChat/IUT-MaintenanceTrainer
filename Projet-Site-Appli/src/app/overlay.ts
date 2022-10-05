@@ -3,6 +3,7 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {TranslateService} from "@ngx-translate/core";
 import {Router} from "@angular/router";
 import {SurvivalComponent} from "./survival/survival.component";
+import {SimulationComponent} from "./simulation/simulation.component";
 
 @Component({
   selector: "app-overlay",
@@ -41,6 +42,11 @@ import {SurvivalComponent} from "./survival/survival.component";
             <button *ngIf="checkSurvivalConfig()" class="btn btn-danger"><i class="bi bi-heart"></i> {{ this.survival_lives }} {{'survival.bar.lives' | translate }}</button>
             <button *ngIf="checkSurvivalConfig()" class="btn btn-warning"><i class="bi bi-people"></i> {{ this.survival_nbplayer }} {{'survival.bar.players' | translate }}</button>
           </div>
+          <div *ngIf="this.router.url == '/simulation'">
+            <button *ngIf="simulation_config == 'true'" class="btn btn-dark" (click)="simulationReset()"><i class="bi bi-people"></i> RESET (Experimental)</button>
+            <button *ngIf="simulation_config == 'true'" class="btn btn-danger" (click)= "simulationChangerQuestion()"><i class="bi bi-plus"></i> {{'simulation.bar.test' | translate }}</button>
+            <button *ngIf="simulation_config == 'true'" class="btn btn-primary"><i class="bi bi-1-circle"></i> {{'simulation.bar.score' | translate }} : {{simulation_score}}/{{simulation_maxscore}}</button>
+          </div>
         </div>
       </div>
     </div>
@@ -48,6 +54,12 @@ import {SurvivalComponent} from "./survival/survival.component";
   `
 })
 export class Overlay {
+  // Simulation Data
+  public simulation_score:any;
+  public simulation_config:any;
+  public simulation_maxscore:any;
+
+  // Survival Data
   public survival_lives:any;
   public survival_config:any;
   public survival_activetimer:any;
@@ -55,14 +67,21 @@ export class Overlay {
   public survival_nbplayer:any;
 
 
-  constructor(private modalService: NgbModal, private translate: TranslateService, public router: Router, private survival:Injector) {
+  constructor(private modalService: NgbModal, private translate: TranslateService, public router: Router, public injector:Injector) {
     this.choice = localStorage.getItem("locale");
     setInterval(() => {
-      this.survival_lives = survival.get(SurvivalComponent).lives;
-      this.survival_config = localStorage.getItem('survival_config');
-      this.survival_activetimer = localStorage.getItem('survival_activetimer');
-      this.survival_timer = survival.get(SurvivalComponent).timer;
-      this.survival_nbplayer = localStorage.getItem('survival_nbplayer');
+      if(this.router.url == '/simulation') {
+        this.simulation_score = injector.get(SimulationComponent).resultat;
+        this.simulation_config = injector.get(SimulationComponent).config;
+        this.simulation_maxscore = injector.get(SimulationComponent).maxscore;
+      }
+      if(this.router.url == '/survival') {
+        this.survival_lives = injector.get(SurvivalComponent).playersLives[injector.get(SurvivalComponent).actualPlayer-1];
+        this.survival_config = injector.get(SurvivalComponent).config;
+        this.survival_activetimer = localStorage.getItem('survival_activetimer');
+        this.survival_timer = injector.get(SurvivalComponent).timer;
+        this.survival_nbplayer = localStorage.getItem('survival_nbplayer');
+      }
     }, 1000);
   }
 
@@ -78,6 +97,13 @@ export class Overlay {
     this.translate.use(localStorage.getItem('locale').toString());
   }
 
+  simulationChangerQuestion() {
+    this.injector.get(SimulationComponent).changerQuestion();
+  }
+  simulationReset() {
+    this.injector.get(SimulationComponent).resetGame();
+  }
+
   checkSurvivalConfig() {
     return localStorage.getItem('survival_config') === 'true';
   }
@@ -86,6 +112,6 @@ export class Overlay {
   }
 
   resetSurvival() {
-    this.survival.get(SurvivalComponent).resetGame();
+    this.injector.get(SurvivalComponent).resetGame();
   }
 }

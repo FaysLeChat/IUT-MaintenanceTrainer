@@ -3,11 +3,12 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {Questions} from "../interfaces/Questions";
+import {QuestionService} from "../service/question.service";
+import {ReponseService} from "../service/reponse.service";
 import {Categories} from "../interfaces/Categories";
 import {query} from "@angular/animations";
-
-import {QuestionService} from "../service/question.service";
-
+import {Reponses} from "../interfaces/Reponses";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-entrainement',
@@ -16,16 +17,27 @@ import {QuestionService} from "../service/question.service";
 })
 export class EntrainementComponent implements OnInit {
   public config = true;
+  public errorMessage :string = "";
   public theme : string = "";
-  public timer : boolean = false
+  public timer : boolean = false;
+  public score :number = 0;
 
   public interval: any;
   public time: number = 0;
   public selectedBac: any = "bac+2";
 
-  questions: Questions = <Questions>{};
+  questions!: Questions [];
+  reponses!: Reponses [];
   tab: any[] = [];
+  // @ts-ignore
+  langue : string = localStorage.getItem('locale').toString();
 
+  constructor(private modalService: NgbModal, private http: HttpClient,private questionService: QuestionService,private reponseService: ReponseService, private router: Router) {
+  }
+
+  ngOnInit(): void {
+    this.time = 0;
+  }
 
   endconf(choix:any) {
     this.theme = choix;
@@ -37,79 +49,50 @@ export class EntrainementComponent implements OnInit {
         this.time++;
       },1000)
     }
-    this.questionService.getCategorie(this.theme).subscribe(res =>this.questionService.getQuestionTraining(res[0].id_categorie).subscribe(map =>{
-      this.questions=map;
-      this.tab.push(map);
-      console.log(this.tab[0])
-
-    }));
-    return this.tab;
-    /*[
-      [
-        {
-          "id_question": 23,
-          "label_fr": "Qu est ce qu une base de données ?",
-          "label_en": "What is a database ?",
-          "id_categorie": 1,
-          "id_difficulte": 1,
-          "eval_mode": true,
-          "training_mode": true,
-          "survival_mode": true,
-          "pro_tips_fr": null,
-          "pro_tips_en": null
-        },
-        {
-          "id_question": 24,
-          "label_fr": "Qu est-ce qu un SGBD ?",
-          "label_en": "What is a DBMS ?",
-          "id_categorie": 1,
-          "id_difficulte": 1,
-          "eval_mode": true,
-          "training_mode": true,
-          "survival_mode": true,
-          "pro_tips_fr": null,
-          "pro_tips_en": null
-        },
-        {
-          "id_question": 25,
-          "label_fr": "Qu est-ce qu un SGBDR ?",
-          "label_en": "What is an RDBMS ?",
-          "id_categorie": 1,
-          "id_difficulte": 2,
-          "eval_mode": true,
-          "training_mode": true,
-          "survival_mode": true,
-          "pro_tips_fr": null,
-          "pro_tips_en": null
-        },
-        {
-          "id_question": 26,
-          "label_fr": "Que sont les tableaux et les champs en SQL ?",
-          "label_en": "What are tables and fields in SQL?",
-          "id_categorie": 1,
-          "id_difficulte": 1,
-          "eval_mode": true,
-          "training_mode": true,
-          "survival_mode": true,
-          "pro_tips_fr": null,
-          "pro_tips_en": null
-        },
-        {
-          "id_question": 27,
-          "label_fr": "Qu est-ce qu une clé primaire ?",
-          "label_en": "What s a primary key ?",
-          "id_categorie": 1,
-          "id_difficulte": 1,
-          "eval_mode": true,
-          "training_mode": true,
-          "survival_mode": true,
-          "pro_tips_fr": null,
-          "pro_tips_en": null
+    this.questionService.getCategorie(choix).subscribe(r => {
+      this.questionService.getQuestionTraining(r[0].id_categorie).subscribe(res => {
+        this.questions = res;
+        this.reponses = [];
+        console.log(this.questions);
+        let i = [];
+        let y = 0;
+        for (let r of this.questions) {
+          this.reponseService.getReponse(r.id_question).subscribe( resR => {
+            this.reponses.push(resR[0]);
+            this.reponses.push(resR[1]);
+            this.reponses.push(resR[2]);
+            this.reponses.push(resR[3]);
+            console.log(this.reponses);
+            if(y !=0){
+                // for(let i = 0; i< this.reponses.length-1 ; i++){
+                //     if(this.reponses[i].id_question > this.reponses[i+1].id_question){
+                //       var temp;
+                //       temp = this.reponses[i].id_question;
+                //       this.reponses[i].id_question = this.reponses[i+1].id_question;
+                //       this.reponses[i+1].id_question = temp;
+                //     }
+                //   }
+              var len = this.reponses.length;
+              var tmp, i, j;
+              for(i = 1; i < len; i++) {
+                    //stocker la valeur actuelle
+                    tmp = this.reponses[i];
+                    j = i - 1
+                    while (j >= 0 && this.reponses[j].id_question > tmp.id_question) {
+                      // déplacer le nombre
+                      this.reponses[j+1] = this.reponses[j];
+                      j--
+                    }
+                    //Insère la valeur temporaire à la position
+                    //correcte dans la partie triée.
+                    this.reponses[j+1] = tmp
+                  }
+            }
+          }
+          );
         }
-      ]
-    ]*/
-
-
+      });
+    });
   }
 
   changeTheme(content2: any) {
@@ -126,10 +109,65 @@ export class EntrainementComponent implements OnInit {
     console.log(this.selectedBac)
   }
 
-  constructor(private modalService: NgbModal, private http: HttpClient,private questionService: QuestionService ) {
+
+
+  creerQuestion() : number{
+    let cul = Math.random();
+    if(cul == 0){
+      cul = 1;
+    }
+    // let question : number = Math.floor(cul * 10);
+    let question : number = 0;
+    return question;
   }
 
-  ngOnInit(): void {
-    this.time = 0;
+  question : number = this.creerQuestion();
+  IdQuestion : number = 1;
+  tabQ : number[] = [this.question];
+
+
+  incIdQuestion(){
+    return this.IdQuestion++;
+  }
+
+  IncQuestion(reponse: Reponses, n: number){
+    this.verificationReponse(reponse, n);
+
+    let r =  Math.floor((Math.random() * n));
+    let boucle: boolean;
+
+    if(this.tabQ.length == n){
+      boucle = false;
+    } else {
+      boucle = true;
+    }
+
+    while(boucle) {
+      if (!this.tabQ.includes(r)) {
+        this.tabQ.push(r);
+        this.incIdQuestion();
+        //console.log(r)
+        return this.question = r;
+      }
+      r =  Math.floor((Math.random() * n));
+    }
+    return 0;
+  }
+
+  verificationReponse(reponse: Reponses, n: number) {
+    if(reponse.valid == true) {
+      this.score += 1;
+    }
+
+    if(this.tabQ.length == n && this.langue == "fr"){
+      alert("Entraînement terminé ! Ton score est de : "+this.score+"/"+this.questions.length);
+      this.router.navigateByUrl('');
+    }
+    if(this.tabQ.length == n && this.langue == "en"){
+      alert("Training complete! Your score is : "+this.score+"/"+this.questions.length);
+      this.router.navigateByUrl('');
+    }
+
+
   }
 }

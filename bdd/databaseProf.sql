@@ -62,7 +62,7 @@ INSERT INTO questions (id_question, label_fr, label_en, id_categorie, id_difficu
 (14, 'Expliquer _construct() et _destruct()', 'Explain _construct() and _destruct()', 8,2,TRUE,FALSE,FALSE,NULL,NULL),
 (15, 'Comment exporter des données PHP dans Excel ?', 'How to export PHP datas in Excel ?', 8,2,TRUE,FALSE,FALSE,NULL,NULL),
 (16, 'Quelle est la balise la plus courante pour intégrer PHP au HTML?','What is the most common element to integrate PHP into HTML ?',8,1,TRUE,TRUE,TRUE,NULL,NULL),
-(17, 'Quelle est la différence entre «==» et «===»','What is the difference between == and ===?',6,1,TRUE,TRUE,TRUE,NULL,NULL),
+(17, 'Quelle est la différence entre «==» et «===»','What is the difference between == and ===?',5,1,TRUE,TRUE,TRUE,NULL,NULL),
 (18, 'As-tu déjà travaillé en direct avec des clients pour réaliser un projet ? Si non, est-ce que cela t''intéresse ?','Have you ever worked live with clients on a project? If not, are you interested?',9,1,TRUE,FALSE,FALSE,NULL,NULL),
 (19, 'Que penses-tu de la programmation en équipe ? L''as-tu déjà fait ou serais-tu intéressé pour essayer ?', 'What do you think about team programming? Have you ever done it or would you be interested in trying?', 9,1,TRUE,FALSE,FALSE,NULL,NULL),
 (20, 'Qu''est-ce que tu trouves le plus difficile dans ton métier ?','What do you find most difficult about your job?',9,1,TRUE,FALSE,FALSE,NULL,NULL),
@@ -132,7 +132,6 @@ INSERT INTO questions (id_question, label_fr, label_en, id_categorie, id_difficu
 
 
 
-
 CREATE TABLE reponses (
   id_reponse serial PRIMARY KEY NOT NULL, 
   id_question int REFERENCES questions(id_question) NOT NULL,
@@ -196,9 +195,9 @@ INSERT INTO reponses (id_reponse, id_question, label_fr, label_en, valid) VALUES
 (52, 23, 'La réponse D','Answer D',FALSE),
 (53, 24, 'Des lettres','Some letters',FALSE),
 (54, 24, 'Un logiciel système permettant aux utilisateurs et programmeurs de créer et de gérer des bases de données','A software system that allows users and programmers to create and manage databases',TRUE),
-(55, 24, 'Un code wifi','A wifi code'),
+(55, 24, 'Un code wifi','A wifi code',FALSE),
 (56, 24, 'Un logiciel système permettant aux utilisateurs et programmeurs de créer et de gérer des serveurs web','A system software that allows users and programmers to create and manage web servers',FALSE),
-(57, 25, 'Un code de jeu Steam'),
+(57, 25, 'Un code de jeu Steam','A Steam game code',FALSE),
 (58, 25, 'Une base de données relationnelle est une base de données où l information est organisée dans des tableaux à deux dimensions appelés des relations ou tables','A relational database is a database where information is organized in two-dimensional tables called relations or tables',TRUE),
 (59, 25, 'Une relation de base de données est une relation où l information est organisée dans des tableaux à deux dimensions appelés des relations ou tables','A database relationship is a relationship where information is organized in two-dimensional tables called relations or tables',FALSE),
 (60, 25, 'Ton code Izzly','Your Izzly code',FALSE),
@@ -249,7 +248,21 @@ INSERT INTO reponses (id_reponse, id_question, label_fr, label_en, valid) VALUES
 (105, 40, 'Bah traduction','Bah translation',FALSE),
 (106, 40, 'ngx-translate','ngx-translate',TRUE),
 (107, 40, 'Google traduction','Google translate',FALSE),
-(108, 40, 'HTML traduction','HTML translate',FALSE);
+(108, 40, 'HTML traduction','HTML translate',FALSE),
+(109, 41, 'Bootstrap est une collection d''outils utiles à la création du design de sites et d''applications web','Bootstrap is a collection of tools useful for creating web design and web applications',TRUE),
+(110, 41, 'Bootstrap est un environnement de développement intégré destiné au développement de logiciels informatiques reposant sur la technologie Java','Bootstrap is an integrated development environment for developing computer software based on Java',FALSE),
+(111, 41, 'Bootstrap est un éditeur pour PHP, HTML, CSS et JavaScript, édité par JetBrains','Bootstrap is an editor for PHP, HTML, CSS and JavaScript, published by JetBrains',FALSE),
+(112, 41, 'Bootstrap est un environnement de développement intégré pour JavaScript et les technologies connexes','Bootstrap is an integrated development environment for JavaScript and related technologies',FALSE),
+(112, 41, 'Bootstrap est un environnement de développement intégré pour JavaScript et les technologies connexes','Bootstrap is an integrated development environment for JavaScript and related technologies',FALSE),
+(113, 43, 'PHP est principalement conçu pour servir de langage de script coté client','PHP is primarily designed to serve as a client-side scripting language',FALSE),
+(114, 43, 'PHP est principalement conçu pour servir de langage de script coté serveur','PHP is primarily designed to serve as a server-side scripting language',TRUE),
+(115, 43, 'PHP est principalement conçu pour faire du front-end à la place de HTML','PHP is mainly designed to do front-end instead of HTML',FALSE),
+(116, 43, 'C est inutile','It s useless',FALSE),
+(117, 44, 'Ecrire un petit paragrpahe concernant mes expériences sur mon CV','Write a small paragraph about my experiences on my CV',FALSE),
+(118, 44, 'Ne pas l écrire dans le CV','Do not write it in the CV',FALSE),
+(119, 44, 'Faire un résumé dans le bloc notes de ton téléphone','Make a summary in the notepad of your phone',FALSE),
+(120, 44, 'Décrire succintement et par points les missions que l on t a confiées','Describe briefly and by points the missions you have been given',TRUE),
+(121, 46, 'Les énumérations sont traitées comme des types de données, et vous pouvez ainsi les utiliser pour créer des ensembles de constantes à utiliser avec des variables et des propriétés','Enumerations are treated as data types, so you can use them to create sets of constants for use with variables and properties',TRUE);
 
 CREATE TABLE users (
   idU serial PRIMARY KEY NOT NULL,

@@ -252,7 +252,17 @@ INSERT INTO reponses (id_reponse, id_question, label_fr, label_en, valid) VALUES
 (109, 41, 'Bootstrap est une collection d''outils utiles à la création du design de sites et d''applications web','Bootstrap is a collection of tools useful for creating web design and web applications',TRUE),
 (110, 41, 'Bootstrap est un environnement de développement intégré destiné au développement de logiciels informatiques reposant sur la technologie Java','Bootstrap is an integrated development environment for developing computer software based on Java',FALSE),
 (111, 41, 'Bootstrap est un éditeur pour PHP, HTML, CSS et JavaScript, édité par JetBrains','Bootstrap is an editor for PHP, HTML, CSS and JavaScript, published by JetBrains',FALSE),
-(112, 41, 'Bootstrap est un environnement de développement intégré pour JavaScript et les technologies connexes','Bootstrap is an integrated development environment for JavaScript and related technologies',FALSE);
+(112, 41, 'Bootstrap est un environnement de développement intégré pour JavaScript et les technologies connexes','Bootstrap is an integrated development environment for JavaScript and related technologies',FALSE),
+(112, 41, 'Bootstrap est un environnement de développement intégré pour JavaScript et les technologies connexes','Bootstrap is an integrated development environment for JavaScript and related technologies',FALSE),
+(113, 43, 'PHP est principalement conçu pour servir de langage de script coté client','PHP is primarily designed to serve as a client-side scripting language',FALSE),
+(114, 43, 'PHP est principalement conçu pour servir de langage de script coté serveur','PHP is primarily designed to serve as a server-side scripting language',TRUE),
+(115, 43, 'PHP est principalement conçu pour faire du front-end à la place de HTML','PHP is mainly designed to do front-end instead of HTML',FALSE),
+(116, 43, 'C est inutile','It s useless',FALSE),
+(117, 44, 'Ecrire un petit paragrpahe concernant mes expériences sur mon CV','Write a small paragraph about my experiences on my CV',FALSE),
+(118, 44, 'Ne pas l écrire dans le CV','Do not write it in the CV',FALSE),
+(119, 44, 'Faire un résumé dans le bloc notes de ton téléphone','Make a summary in the notepad of your phone',FALSE),
+(120, 44, 'Décrire succintement et par points les missions que l on t a confiées','Describe briefly and by points the missions you have been given',TRUE),
+(121, 46, 'Les énumérations sont traitées comme des types de données, et vous pouvez ainsi les utiliser pour créer des ensembles de constantes à utiliser avec des variables et des propriétés','Enumerations are treated as data types, so you can use them to create sets of constants for use with variables and properties',TRUE);
 
 CREATE TABLE users (
   idU serial PRIMARY KEY NOT NULL,

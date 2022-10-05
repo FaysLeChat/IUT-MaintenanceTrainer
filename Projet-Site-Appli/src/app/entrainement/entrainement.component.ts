@@ -70,16 +70,16 @@ export class EntrainementComponent implements OnInit {
 
                   for(i = 1; i < len; i++) {
                     //stocker la valeur actuelle
-                    tmp = this.reponses[i].id_question;
+                    tmp = this.reponses[i];
                     j = i - 1
-                    while (j >= 0 && this.reponses[j].id_question > tmp) {
+                    while (j >= 0 && this.reponses[j].id_question > tmp.id_question) {
                       // déplacer le nombre
-                      this.reponses[j+1].id_question = this.reponses[j].id_question
+                      this.reponses[j+1] = this.reponses[j];
                       j--
                     }
                     //Insère la valeur temporaire à la position
                     //correcte dans la partie triée.
-                    this.reponses[j+1].id_question = tmp
+                    this.reponses[j+1] = tmp
                   }
                 }
                 y++;

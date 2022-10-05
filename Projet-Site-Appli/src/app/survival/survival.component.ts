@@ -58,7 +58,9 @@ export class SurvivalComponent implements OnInit {
     this.questionService.getQuestionsSurvival().subscribe(res => {
         this.questions = res;
         this.reponses = [];
-        let i = [];
+      console.log(this.questions);
+
+      let i = [];
         let y = 0;
         for (let r of res) {
           this.reponseService.getReponse(r.id_question).subscribe( resR => {
@@ -66,6 +68,7 @@ export class SurvivalComponent implements OnInit {
               this.reponses.push(resR[1]);
               this.reponses.push(resR[2]);
               this.reponses.push(resR[3]);
+              console.log(this.reponses);
             if(y !=0){
                 // for(let i = 0; i< this.reponses.length ; i++){
                 //   // @ts-ignore
@@ -81,16 +84,16 @@ export class SurvivalComponent implements OnInit {
 
                 for(i = 1; i < len; i++) {
                   //stocker la valeur actuelle
-                  tmp = this.reponses[i].id_question;
+                  tmp = this.reponses[i];
                   j = i - 1
-                  while (j >= 0 && this.reponses[j].id_question > tmp) {
+                  while (j >= 0 && this.reponses[j].id_question > tmp.id_question) {
                     // déplacer le nombre
-                    this.reponses[j+1].id_question = this.reponses[j].id_question
+                    this.reponses[j+1] = this.reponses[j];
                     j--
                   }
                   //Insère la valeur temporaire à la position
                   //correcte dans la partie triée.
-                  this.reponses[j+1].id_question = tmp
+                  this.reponses[j+1] = tmp
                 }
               }
               y++;

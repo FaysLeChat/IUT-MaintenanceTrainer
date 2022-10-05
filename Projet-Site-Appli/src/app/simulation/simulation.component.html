@@ -16,22 +16,22 @@
           <ngb-alert *ngIf="errorMessage" type="danger" (closed)="errorMessage=''">{{'simulation.error' | translate }}</ngb-alert>
           <div class="row" id="note">
             <div class="col-2">
-              <button (click)="IncQuestion(questions.length)" class="btn btn-primary">0</button>
+              <button (click)="IncQuestion(0,questions.length)" class="btn btn-primary">0</button>
             </div>
             <div class="col-2">
-              <button (click)="IncQuestion(questions.length)" class="btn btn-primary">1</button>
+              <button (click)="IncQuestion(1,questions.length)" class="btn btn-primary">1</button>
             </div>
             <div class="col-2">
-              <button (click)="IncQuestion(questions.length)" class="btn btn-primary">2</button>
+              <button (click)="IncQuestion(2,questions.length)" class="btn btn-primary">2</button>
             </div>
             <div class="col-2">
-              <button (click)="IncQuestion(questions.length)" class="btn btn-primary">3</button>
+              <button (click)="IncQuestion(3,questions.length)" class="btn btn-primary">3</button>
             </div>
             <div class="col-2">
-              <button (click)="IncQuestion(questions.length)" class="btn btn-primary">4</button>
+              <button (click)="IncQuestion(4,questions.length)" class="btn btn-primary">4</button>
             </div>
             <div class="col-2">
-              <button (click)="IncQuestion(questions.length)" class="btn btn-primary">5</button>
+              <button (click)="IncQuestion(5,questions.length)" class="btn btn-primary">5</button>
             </div>
           </div>
         </div>

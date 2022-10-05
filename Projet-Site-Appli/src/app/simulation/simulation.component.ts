@@ -3,7 +3,6 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {Questions} from "../interfaces/Questions";
-import { Reponses } from '../interfaces/Reponses';
 import {QuestionService} from "../service/question.service";
 import {Router} from "@angular/router";
 
@@ -15,14 +14,14 @@ import {Router} from "@angular/router";
 export class SimulationComponent implements OnInit {
   // Variables de jeu
   public config:any;
-  public maxscore = 100;
+  public maxscore : number =0;
   public resultat:number = 0;
   public theme:String[] = [];
 
 
   public errorMessage = "";
   questions!: Questions [];
-  reponses!: Reponses [];
+
   // @ts-ignore
   langue: string = localStorage.getItem("locale").toString();
   score: number = 0;
@@ -69,7 +68,8 @@ export class SimulationComponent implements OnInit {
   tabQ : number[] = [this.question];
 
 
-  IncQuestion( n: number){
+  IncQuestion(score : number, n: number){
+    this.ajout(score, n);
     let r =  Math.floor((Math.random() * n));
     let boucle: boolean;
 
@@ -92,7 +92,6 @@ export class SimulationComponent implements OnInit {
   }
 
   RecupQuestion() {
-    this.reponses = [];
     this.questions = [];
     for(let y of this.theme){
       let u =0;
@@ -106,11 +105,13 @@ export class SimulationComponent implements OnInit {
               this.questions.push(res[u]);
               u++;
             }
-            console.log(this.reponses)
+            this.maxscore = this.questions.length * 5;
+            //console.log(this.reponses)
           });
         }
       );
     }
+    
   }
   incIdQuestion(){
     return this.IdQuestion++;
@@ -119,17 +120,26 @@ export class SimulationComponent implements OnInit {
 
 
   ajout(score : number,n : number){
+    
     if (document.getElementById('note')) {
       this.resultat += score;
       localStorage.setItem('simulation_score', String(this.resultat));
       return this.resultat;
     }
-    if(this.tabQ.length == n && this.langue == "fr"){
-      alert("Entraînement terminé ! Ton score est de : "+this.score+"/"+this.questions.length);
+    if((this.tabQ.length == n )&& this.langue == "fr"){
+      alert("Entretien terminé ! Le score du candidat est de : "+this.resultat+"/"+this.maxscore);
+      localStorage.setItem('simulation_config', 'false');
+      localStorage.removeItem('simulation_score');
+      this.theme = [];
+      this.config = 'false';
       this.router.navigateByUrl('');
     }
     if(this.tabQ.length == n && this.langue == "en"){
-      alert("Training complete! Your score is : "+this.score+"/"+this.questions.length);
+      alert("Interview complete ! The candidate's score is : "+this.resultat+"/"+this.maxscore);
+        localStorage.setItem('simulation_config', 'false');
+    localStorage.removeItem('simulation_score');
+    this.theme = [];
+    this.config = 'false';
       this.router.navigateByUrl('');
     }
     return 0;

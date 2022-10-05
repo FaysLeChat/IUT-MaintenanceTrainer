@@ -30,6 +30,7 @@ export class QuestionService {
     url = url.concat(choix.toString());
     console.log(url)
     return this.http.get<Questions[]>(url).pipe(map(rep => rep[0]));
+
   }
 
 }

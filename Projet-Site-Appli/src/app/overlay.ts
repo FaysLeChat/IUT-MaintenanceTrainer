@@ -42,7 +42,6 @@ import {SimulationComponent} from "./simulation/simulation.component";
           </div>
           <div *ngIf="this.router.url == '/simulation'">
             <button *ngIf="simulation_config == 'true'" class="btn btn-dark" (click)="simulationReset()"><i class="bi bi-people"></i> RESET (Experimental)</button>
-            <button *ngIf="simulation_config == 'true'" class="btn btn-danger" (click)= "simulationChangerQuestion()"><i class="bi bi-plus"></i> {{'simulation.bar.test' | translate }}</button>
             <button *ngIf="simulation_config == 'true'" class="btn btn-primary"><i class="bi bi-1-circle"></i> {{'simulation.bar.score' | translate }} : {{simulation_score}}/{{simulation_maxscore}}</button>
           </div>
         </div>
@@ -93,9 +92,6 @@ export class Overlay {
     this.translate.use(localStorage.getItem('locale').toString());
   }
 
-  simulationChangerQuestion() {
-    this.injector.get(SimulationComponent).changerQuestion();
-  }
   simulationReset() {
     this.injector.get(SimulationComponent).resetGame();
   }

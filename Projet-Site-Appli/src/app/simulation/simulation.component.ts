@@ -31,6 +31,7 @@ export class SimulationComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.resetGame();
     if(localStorage.getItem('simulation_config')) { // Si une partie existante est trouvée
       console.log("Une game est déjà enregistrée, retour à la partie précédente... Cliquez sur RESET pour en recommencer une nouvelle");
 
@@ -105,13 +106,18 @@ export class SimulationComponent implements OnInit {
               this.questions.push(res[u]);
               u++;
             }
-            this.maxscore = this.questions.length * 5;
+            if (this.questions.length * 5 < 100){
+              this.maxscore = this.questions.length * 5;
+            }
+            else{
+              this.maxscore = 100;
+            }
             //console.log(this.reponses)
           });
         }
       );
     }
-    
+
   }
   incIdQuestion(){
     return this.IdQuestion++;
@@ -120,26 +126,16 @@ export class SimulationComponent implements OnInit {
 
 
   ajout(score : number,n : number){
-    
-    if (document.getElementById('note')) {
-      this.resultat += score;
-      localStorage.setItem('simulation_score', String(this.resultat));
-      return this.resultat;
-    }
-    if((this.tabQ.length == n )&& this.langue == "fr"){
+    this.resultat += score;
+    localStorage.setItem('simulation_score', String(this.resultat));
+    if((this.tabQ.length*5 == this.maxscore )&& this.langue == "fr"){
       alert("Entretien terminé ! Le score du candidat est de : "+this.resultat+"/"+this.maxscore);
-      localStorage.setItem('simulation_config', 'false');
-      localStorage.removeItem('simulation_score');
-      this.theme = [];
-      this.config = 'false';
+      this.resetGame()
       this.router.navigateByUrl('');
     }
-    if(this.tabQ.length == n && this.langue == "en"){
+    if(this.tabQ.length*5 == this.maxscore && this.langue == "en"){
       alert("Interview complete ! The candidate's score is : "+this.resultat+"/"+this.maxscore);
-        localStorage.setItem('simulation_config', 'false');
-    localStorage.removeItem('simulation_score');
-    this.theme = [];
-    this.config = 'false';
+      this.resetGame()
       this.router.navigateByUrl('');
     }
     return 0;
@@ -177,8 +173,9 @@ export class SimulationComponent implements OnInit {
   }
 
   resetGame() {
-    localStorage.setItem('simulation_config', 'false');
+    localStorage.removeItem('simulation_config');
     localStorage.removeItem('simulation_score');
+    localStorage.removeItem("simulation_themes");
     this.theme = [];
     this.config = 'false';
   }

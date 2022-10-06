@@ -96,12 +96,12 @@ export class SimulationComponent implements OnInit {
     this.questions = [];
     for(let y of this.theme){
       let u =0;
-      console.log(y);
+      // console.log(y);
       this.questionService.getCategorie(y).subscribe(r=>{
-          console.log(r);
+          // console.log(r);
           this.questionService.getQuestionSimulation(r[0].id_categorie).subscribe(res => {
-            console.log(res.length);
-            console.log(res);
+            // console.log(res.length);
+            // console.log(res);
             while(u < res.length){
               this.questions.push(res[u]);
               u++;
@@ -148,12 +148,12 @@ export class SimulationComponent implements OnInit {
   switchTheme(theme:any) {
     if(this.theme.includes(theme)) this.theme.splice(this.theme.indexOf(theme), 1);
     else this.theme.push(theme);
-    console.log(this.theme);
+    // console.log(this.theme);
   }
 
   envoyer()  {
     if(this.theme.length == 0) {
-      console.log("Erreur : Aucun thème sélectionné");
+      // console.log("Erreur : Aucun thème sélectionné");
     } else {
       // Initialisation du score en sauvegarde locale + var
       this.resultat = 0;

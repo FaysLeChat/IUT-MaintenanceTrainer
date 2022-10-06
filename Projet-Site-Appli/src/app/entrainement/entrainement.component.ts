@@ -26,6 +26,7 @@ export class EntrainementComponent implements OnInit {
   public time: number = 0;
   public selectedBac: any = "bac+2";
 
+  categorie : string[] = ["PHP","ProgObjet","Web-Back","Web-Front","Reseau","Basededonnees"];
   questions!: Questions [];
   reponses!: Reponses [];
   tab: any[] = [];
@@ -40,29 +41,78 @@ export class EntrainementComponent implements OnInit {
   }
 
   endconf(choix:any) {
-    this.theme = choix;
-    this.config = false;
-    this.modalService.dismissAll();
-    console.log(this.theme);
-    if(this.timer) {
-      this.interval = setInterval(() => {
-        this.time++;
-      },1000)
-    }
-    this.questionService.getCategorie(choix).subscribe(r => {
-      this.questionService.getQuestionTraining(r[0].id_categorie).subscribe(res => {
+    if(choix == "all"){
+      this.config = false;
+      this.modalService.dismissAll();
+      console.log(this.theme);
+      if(this.timer) {
+        this.interval = setInterval(() => {
+          this.time++;
+        },1000)
+      }
+      this.questionService.getQuestionsSurvival().subscribe(res => {
         this.questions = res;
         this.reponses = [];
         console.log(this.questions);
         let i = [];
         let y = 0;
-        for (let r of this.questions) {
+        for (let r of res) {
           this.reponseService.getReponse(r.id_question).subscribe( resR => {
             this.reponses.push(resR[0]);
             this.reponses.push(resR[1]);
             this.reponses.push(resR[2]);
             this.reponses.push(resR[3]);
-            console.log(this.reponses);
+            var len = this.reponses.length;
+            var tmp, i, j;
+            for(i = 1; i < len; i++) {
+              //stocker la valeur actuelle
+              tmp = this.reponses[i];
+              j = i - 1
+              while (j >= 0 && this.reponses[j].id_question > tmp.id_question) {
+                // déplacer le nombre
+                this.reponses[j+1] = this.reponses[j];
+                j--
+              }
+              //Insère la valeur temporaire à la position
+              //correcte dans la partie triée.
+              this.reponses[j+1] = tmp
+            }
+
+          });
+        }
+      });
+    }else{
+      if(choix == "random"){
+        let n : number = Math.floor(Math.random() * 10);
+        while(n >= this.categorie.length){
+          n = Math.floor(Math.random() * 10);
+        }
+        this.theme = this.categorie[n];
+      }else{
+        this.theme = choix;
+      }
+      this.config = false;
+      this.modalService.dismissAll();
+      console.log(this.theme);
+      if(this.timer) {
+        this.interval = setInterval(() => {
+          this.time++;
+        },1000)
+      }
+      this.questionService.getCategorie(this.theme).subscribe(r => {
+        this.questionService.getQuestionTraining(r[0].id_categorie).subscribe(res => {
+          this.questions = res;
+          this.reponses = [];
+          console.log(this.questions);
+          let i = [];
+          let y = 0;
+          for (let r of this.questions) {
+            this.reponseService.getReponse(r.id_question).subscribe( resR => {
+                this.reponses.push(resR[0]);
+                this.reponses.push(resR[1]);
+                this.reponses.push(resR[2]);
+                this.reponses.push(resR[3]);
+                console.log(this.reponses);
 
                 // for(let i = 0; i< this.reponses.length-1 ; i++){
                 //     if(this.reponses[i].id_question > this.reponses[i+1].id_question){
@@ -72,27 +122,28 @@ export class EntrainementComponent implements OnInit {
                 //       this.reponses[i+1].id_question = temp;
                 //     }
                 //   }
-              var len = this.reponses.length;
-              var tmp, i, j;
-              for(i = 1; i < len; i++) {
-                    //stocker la valeur actuelle
-                    tmp = this.reponses[i];
-                    j = i - 1
-                    while (j >= 0 && this.reponses[j].id_question > tmp.id_question) {
-                      // déplacer le nombre
-                      this.reponses[j+1] = this.reponses[j];
-                      j--
-                    }
-                    //Insère la valeur temporaire à la position
-                    //correcte dans la partie triée.
-                    this.reponses[j+1] = tmp
+                var len = this.reponses.length;
+                var tmp, i, j;
+                for(i = 1; i < len; i++) {
+                  //stocker la valeur actuelle
+                  tmp = this.reponses[i];
+                  j = i - 1
+                  while (j >= 0 && this.reponses[j].id_question > tmp.id_question) {
+                    // déplacer le nombre
+                    this.reponses[j+1] = this.reponses[j];
+                    j--
                   }
-            }
-
-          );
-        }
+                  //Insère la valeur temporaire à la position
+                  //correcte dans la partie triée.
+                  this.reponses[j+1] = tmp
+                }
+              }
+            );
+          }
+        });
       });
-    });
+    }
+
   }
 
   changeTheme(content2: any) {

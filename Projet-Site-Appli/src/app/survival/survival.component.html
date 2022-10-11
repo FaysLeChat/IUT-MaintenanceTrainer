@@ -31,7 +31,7 @@
             </div>
           </div>
           <hr>
-          <p class="card-text" style="text-align: center; font-weight: bold;">Au tour du Joueur {{ this.actualPlayer }}</p>
+          <p class="card-text" style="text-align: center; font-weight: bold;">{{'survival.player_turn' | translate }} {{ this.actualPlayer }}</p>
         </div>
       </div>
     </div>
@@ -63,7 +63,7 @@
             </div>
           </div>
           <hr>
-          <p class="card-text" style="text-align: center">Au tour du Joueur {{ this.actualPlayer }}</p>
+          <p class="card-text" style="text-align: center">{{'survival.player_turn' | translate }} {{ this.actualPlayer }}</p>
         </div>
       </div>
     </div>
@@ -74,7 +74,7 @@
       <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
         <ngb-panel id="toggle-2">
           <ng-template ngbPanelTitle>
-            <p class="card-text"><i class="bi bi-info-circle"></i> Infos Partie</p>
+            <p class="card-text"><i class="bi bi-info-circle"></i> {{'survival.game_stats' | translate }}</p>
           </ng-template>
           <ng-template ngbPanelContent>
             <table class="table table-striped">
@@ -82,15 +82,15 @@
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Statut</th>
-                <th scope="col">Vies</th>
+                <th scope="col">{{'survival.life_maj_text' | translate }}</th>
               </tr>
               </thead>
               <tbody>
               <tr *ngFor="let p of playersLives; index as i">
-                <th scope="row">Joueur {{ i+1 }}</th>
+                <th scope="row">{{'survival.player_text' | translate }} {{ i+1 }}</th>
                 <td>
-                  <span *ngIf="isAlive(i+1)">En Vie</span>
-                  <span *ngIf="!isAlive(i+1)">&Eacute;liminé</span>
+                  <span *ngIf="isAlive(i+1)">{{'survival.is_alive' | translate }}</span>
+                  <span *ngIf="!isAlive(i+1)">{{'survival.is_eliminated' | translate }}</span>
                 </td>
                 <td>{{ p }}</td>
               </tr>
@@ -104,11 +104,11 @@
       <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
         <ngb-panel id="toggle-1">
           <ng-template ngbPanelTitle>
-            <p class="card-text"><i class="bi bi-gear"></i> Paramètres de la partie</p>
+            <p class="card-text"><i class="bi bi-gear"></i> {{'survival.game_settings' | translate }}</p>
           </ng-template>
           <ng-template ngbPanelContent>
-            <p><button class="btn btn-primary" (click)="switchNotifs()" style="width: 100%;"><i class="bi bi-bell"></i> Notifications : {{this.notifs?"ON":"OFF"}}</button></p>
-            <button class="btn btn-danger" (click)="resetGame()" style="width: 100%;"><i class="bi bi-exclamation-triangle-fill"></i> Réinitialiser la partie</button>
+            <p><button class="btn btn-primary" (click)="switchNotifs()" style="width: 100%;"><i class="bi bi-bell"></i> {{'survival.notifications' | translate }} : {{this.notifs?"ON":"OFF"}}</button></p>
+            <button class="btn btn-danger" (click)="resetGame()" style="width: 100%;"><i class="bi bi-exclamation-triangle-fill"></i> {{'survival.reset_party' | translate }}</button>
           </ng-template>
         </ngb-panel>
       </ngb-accordion>
@@ -121,25 +121,25 @@
         <h5 class="card-header"><i class="bi bi-gear"></i> {{'survival.setup.title' | translate }}</h5>
         <div class="card-body">
           <ngb-alert *ngIf="errorMessage" type="danger" (closed)="errorMessage=''">{{ errorMessage }}</ngb-alert>
-          <p style="font-weight: bold;">Paramètres des joueurs</p>
+          <p style="font-weight: bold;">{{'survival.player_settings' | translate }}</p>
           <div class="row">
             <div class="col-6">
               <label for="typeahead-basic"><i class="bi bi-people"></i> {{'survival.nbplayers.title' | translate }} (2-10)</label>
               <input id="typeahead-basic" type="text" placeholder="..." class="form-control d-flex" [(ngModel)]="model"/>
             </div>
             <div class="col-6">
-              <label for="typeahead-basic"><i class="bi bi-heart"></i> Vies de départ</label>
+              <label for="typeahead-basic"><i class="bi bi-heart"></i> {{'survival.start_lives' | translate }}</label>
               <input id="typeahead-basic2" type="text" placeholder="..." class="form-control d-flex" [(ngModel)]="mlives"/>
             </div>
           </div>
           <hr>
-          <p style="font-weight: bold;">Paramètres optionnels</p>
+          <p style="font-weight: bold;">{{'survival.optionnal_settings' | translate }}</p>
           <div class="row">
             <div class="col">
               <label><i class="bi bi-stopwatch"></i> {{'survival.setup.addtimer' | translate }}</label>&nbsp;
               <input (change)="switchTimer()" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
               <br />
-              <label><i class="bi bi-bell"></i> Notifications</label>&nbsp;
+              <label><i class="bi bi-bell"></i> {{'survival.notifications' | translate }}</label>&nbsp;
               <input (change)="switchNotifs()" class="form-check-input" type="checkbox" role="switch" id="flexCheckChecked" checked>
             </div>
           </div>

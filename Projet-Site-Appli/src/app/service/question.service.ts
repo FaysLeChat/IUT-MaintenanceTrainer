@@ -22,7 +22,7 @@ export class QuestionService {
     return this.http.get(url);
   }
   getQuestionTrainingDifficult2(choix : any): Observable<any> {
-    var url = 'http://45.155.170.233:3000/questions?id_categorie=eq.'+choix+'&training_mode=eq.true&id_difficulte=eq.2';
+    var url = 'http://45.155.170.233:3000/questions?id_categorie=eq.'+choix+'&training_mode=eq.true&or=(id_difficulte.eq.1,id_difficulte.eq.2)';
     return this.http.get(url);
   }
   getQuestionTrainingDifficult1(choix : any): Observable<any> {

@@ -202,10 +202,10 @@ export class SurvivalComponent implements OnInit {
         this.config = 'true';
         localStorage.setItem('survival_config', this.config);
       } else {
-        return this.errorMessage = "Le nombre de vies doit être un nombre !"
+        return this.errorMessage = this.translate.instant('survival.is_number_error');
       }
     } else {
-      return this.errorMessage = "Le nombre de joueurs doit être compris entre 2 et 10 !"
+      return this.errorMessage = this.translate.instant('survival.between_number_error');
     }
     return true;
   }
@@ -241,13 +241,13 @@ export class SurvivalComponent implements OnInit {
     if(reponse.valid != true) {
       this.playersLives[this.actualPlayer - 1]--;
       if (this.playersLives[this.actualPlayer - 1] >= 1) {
-        if(this.notifs) this.toastService.show("Le Joueur " + this.actualPlayer + " a perdu une vie. Il lui reste encore " + this.playersLives[this.actualPlayer-1] + " vie(s) !", { classname: 'bg-danger text-light', delay: 10000 });
+        if(this.notifs) this.toastService.show(this.translate.instant('survival.the_player') + " " + this.actualPlayer + " " + this.translate.instant('survival.lose_live') + " " + this.playersLives[this.actualPlayer-1] + " " + this.translate.instant('survival.live_text') + " !", { classname: 'bg-danger text-light', delay: 10000 });
       } else {
-        if(this.notifs) this.toastService.show("Le Joueur " + this.actualPlayer + " est éliminé.", { classname: 'bg-dark text-light', delay: 10000 });
+        if(this.notifs) this.toastService.show(this.translate.instant('survival.the_player') +" " + this.actualPlayer + " " + this.translate.instant('survival.eliminated_text') + ".", { classname: 'bg-dark text-light', delay: 10000 });
         this.playerAlive.splice(this.playerAlive.indexOf(this.actualPlayer), 1);
       }
     } else {
-      if(this.notifs) this.toastService.show("Réponse correcte pour le Joueur " + this.actualPlayer + " !", { classname: 'bg-success text-light', delay: 10000 });
+      if(this.notifs) this.toastService.show(this.translate.instant('survival.correct_answer') + " " + this.actualPlayer + " !", { classname: 'bg-success text-light', delay: 10000 });
     }
 
     if(this.playerAlive.length != 0) {
@@ -273,6 +273,8 @@ export class SurvivalComponent implements OnInit {
   dernierSurvivant() {
     if(this.playerAlive.length == 1) {
       this.ended = true;
+      alert("(Temporaire) : Le joueur " + this.playerAlive[0] + " a gagné !");
+      this.resetGame();
     }
   }
 }

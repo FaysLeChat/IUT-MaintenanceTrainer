@@ -62,7 +62,27 @@
     "alert": {
       "endgame": "Fin de la partie",
       "allplayereliminated": "Tous les joueurs sont éliminés"
-    }
+    },
+    "is_number_error": "Le nombre de vies doit être un nombre !",
+    "between_number_error": "Le nombre de joueurs doit être compris entre 2 et 10 !",
+    "the_player": "Le Joueur",
+    "eliminated_text": "est éliminé",
+    "lose_live": "a perdu une vie",
+    "live_remaining": "Il lui reste encore",
+    "live_text": "vie(s)",
+    "is_alive": "En Vie",
+    "is_eliminated": "Éliminé",
+    "game_settings": "Paramètres de la partie",
+    "notifications": "Notifications",
+    "reset_party": "Réinitialiser la partie",
+    "player_settings": "Paramètres des joueurs",
+    "optionnal_settings": "Paramètres optionnels",
+    "start_lives": "Vies de départ",
+    "correct_answer": "Réponse correcte pour le Joueur",
+    "game_stats": "Infos Partie",
+    "player_turn": "Au tour du Joueur",
+    "life_maj_text": "Vie(s)",
+    "player_text": "Joueur"
   },
   "settings": {
     "title": "Paramètres",

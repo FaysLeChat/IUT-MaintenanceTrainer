@@ -100,7 +100,8 @@ export class EntrainementComponent implements OnInit {
         },1000)
       }
       this.questionService.getCategorie(this.theme).subscribe(r => {
-        this.questionService.getQuestionTraining(r[0].id_categorie).subscribe(res => {
+        if(this.selectedBac =="bac+2"){
+          this.questionService.getQuestionTrainingDifficult2(r[0].id_categorie).subscribe(res => {
           this.questions = res;
           this.reponses = [];
           console.log(this.questions);
@@ -141,6 +142,49 @@ export class EntrainementComponent implements OnInit {
             );
           }
         });
+        }else {
+          this.questionService.getQuestionTraining(r[0].id_categorie).subscribe(res => {
+            this.questions = res;
+            this.reponses = [];
+            console.log(this.questions);
+            let i = [];
+            let y = 0;
+            for (let r of this.questions) {
+              this.reponseService.getReponse(r.id_question).subscribe(resR => {
+                  this.reponses.push(resR[0]);
+                  this.reponses.push(resR[1]);
+                  this.reponses.push(resR[2]);
+                  this.reponses.push(resR[3]);
+                  console.log(this.reponses);
+
+                  // for(let i = 0; i< this.reponses.length-1 ; i++){
+                  //     if(this.reponses[i].id_question > this.reponses[i+1].id_question){
+                  //       var temp;
+                  //       temp = this.reponses[i].id_question;
+                  //       this.reponses[i].id_question = this.reponses[i+1].id_question;
+                  //       this.reponses[i+1].id_question = temp;
+                  //     }
+                  //   }
+                  var len = this.reponses.length;
+                  var tmp, i, j;
+                  for (i = 1; i < len; i++) {
+                    //stocker la valeur actuelle
+                    tmp = this.reponses[i];
+                    j = i - 1
+                    while (j >= 0 && this.reponses[j].id_question > tmp.id_question) {
+                      // déplacer le nombre
+                      this.reponses[j + 1] = this.reponses[j];
+                      j--
+                    }
+                    //Insère la valeur temporaire à la position
+                    //correcte dans la partie triée.
+                    this.reponses[j + 1] = tmp
+                  }
+                }
+              );
+            }
+          });
+        }
       });
     }
 

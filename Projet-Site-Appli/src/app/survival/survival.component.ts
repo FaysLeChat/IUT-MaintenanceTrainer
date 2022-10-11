@@ -88,7 +88,7 @@ export class SurvivalComponent implements OnInit {
                   //correcte dans la partie triée.
                   this.reponses[j+1] = tmp
                 }
-          
+
         });
       }
     });
@@ -116,6 +116,9 @@ export class SurvivalComponent implements OnInit {
           localStorage.setItem('survival_timer', String(this.timer++));
         }, 1000)
       }
+
+      alert("(DEV) Une partie précédente a été détectée mais la sauvegarde est pour le moment instable ! Continuez pour réinitialiser...");
+      this.resetGame();
     } else {
       this.resetGame();
     }

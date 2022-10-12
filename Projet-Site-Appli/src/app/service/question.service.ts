@@ -21,6 +21,10 @@ export class QuestionService {
     var url = 'http://45.155.170.233:3000/questions?id_categorie=eq.'+choix+'&training_mode=eq.true';
     return this.http.get(url);
   }
+  getQuestionTrainingDifficult2(choix : any): Observable<any> {
+    var url = 'http://45.155.170.233:3000/questions?id_categorie=eq.'+choix+'&training_mode=eq.true&or=(id_difficulte.eq.1,id_difficulte.eq.2)';
+    return this.http.get(url);
+  }
   getQuestionsSurvival(): Observable<any> {
     var url = 'http://45.155.170.233:3000/questions?survival_mode=eq.true';
     return  this.http.get(url);
@@ -30,6 +34,12 @@ export class QuestionService {
     url = url.concat(choix.toString());
     console.log(url)
     return this.http.get<Questions[]>(url).pipe(map(rep => rep[0]));
+
   }
+  getQuestionSimulation(choix : any): Observable<any> {
+    var url = 'http://45.155.170.233:3000/questions?id_categorie=eq.'+choix+"&eval_mode=eq.true";
+    return this.http.get(url);
+  }
+
 
 }

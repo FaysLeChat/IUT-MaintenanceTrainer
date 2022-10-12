@@ -62,7 +62,27 @@
     "alert": {
       "endgame": "The game is ended",
       "allplayereliminated": "All players are eliminated"
-    }
+    },
+    "is_number_error": "The number of lives must be a number !",
+    "between_number_error": "The number of players must be between 2 and 10 !",
+    "the_player": "The Player",
+    "eliminated_text": "is eliminated",
+    "lose_live": "has lost a life",
+    "live_remaining": "He still has",
+    "live_text": "life(s)",
+    "is_alive": "Alive",
+    "is_eliminated": "Eliminated",
+    "game_settings": "Game settings",
+    "notifications": "Notifications",
+    "reset_party": "Reset the game",
+    "player_settings": "Player settings",
+    "optionnal_settings": "Optional parameters",
+    "start_lives": "Starting lives",
+    "correct_answer": "Correct answer for the Player",
+    "game_stats": "Game Stats",
+    "player_turn": "The turn of Player",
+    "life_maj_text": "Life(s)",
+    "player_text": "Player"
   },
   "settings": {
     "title": "Settings",

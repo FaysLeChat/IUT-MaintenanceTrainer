@@ -9,7 +9,7 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title" style="text-align: center;">Question {{IdQuestion}}/{{questions.length}}</h5>
-          <p class="card-text" style="text-align: center;">{{questions[question].label_fr}}{{questions[question].id_question}}</p>
+          <p class="card-text" style="text-align: center;">{{questions[question].label_fr}}</p>
           <ngb-alert *ngIf="errorMessage" type="info" (closed)="errorMessage=''">{{errorMessage | translate }}</ngb-alert>
           <div class="row">
           </div>
@@ -17,18 +17,18 @@
           <div class="row">
             <div class="col">
               <div class="card">
-                <button class="btn btn-primary" (click)="IncQuestion(reponses[question*4],questions.length)">{{reponses[question*4].label_fr}}|{{reponses[question*4].id_question}}</button>
+                <button class="btn btn-primary" (click)="IncQuestion(reponses[question*4],questions.length)">{{reponses[question*4].label_fr}}</button>
               </div>
               <div class="card">
-                <button class="btn btn-primary" (click)="IncQuestion(reponses[question*4+1],questions.length)">{{reponses[question*4+1].label_fr}}|{{reponses[question*4+1].id_question}}</button>
+                <button class="btn btn-primary" (click)="IncQuestion(reponses[question*4+1],questions.length)">{{reponses[question*4+1].label_fr}}</button>
               </div>
             </div>
             <div class="col">
               <div class="card">
-                <button class="btn btn-primary" (click)="IncQuestion(reponses[question*4+2],questions.length)">{{reponses[question*4+2].label_fr}}|{{reponses[question*4+2].id_question}}</button>
+                <button class="btn btn-primary" (click)="IncQuestion(reponses[question*4+2],questions.length)">{{reponses[question*4+2].label_fr}}</button>
               </div>
               <div class="card">
-                <button class="btn btn-primary" (click)="IncQuestion(reponses[question*4+3],questions.length)">{{reponses[question*4+3].label_fr}}|{{reponses[question*4+3].id_question}}</button>
+                <button class="btn btn-primary" (click)="IncQuestion(reponses[question*4+3],questions.length)">{{reponses[question*4+3].label_fr}}</button>
               </div>
             </div>
           </div>
@@ -44,7 +44,7 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title" style="text-align: center;">Question {{IdQuestion}}/{{questions.length}}</h5>
-          <p class="card-text" style="text-align: center;">{{questions[question].label_en}}{{questions[question].id_question}}</p>
+          <p class="card-text" style="text-align: center;">{{questions[question].label_en}}</p>
           <ngb-alert *ngIf="errorMessage" type="info" (closed)="errorMessage=''">{{errorMessage | translate }}</ngb-alert>
           <div class="row">
           </div>
@@ -52,18 +52,18 @@
           <div class="row">
             <div class="col">
               <div class="card">
-                <button class="btn btn-primary" (click)="IncQuestion(reponses[question*4],questions.length)">{{reponses[question*4].label_en}}|{{reponses[question*4].id_question}}</button>
+                <button class="btn btn-primary" (click)="IncQuestion(reponses[question*4],questions.length)">{{reponses[question*4].label_en}}</button>
               </div>
               <div class="card">
-                <button class="btn btn-primary" (click)="IncQuestion(reponses[question*4+1],questions.length)">{{reponses[question*4+1].label_en}}|{{reponses[question*4+1].id_question}}</button>
+                <button class="btn btn-primary" (click)="IncQuestion(reponses[question*4+1],questions.length)">{{reponses[question*4+1].label_en}}</button>
               </div>
             </div>
             <div class="col">
               <div class="card">
-                <button class="btn btn-primary" (click)="IncQuestion(reponses[question*4+2],questions.length)">{{reponses[question*4+2].label_en}}|{{reponses[question*4+2].id_question}}</button>
+                <button class="btn btn-primary" (click)="IncQuestion(reponses[question*4+2],questions.length)">{{reponses[question*4+2].label_en}}</button>
               </div>
               <div class="card">
-                <button class="btn btn-primary" (click)="IncQuestion(reponses[question*4+3],questions.length)">{{reponses[question*4+3].label_en}}|{{reponses[question*4+3].id_question}}</button>
+                <button class="btn btn-primary" (click)="IncQuestion(reponses[question*4+3],questions.length)">{{reponses[question*4+3].label_en}}</button>
               </div>
             </div>
           </div>
@@ -100,7 +100,7 @@
 </div>
 <ng-template #content2 let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title-2"><i class="bi bi-patch-question"></i> {{'training.theme.title' | translate }}</h4>
+    <h4 class="modal-title" id="modal-basic-title-2"><i class="bi bi-patch-question"></i> {{'theme.title' | translate }}</h4>
     <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
   </div>
   <div class="modal-body">
@@ -110,27 +110,27 @@
           <div class="col-4">
             <div class="card">
               <div class="card-body" style="background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(assets/img/themes/mysql.jpg); background-repeat: no-repeat; background-size: 100%;">
-                <h5 class="card-title">{{'training.theme.database.title' | translate }}</h5>
-                <p class="card-text">{{'training.theme.database.description' | translate }}</p>
-                <button (click)="endconf('Basededonnees')" class="btn btn-primary">{{'training.theme.select' | translate }}</button>
+                <h5 class="card-title">{{'theme.database.title' | translate }}</h5>
+                <p class="card-text">{{'theme.database.description' | translate }}</p>
+                <button (click)="endconf('Basededonnees')" class="btn btn-primary">{{'theme.select' | translate }}</button>
               </div>
             </div>
           </div>
           <div class="col-4">
             <div class="card">
               <div class="card-body" style="background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(assets/img/themes/reseau.jpg); background-repeat: no-repeat; background-size: 100%;">
-                <h5 class="card-title">{{'training.theme.network.title' | translate }}</h5>
-                <p class="card-text">{{'training.theme.network.description' | translate }}</p>
-                <button (click)="endconf('Reseau')" class="btn btn-primary">{{'training.theme.select' | translate }}</button>
+                <h5 class="card-title">{{'theme.network.title' | translate }}</h5>
+                <p class="card-text">{{'theme.network.description' | translate }}</p>
+                <button (click)="endconf('Reseau')" class="btn btn-primary">{{'theme.select' | translate }}</button>
               </div>
             </div>
           </div>
           <div class="col-4">
             <div class="card">
               <div class="card-body" style="background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(assets/img/themes/frontend.jpg); background-repeat: no-repeat; background-size: 100%;">
-                <h5 class="card-title">{{'training.theme.frontend.title' | translate }}</h5>
-                <p class="card-text">{{'training.theme.frontend.description' | translate }}</p>
-                <button (click)="endconf('Web-Front')" class="btn btn-primary">{{'training.theme.select' | translate }}</button>
+                <h5 class="card-title">{{'theme.frontend.title' | translate }}</h5>
+                <p class="card-text">{{'theme.frontend.description' | translate }}</p>
+                <button (click)="endconf('Web-Front')" class="btn btn-primary">{{'theme.select' | translate }}</button>
               </div>
             </div>
           </div>
@@ -140,27 +140,27 @@
           <div class="col-4">
             <div class="card">
               <div class="card-body" style="background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(assets/img/themes/backend.png); background-repeat: no-repeat; background-size: 100%;">
-                <h5 class="card-title">{{'training.theme.backend.title' | translate }}</h5>
-                <p class="card-text">{{'training.theme.backend.description' | translate }}</p>
-                <button (click)="endconf('Web-Back')" class="btn btn-primary">{{'training.theme.select' | translate }}</button>
+                <h5 class="card-title">{{'theme.backend.title' | translate }}</h5>
+                <p class="card-text">{{'theme.backend.description' | translate }}</p>
+                <button (click)="endconf('Web-Back')" class="btn btn-primary">{{'theme.select' | translate }}</button>
               </div>
             </div>
           </div>
           <div class="col-4">
             <div class="card">
               <div class="card-body" style="background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(assets/img/themes/poo.jpg); background-repeat: no-repeat; background-size: 100%;">
-                <h5 class="card-title">{{'training.theme.oop.title' | translate }}</h5>
-                <p class="card-text">{{'training.theme.oop.description' | translate }}</p>
-                <button (click)="endconf('ProgObjet')" class="btn btn-primary">{{'training.theme.select' | translate }}</button>
+                <h5 class="card-title">{{'theme.oop.title' | translate }}</h5>
+                <p class="card-text">{{'theme.oop.description' | translate }}</p>
+                <button (click)="endconf('ProgObjet')" class="btn btn-primary">{{'theme.select' | translate }}</button>
               </div>
             </div>
           </div>
           <div class="col-4">
             <div class="card">
               <div class="card-body" style="background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(assets/img/themes/php.jpg); background-repeat: no-repeat; background-size: 100%;">
-                <h5 class="card-title">{{'training.theme.php.title' | translate }}</h5>
-                <p class="card-text">{{'training.theme.php.description' | translate }}</p>
-                <button (click)="endconf('PHP')" class="btn btn-primary">{{'training.theme.select' | translate }}</button>
+                <h5 class="card-title">{{'theme.php.title' | translate }}</h5>
+                <p class="card-text">{{'theme.php.description' | translate }}</p>
+                <button (click)="endconf('PHP')" class="btn btn-primary">{{'theme.select' | translate }}</button>
               </div>
             </div>
           </div>
@@ -170,18 +170,18 @@
           <div class="col-6">
             <div class="card">
               <div class="card-body" style="background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(assets/img/themes/random.jpg); background-repeat: no-repeat; background-size: 100%;">
-                <h5 class="card-title">{{'training.theme.random.title' | translate }}</h5>
-                <p class="card-text">{{'training.theme.random.description' | translate }}</p>
-                <button (click)="endconf('random')" class="btn btn-primary">{{'training.theme.select' | translate }}</button>
+                <h5 class="card-title">{{'theme.random.title' | translate }}</h5>
+                <p class="card-text">{{ 'theme.random.description' | translate }}</p>
+                <button (click)="endconf('random')" class="btn btn-primary">{{'theme.select' | translate }}</button>
               </div>
             </div>
           </div>
           <div class="col-6">
             <div class="card">
               <div class="card-body" style="background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(assets/img/themes/all.jpg); background-repeat: no-repeat; background-size: 100%;">
-                <h5 class="card-title">{{'training.theme.all.title' | translate }}</h5>
-                <p class="card-text">{{'training.theme.all.description' | translate }}</p>
-                <button (click)="endconf('all')" class="btn btn-primary">{{'training.theme.select' | translate }}</button>
+                <h5 class="card-title">{{'theme.all.title' | translate }}</h5>
+                <p class="card-text">{{'theme.all.description' | translate }}</p>
+                <button (click)="endconf('all')" class="btn btn-primary">{{'theme.select' | translate }}</button>
               </div>
             </div>
           </div>

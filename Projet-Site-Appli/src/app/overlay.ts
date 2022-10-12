@@ -37,14 +37,11 @@ import {SimulationComponent} from "./simulation/simulation.component";
         </div>
         <div class="col" style="text-align: right;">
           <div *ngIf="this.router.url == '/survival'">
-            <button *ngIf="checkSurvivalConfig()" class="btn btn-dark" (click)="resetSurvival()"><i class="bi bi-people"></i> RESET (Experimental)</button>
             <button *ngIf="checkSurvivalConfig() && checkSurvivalActiveTimer()" class="btn btn-primary"><i class="bi bi-stopwatch"></i> {{ this.survival_timer }}s</button>
-            <button *ngIf="checkSurvivalConfig()" class="btn btn-danger"><i class="bi bi-heart"></i> {{ this.survival_lives }} {{'survival.bar.lives' | translate }}</button>
             <button *ngIf="checkSurvivalConfig()" class="btn btn-warning"><i class="bi bi-people"></i> {{ this.survival_nbplayer }} {{'survival.bar.players' | translate }}</button>
           </div>
           <div *ngIf="this.router.url == '/simulation'">
             <button *ngIf="simulation_config == 'true'" class="btn btn-dark" (click)="simulationReset()"><i class="bi bi-people"></i> RESET (Experimental)</button>
-            <button *ngIf="simulation_config == 'true'" class="btn btn-danger" (click)= "simulationChangerQuestion()"><i class="bi bi-plus"></i> {{'simulation.bar.test' | translate }}</button>
             <button *ngIf="simulation_config == 'true'" class="btn btn-primary"><i class="bi bi-1-circle"></i> {{'simulation.bar.score' | translate }} : {{simulation_score}}/{{simulation_maxscore}}</button>
           </div>
         </div>
@@ -60,7 +57,6 @@ export class Overlay {
   public simulation_maxscore:any;
 
   // Survival Data
-  public survival_lives:any;
   public survival_config:any;
   public survival_activetimer:any;
   public survival_timer:any;
@@ -76,7 +72,6 @@ export class Overlay {
         this.simulation_maxscore = injector.get(SimulationComponent).maxscore;
       }
       if(this.router.url == '/survival') {
-        this.survival_lives = injector.get(SurvivalComponent).playersLives[injector.get(SurvivalComponent).actualPlayer-1];
         this.survival_config = injector.get(SurvivalComponent).config;
         this.survival_activetimer = localStorage.getItem('survival_activetimer');
         this.survival_timer = injector.get(SurvivalComponent).timer;
@@ -97,9 +92,6 @@ export class Overlay {
     this.translate.use(localStorage.getItem('locale').toString());
   }
 
-  simulationChangerQuestion() {
-    this.injector.get(SimulationComponent).changerQuestion();
-  }
   simulationReset() {
     this.injector.get(SimulationComponent).resetGame();
   }
@@ -109,9 +101,5 @@ export class Overlay {
   }
   checkSurvivalActiveTimer() {
     return localStorage.getItem('survival_activetimer') === 'true';
-  }
-
-  resetSurvival() {
-    this.injector.get(SurvivalComponent).resetGame();
   }
 }

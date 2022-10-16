@@ -357,8 +357,8 @@ INSERT INTO reponses (id_reponse, id_question, label_fr, label_en, valid) VALUES
 (215, 68, 'La connection cablée.', 'Wired connection.', TRUE),
 (216, 68, 'Ils ont tous la même vitesse.', 'They all have the same speed.', FALSE),
 (217, 68, 'Par ondes radio.', 'By radio waves.', FALSE),
-(218, 69, 'Multiplexage par répartition de temps', 'Time Division Multiplexing', TRUE)
-(219, 69, 'Multiplexage spatial de mode', 'Space Division Multiplexing', FALSE)
+(218, 69, 'Multiplexage par répartition de temps', 'Time Division Multiplexing', TRUE),
+(219, 69, 'Multiplexage spatial de mode', 'Space Division Multiplexing', FALSE),
 (220, 69, 'Multiplexage par répartition de fréquence', 'Frequency Division Multiplexing', FALSE),
 (221, 69, 'Multiplexage des fréquences en ADSL', 'Plain Old Telephone Service', FALSE),
 (222, 70, 'Délai de propagation', 'Time of propagation', FALSE),

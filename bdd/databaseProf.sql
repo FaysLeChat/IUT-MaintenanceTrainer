@@ -404,7 +404,11 @@ INSERT INTO reponses (id_reponse, id_question, label_fr, label_en, valid) VALUES
 (263, 80, 'Avec le mot clé transient.', 'With the key word transient.', TRUE),
 (264, 80, 'En les mettant dans le constructeur.', 'By putting them in the constructor.', FALSE),
 (265, 80, 'En les définissant comme constantes.', 'By defining them as constants.', FALSE),
-(266, 80, 'Toutes les réponses sont correctes.', 'All of the answers are correct.', FALSE);
+(266, 80, 'Toutes les réponses sont correctes.', 'All of the answers are correct.', FALSE),
+(267, 81, 'C''est la définition de la nature', 'It''s the definition of nature',FALSE),
+(268, 81, 'C''est une jointure entre 2 tables qui permet de retourner les enregistrements des deux tables de façon « naturelle', 'It''s a join between 2 tables which allows to return the records of the two tables in a "natural" way', TRUE),
+(269, 81, 'C''est une jointure entre 2 tables qui permet de retourner tous les enregistrements des deux tables même s’il n’y a pas de correspondance avec l’autre','it''s is a join between 2 tables which allows to return all the records of the two tables even if there is no correspondence with the other',FALSE),
+(270, 81, 'C''est une jointure entre 2 tables qui permet de retourner tous les enregistrements de la table de droite même s’il n’y a pas de correspondance avec la table de gauche','it''s a join between 2 tables which allows to return all the records of the right table even if there is no correspondence with the left table',FALSE);
 
 
 

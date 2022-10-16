@@ -109,7 +109,6 @@ INSERT INTO questions (id_question, label_fr, label_en, id_categorie, id_difficu
 (61, 'Qu''est ce qu''une collection en Java ?','What is a collection in Java?',5,2,TRUE,TRUE,TRUE,NULL,NULL),
 (62, 'Qu''est ce qu''un INNER JOIN ?','What is an INNER JOIN?',1,2,TRUE,TRUE,TRUE,NULL,NULL),
 (63, 'Qu''est ce qu''un OUTER JOIN ?','What is an OUTER JOIN?',1,2,TRUE,TRUE,TRUE,NULL,NULL),
-(63, 'Qu''est ce qu''un NATURAL JOIN ?','What is an NATURAL JOIN?',1,2,TRUE,TRUE,TRUE,NULL,NULL),
 (64, 'Une View c''est ?','A View is?',1,1,TRUE,TRUE,TRUE,NULL,NULL),
 (65, 'Un déclencheur c''est ?','A trigger is ?',1,1,TRUE,TRUE,TRUE,NULL,NULL),
 (66, 'Qu''est ce qu''un cookie ?','What is a cookie ?',2,2,TRUE,TRUE,TRUE,NULL,NULL),
@@ -126,8 +125,8 @@ INSERT INTO questions (id_question, label_fr, label_en, id_categorie, id_difficu
 (77, 'Pouvez-vous expliquer le cycle de vie d’un thread Java ?','Can you explain the life cycle of a Java thread?',5,2,TRUE,TRUE,TRUE,NULL,NULL),
 (78, 'Quel est le moyen possible de rendre un objet éligible au garbage collection (GC) en Java ?','What is the possible way to make an object eligible for garbage collection (GC) in Java?',5,2,TRUE,TRUE,TRUE,NULL,NULL),
 (79, 'Quelle est la meilleure façon d’injecter une dépendance ?','What is the best way to inject a dependency?',5,1,TRUE,TRUE,TRUE,NULL,NULL),
-(80, 'Comment empêcher la sérialisation des attributs d’une classe en Java ?','How to prevent serialization of attributes of a class in Java?',5,3,TRUE,TRUE,TRUE,NULL,NULL);
-
+(80, 'Comment empêcher la sérialisation des attributs d’une classe en Java ?','How to prevent serialization of attributes of a class in Java?',5,3,TRUE,TRUE,TRUE,NULL,NULL),
+(81, 'Qu''est ce qu''un NATURAL JOIN ?','What is an NATURAL JOIN?',1,2,TRUE,TRUE,TRUE,NULL,NULL);
 
 
 

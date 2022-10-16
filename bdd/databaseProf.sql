@@ -329,7 +329,7 @@ INSERT INTO reponses (id_reponse, id_question, label_fr, label_en, valid) VALUES
 (187, 61, 'Les collections sont ensembles de fonctions.', 'Collections are sets of functions.', FALSE),
 (188, 61, 'Les collections sont des objets qui permettent de créer des interfaces plus facilement.','Collections are objects that make it easier to create interfaces.', FALSE),
 (189, 61, 'Les collections sont des objets qui permettent de gérer des décorateurs.', 'Collections are objects that allow you to manage decorators.', FALSE),
-(190, 62, 'Un type de jointures très communes pour lier plusieurs tables entre-elles.' 'A very common type of join to link several tables together.', TRUE),
+(190, 62, 'Un type de jointures très communes pour lier plusieurs tables entre-elles.','A very common type of join to link several tables together.', TRUE),
 (191, 62, 'Un type de jointure qui permet de lier plusieurs clés primaires.', 'A join type that links multiple primary keys.', FALSE),
 (192, 62, 'Un type de jointure qui permet de lier plusieurs clés secondaires.', 'A type of join that allows you to link multiple secondary keys.', FALSE),
 (193, 62, 'Une commande qui permet de créer des vues.', 'A command that allows you to create views.', FALSE),

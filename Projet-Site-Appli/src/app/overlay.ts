@@ -10,13 +10,12 @@ import {SimulationComponent} from "./simulation/simulation.component";
   template: `
     <ng-template #content let-modal>
       <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title"><i class="bi bi-gear"></i> {{'settings.title' | translate }}</h4>
+        <h4 class="modal-title" id="modal-basic-title"><i class="bi bi-translate"></i> {{'settings.language' | translate }}</h4>
         <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
       </div>
       <div class="modal-body">
         <form>
           <div class="mb-3">
-            <label>{{'settings.language' | translate }}</label>
             <div class="input-group">
               <select [(ngModel)]="choice" (ngModelChange)="onChange($event)" name="selectLang" class="form-select" aria-label="Select lang">
                 <option value="fr">{{'settings.languages.french' | translate }}</option>
@@ -33,7 +32,7 @@ import {SimulationComponent} from "./simulation/simulation.component";
     <div class="container-fluid" style="pointer-events: none; background: transparent; position: fixed; bottom: 10px;">
       <div class="row" style="background: transparent;">
         <div class="col-lg-6">
-          <button (click)="open(content)" class="btn btn-dark" style="pointer-events: auto;"><i class="bi bi-gear"></i> {{'footerbar.settings' | translate }}</button>
+          <button (click)="open(content)" class="btn btn-dark" style="pointer-events: auto;"><i class="bi bi-translate"></i> {{'settings.language' | translate }}</button>
         </div>
         <div class="col" style="text-align: right;">
           <div *ngIf="this.router.url == '/survival'">

@@ -10,13 +10,12 @@ import {SimulationComponent} from "./simulation/simulation.component";
   template: `
     <ng-template #content let-modal>
       <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title"><i class="bi bi-gear"></i> {{'settings.title' | translate }}</h4>
+        <h4 class="modal-title" id="modal-basic-title"><i class="bi bi-translate"></i> {{'settings.language' | translate }}</h4>
         <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
       </div>
       <div class="modal-body">
         <form>
           <div class="mb-3">
-            <label>{{'settings.language' | translate }}</label>
             <div class="input-group">
               <select [(ngModel)]="choice" (ngModelChange)="onChange($event)" name="selectLang" class="form-select" aria-label="Select lang">
                 <option value="fr">{{'settings.languages.french' | translate }}</option>
@@ -30,19 +29,31 @@ import {SimulationComponent} from "./simulation/simulation.component";
         <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">{{'settings.close' | translate }}</button>
       </div>
     </ng-template>
-    <div class="container-fluid" style="position: fixed; bottom: 10px;">
-      <div class="row">
+    <div class="container-fluid" style="pointer-events: none; background: transparent; position: fixed; bottom: 10px;">
+      <div class="row" style="background: transparent;">
         <div class="col-lg-6">
-          <button (click)="open(content)" class="btn btn-dark"><i class="bi bi-gear"></i> {{'footerbar.settings' | translate }}</button>
+          <button (click)="open(content)" class="btn btn-dark" style="pointer-events: auto;"><i class="bi bi-gear"></i> {{'settings.language' | translate }}</button>
+          <div ngbDropdown class="d-inline-block">
+            <button class="btn btn-success" id="dropdownBasic2" style="pointer-events: auto;" ngbDropdownToggle><i class="bi bi-people"></i></button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic2">
+              <a href="#" ngbDropdownItem>Lucie C.</a>
+              <a href="#" ngbDropdownItem>Maxence D.</a>
+              <a href="#" ngbDropdownItem>Allan P.</a>
+              <a href="#" ngbDropdownItem>Corentin G.</a>
+              <a href="#" ngbDropdownItem>William M.</a>
+              <a href="#" ngbDropdownItem>Jean-Philippe C.</a>
+            </div>
+          </div>
+          <span>&copy; Copyright 2022</span>
         </div>
         <div class="col" style="text-align: right;">
           <div *ngIf="this.router.url == '/survival'">
-            <button *ngIf="checkSurvivalConfig() && checkSurvivalActiveTimer()" class="btn btn-primary"><i class="bi bi-stopwatch"></i> {{ this.survival_timer }}s</button>
-            <button *ngIf="checkSurvivalConfig()" class="btn btn-warning"><i class="bi bi-people"></i> {{ this.survival_nbplayer }} {{'survival.bar.players' | translate }}</button>
+            <button *ngIf="checkSurvivalConfig() && checkSurvivalActiveTimer()" class="btn btn-primary" style="pointer-events: auto;"><i class="bi bi-stopwatch"></i> {{ this.survival_timer }}s</button>
+            <button *ngIf="checkSurvivalConfig()" class="btn btn-warning" style="pointer-events: auto;"><i class="bi bi-people"></i> {{ this.survival_nbplayer }} {{'survival.bar.players' | translate }}</button>
           </div>
           <div *ngIf="this.router.url == '/simulation'">
-            <button *ngIf="simulation_config == 'true'" class="btn btn-dark" (click)="simulationReset()"><i class="bi bi-people"></i> RESET (Experimental)</button>
-            <button *ngIf="simulation_config == 'true'" class="btn btn-primary"><i class="bi bi-1-circle"></i> {{'simulation.bar.score' | translate }} : {{simulation_score}}/{{simulation_maxscore}}</button>
+            <button *ngIf="simulation_config == 'true'" class="btn btn-dark" (click)="simulationReset()" style="pointer-events: auto;"><i class="bi bi-exclamation-triangle-fill"></i> {{'survival.reset_party' | translate}}</button>
+            <button *ngIf="simulation_config == 'true'" class="btn btn-primary" style="pointer-events: auto;"><i class="bi bi-1-circle"></i> {{'simulation.bar.score' | translate }} : {{simulation_score}}/{{simulation_maxscore}}</button>
           </div>
         </div>
       </div>

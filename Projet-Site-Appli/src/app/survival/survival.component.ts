@@ -144,10 +144,10 @@ export class SurvivalComponent implements OnInit {
     this.valid(reponse, n);
 
     let r =  Math.floor((Math.random() * n));
-    let boucle: boolean;
+    let boucle: boolean = true;
 
-    if(this.tabQ.length == n) boucle = false;
-    else boucle = true;
+    if(this.tabQ.length == n)
+      this.tabQ = [];
 
     while(boucle) {
       if (!this.tabQ.includes(r)) {

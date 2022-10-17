@@ -32,7 +32,19 @@ import {SimulationComponent} from "./simulation/simulation.component";
     <div class="container-fluid" style="pointer-events: none; background: transparent; position: fixed; bottom: 10px;">
       <div class="row" style="background: transparent;">
         <div class="col-lg-6">
-          <button (click)="open(content)" class="btn btn-dark" style="pointer-events: auto;"><i class="bi bi-translate"></i> {{'settings.language' | translate }}</button>
+          <button (click)="open(content)" class="btn btn-dark" style="pointer-events: auto;"><i class="bi bi-gear"></i> {{'settings.language' | translate }}</button>
+          <div ngbDropdown class="d-inline-block">
+            <button class="btn btn-success" id="dropdownBasic2" style="pointer-events: auto;" ngbDropdownToggle><i class="bi bi-people"></i></button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic2">
+              <a href="#" ngbDropdownItem>Lucie C.</a>
+              <a href="#" ngbDropdownItem>Maxence D.</a>
+              <a href="#" ngbDropdownItem>Allan P.</a>
+              <a href="#" ngbDropdownItem>Corentin G.</a>
+              <a href="#" ngbDropdownItem>William M.</a>
+              <a href="#" ngbDropdownItem>Jean-Philippe C.</a>
+            </div>
+          </div>
+          <span>&copy; Copyright 2022</span>
         </div>
         <div class="col" style="text-align: right;">
           <div *ngIf="this.router.url == '/survival'">

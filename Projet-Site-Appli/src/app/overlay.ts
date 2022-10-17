@@ -31,18 +31,18 @@ import {SimulationComponent} from "./simulation/simulation.component";
       </div>
     </ng-template>
     <div class="container-fluid" style="pointer-events: none; background: transparent; position: fixed; bottom: 10px;">
-      <div class="row" style="pointer-events: none; background: transparent;">
+      <div class="row" style="background: transparent;">
         <div class="col-lg-6">
-          <button (click)="open(content)" class="btn btn-dark"><i class="bi bi-gear"></i> {{'footerbar.settings' | translate }}</button>
+          <button (click)="open(content)" class="btn btn-dark" style="pointer-events: auto;"><i class="bi bi-gear"></i> {{'footerbar.settings' | translate }}</button>
         </div>
         <div class="col" style="text-align: right;">
           <div *ngIf="this.router.url == '/survival'">
-            <button *ngIf="checkSurvivalConfig() && checkSurvivalActiveTimer()" class="btn btn-primary"><i class="bi bi-stopwatch"></i> {{ this.survival_timer }}s</button>
-            <button *ngIf="checkSurvivalConfig()" class="btn btn-warning"><i class="bi bi-people"></i> {{ this.survival_nbplayer }} {{'survival.bar.players' | translate }}</button>
+            <button *ngIf="checkSurvivalConfig() && checkSurvivalActiveTimer()" class="btn btn-primary" style="pointer-events: auto;"><i class="bi bi-stopwatch"></i> {{ this.survival_timer }}s</button>
+            <button *ngIf="checkSurvivalConfig()" class="btn btn-warning" style="pointer-events: auto;"><i class="bi bi-people"></i> {{ this.survival_nbplayer }} {{'survival.bar.players' | translate }}</button>
           </div>
           <div *ngIf="this.router.url == '/simulation'">
-            <button *ngIf="simulation_config == 'true'" class="btn btn-dark" (click)="simulationReset()"><i class="bi bi-people"></i> RESET (Experimental)</button>
-            <button *ngIf="simulation_config == 'true'" class="btn btn-primary"><i class="bi bi-1-circle"></i> {{'simulation.bar.score' | translate }} : {{simulation_score}}/{{simulation_maxscore}}</button>
+            <button *ngIf="simulation_config == 'true'" class="btn btn-dark" (click)="simulationReset()" style="pointer-events: auto;"><i class="bi bi-exclamation-triangle-fill"></i> {{'survival.reset_party' | translate}}</button>
+            <button *ngIf="simulation_config == 'true'" class="btn btn-primary" style="pointer-events: auto;"><i class="bi bi-1-circle"></i> {{'simulation.bar.score' | translate }} : {{simulation_score}}/{{simulation_maxscore}}</button>
           </div>
         </div>
       </div>

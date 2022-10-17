@@ -30,8 +30,8 @@ import {SimulationComponent} from "./simulation/simulation.component";
         <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">{{'settings.close' | translate }}</button>
       </div>
     </ng-template>
-    <div class="container-fluid" style="position: fixed; bottom: 10px;">
-      <div class="row">
+    <div class="container-fluid" style="pointer-events: none; background: transparent; position: fixed; bottom: 10px;">
+      <div class="row" style="pointer-events: none; background: transparent;">
         <div class="col-lg-6">
           <button (click)="open(content)" class="btn btn-dark"><i class="bi bi-gear"></i> {{'footerbar.settings' | translate }}</button>
         </div>

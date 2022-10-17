@@ -252,7 +252,6 @@ INSERT INTO reponses (id_reponse, id_question, label_fr, label_en, valid) VALUES
 (110, 41, 'Bootstrap est un environnement de développement intégré destiné au développement de logiciels informatiques reposant sur la technologie Java','Bootstrap is an integrated development environment for developing computer software based on Java',FALSE),
 (111, 41, 'Bootstrap est un éditeur pour PHP, HTML, CSS et JavaScript, édité par JetBrains','Bootstrap is an editor for PHP, HTML, CSS and JavaScript, published by JetBrains',FALSE),
 (112, 41, 'Bootstrap est un environnement de développement intégré pour JavaScript et les technologies connexes','Bootstrap is an integrated development environment for JavaScript and related technologies',FALSE),
-(112, 41, 'Bootstrap est un environnement de développement intégré pour JavaScript et les technologies connexes','Bootstrap is an integrated development environment for JavaScript and related technologies',FALSE),
 (113, 43, 'PHP est principalement conçu pour servir de langage de script coté client','PHP is primarily designed to serve as a client-side scripting language',FALSE),
 (114, 43, 'PHP est principalement conçu pour servir de langage de script coté serveur','PHP is primarily designed to serve as a server-side scripting language',TRUE),
 (115, 43, 'PHP est principalement conçu pour faire du front-end à la place de HTML','PHP is mainly designed to do front-end instead of HTML',FALSE),

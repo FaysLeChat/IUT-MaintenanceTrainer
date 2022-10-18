@@ -146,9 +146,6 @@ export class SurvivalComponent implements OnInit {
     let r =  Math.floor((Math.random() * n));
     let boucle: boolean = true;
 
-    if(this.tabQ.length == n)
-      this.tabQ = [];
-
     while(boucle) {
       if (!this.tabQ.includes(r)) {
         this.tabQ.push(r);
@@ -236,9 +233,7 @@ export class SurvivalComponent implements OnInit {
 
   valid(reponse: Reponses, n: number) {
     if(this.tabQ.length == n){
-      alert(this.translate.instant('survival.alert.endgame'));
-      this.resetGame();
-      this.router.navigateByUrl('');
+     this.tabQ = []
     }
 
     if(reponse.valid != true) {

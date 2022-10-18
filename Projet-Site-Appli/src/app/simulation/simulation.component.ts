@@ -178,6 +178,7 @@ export class SimulationComponent implements OnInit {
     localStorage.removeItem("simulation_themes");
     this.theme = [];
     this.config = 'false';
+    this.IdQuestion = 1;
   }
 
 }

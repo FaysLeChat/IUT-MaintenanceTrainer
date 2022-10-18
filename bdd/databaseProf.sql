@@ -5,8 +5,8 @@ CREATE TABLE categories (
 );
 
 INSERT INTO categories (id_categorie, label_fr, label_en) VALUES
-(1, 'Basededonnées', 'Database'),
-(2, 'Réseau', 'Network'),
+(1, 'Basededonnees', 'Database'),
+(2, 'Reseau', 'Network'),
 (3, 'Web-Front', 'Web-Front'),
 (4, 'Web-Back', 'Web-Back'),
 (5,'ProgObjet', 'OrientedObjectProgrammation'),

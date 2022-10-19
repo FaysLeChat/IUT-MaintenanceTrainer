@@ -8,7 +8,7 @@
     <div class="col">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title" style="text-align: center;">Question {{IdQuestion}}/{{questions.length}}</h5>
+          <h5 class="card-title" style="text-align: center;">Question {{IdQuestion}}/{{maxscore/5}}</h5>
           <p class="card-text" style="text-align: center;" *ngIf="langue == 'fr'">{{questions[question].label_fr}} | ID Question : {{questions[question].id_question}}</p>
           <p class="card-text" style="text-align: center;" *ngIf="langue == 'en'">{{questions[question].label_en}} | ID Question : {{questions[question].id_question}}</p>
           <ngb-alert *ngIf="errorMessage" type="info" (closed)="errorMessage=''">{{errorMessage | translate }}</ngb-alert>

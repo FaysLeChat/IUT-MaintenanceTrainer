@@ -179,6 +179,7 @@ export class SimulationComponent implements OnInit {
     this.theme = [];
     this.config = 'false';
     this.IdQuestion = 1;
+    this.tabQ = [this.question];
   }
 
 }

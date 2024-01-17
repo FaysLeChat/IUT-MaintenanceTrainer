@@ -1,0 +1,147 @@
+{
+  "navbar": {
+    "logotext": "PTE",
+    "index": "Accueil",
+    "gamemode": "Mode",
+    "gamemodes": {
+      "training": "Entrainement",
+      "simulation": "Simulation",
+      "survival": "Survie"
+    }
+  },
+  "home": {
+    "gamemodes": {
+      "survival": {
+        "title": "Survie",
+        "description": "Affronter vos amis dans un Battle Royal afin de déterminer qui est le meilleur dans les questions lors d'entretiens."
+      },
+      "training": {
+        "title": "Entrainement",
+        "description": "Entraine toi  à répondre à une série de questions sur un thème choisi qui te seront possiblement posées lors d'entretiens."
+      },
+      "simulation": {
+        "title": "Simulation",
+        "description": "Fais une simulation d'entretien avec un de tes amis ou l'aide d'un professeur pour voir comment se déroule un entretien."
+      }
+    },
+    "play": "Jouer"
+  },
+  "training": {
+    "title": "Mode Entraînement",
+    "setup": {
+      "title": "Configuration",
+      "addtimer": "Ajouter un timer ?",
+      "baclevel": "Niveau de BAC"
+    },
+    "play": "Jouer"
+  },
+  "simulation": {
+    "title": "Mode Simulation",
+    "error": "Score maximum atteint",
+    "bar": {
+      "test": "Test affichage question",
+      "score": "Score"
+    }
+  },
+  "survival": {
+    "title": "Mode Survie",
+    "setup": {
+      "title": "Configuration",
+      "addtimer": "Ajouter un timer ?"
+    },
+    "play": "Jouer",
+    "nbplayers": {
+      "title": "Nombre de joueurs",
+      "placeholder": "Entre 2 et 10",
+      "error": "Le nombre de joueurs doit être compris entre 2 et 10 !"
+    },
+    "bar": {
+      "players": "Joueurs",
+      "lives": "Vie(s)"
+    },
+    "alert": {
+      "endgame": "Fin de la partie",
+      "allplayereliminated": "Tous les joueurs sont éliminés"
+    },
+    "is_number_error": "Le nombre de vies doit être un nombre !",
+    "between_number_error": "Le nombre de joueurs doit être compris entre 2 et 10 !",
+    "the_player": "Le Joueur",
+    "eliminated_text": "est éliminé",
+    "lose_live": "a perdu une vie",
+    "live_remaining": "Il lui reste encore",
+    "live_text": "vie(s)",
+    "is_alive": "En Vie",
+    "is_eliminated": "Éliminé",
+    "game_settings": "Paramètres de la partie",
+    "notifications": "Notifications",
+    "reset_party": "Réinitialiser la partie",
+    "player_settings": "Paramètres des joueurs",
+    "optionnal_settings": "Paramètres optionnels",
+    "start_lives": "Vies de départ",
+    "correct_answer": "Réponse correcte pour le Joueur",
+    "game_stats": "Infos Partie",
+    "player_turn": "Au tour du Joueur",
+    "life_maj_text": "Vie(s)",
+    "player_text": "Joueur"
+  },
+  "settings": {
+    "title": "Paramètres",
+    "language": "Langue",
+    "languages": {
+      "french": "Français",
+      "english": "Anglais"
+    },
+    "close": "Fermer"
+  },
+  "footerbar": {
+    "settings": "Paramètres"
+  },
+  "theme": {
+    "title": "Choix du thème des questions",
+    "select": "Sélectionner",
+    "database": {
+      "title": "Base de données",
+      "description": "Deviens une bête en BD pour dévorer tes amis"
+    },
+    "network": {
+      "title": "Réseau",
+      "description": "Deviens une machine de guerre en Réseau pour DDOS tes collègues"
+    },
+    "frontend": {
+      "title": "Web - Front",
+      "description": "Deviens un prophète en Web-Front pour apporter la bonne parole à tes amis "
+    },
+    "backend": {
+      "title": "Web - Back",
+      "description": "Es-tu un amiral du Web-Back ? Shirohige va te mettre à l'épreuve"
+    },
+    "oop": {
+      "title": "Prog Objet",
+      "description": "Quand on veut on peut, mais peux-tu réussir cet entraînement en Prog Objet ?"
+    },
+    "experience": {
+      "title": "Expérience",
+      "description": "'Tu es un noob' disait le rageux, alors viens accumuler de l'éxperience ici "
+    },
+    "personnal": {
+      "title": "Personnel",
+      "description": "Parler de soi-même est un art, le maîtrises-tu ?"
+    },
+    "php": {
+      "title": "PHP",
+      "description": "Langage démoniaque en effet, c'est le moment ou jamais de changer d'avis"
+    },
+    "softskills": {
+      "title": "Soft Skills",
+      "description": "Vérifie ici si tu as des compétences applicables a tous les métiers"
+    },
+    "random": {
+      "title": "Thème aléatoire",
+      "description": "L'entraînement du jeune Padawan"
+    },
+    "all": {
+      "title": "Tous les thèmes",
+      "description": "L'entraînement du Guerrier Shaolin"
+    }
+  }
+}

@@ -1,0 +1,147 @@
+{
+  "navbar": {
+    "logotext": "PTE",
+    "index": "Home",
+    "gamemode": "Gamemode",
+    "gamemodes": {
+      "training": "Training",
+      "simulation": "Simulation",
+      "survival": "Survival"
+    }
+  },
+  "home": {
+    "gamemodes": {
+      "survival": {
+        "title": "Survival",
+        "description": "Compete against your friends in a Battle Royale to see who is the best at interview questions."
+      },
+      "training": {
+        "title": "Training",
+        "description": "Practice answering a series of questions on a chosen topic that you may be asked in interviews."
+      },
+      "simulation": {
+        "title": "Simulation",
+        "description": "Do a mock interview with a friend or with the help of a teacher to see how an interview goes."
+      }
+    },
+    "play": "Play"
+  },
+  "training": {
+    "title": "Gamemode Training",
+    "setup": {
+      "title": "Setup",
+      "addtimer": "Add a timer ?",
+      "baclevel": "BAC Level"
+    },
+    "play": "Play"
+  },
+  "simulation": {
+    "title": "Gamemode Simulation",
+    "error": "Maximum score reached",
+    "bar": {
+      "test": "Test display question",
+      "score": "Score"
+    }
+  },
+  "survival": {
+    "title": "Gamemode Survival",
+    "setup": {
+      "title": "Setup",
+      "addtimer": "Add a timer ?"
+    },
+    "play": "Play",
+    "nbplayers": {
+      "title": "Number of players",
+      "placeholder": "Between 2 and 10",
+      "error": "The number of players must be between 2 and 10!"
+    },
+    "bar": {
+      "players": "Players",
+      "lives": "Live(s)"
+    },
+    "alert": {
+      "endgame": "The game is ended",
+      "allplayereliminated": "All players are eliminated"
+    },
+    "is_number_error": "The number of lives must be a number !",
+    "between_number_error": "The number of players must be between 2 and 10 !",
+    "the_player": "The Player",
+    "eliminated_text": "is eliminated",
+    "lose_live": "has lost a life",
+    "live_remaining": "He still has",
+    "live_text": "life(s)",
+    "is_alive": "Alive",
+    "is_eliminated": "Eliminated",
+    "game_settings": "Game settings",
+    "notifications": "Notifications",
+    "reset_party": "Reset the game",
+    "player_settings": "Player settings",
+    "optionnal_settings": "Optional parameters",
+    "start_lives": "Starting lives",
+    "correct_answer": "Correct answer for the Player",
+    "game_stats": "Game Stats",
+    "player_turn": "The turn of Player",
+    "life_maj_text": "Life(s)",
+    "player_text": "Player"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "languages": {
+      "french": "French",
+      "english": "English"
+    },
+    "close": "Close"
+  },
+  "footerbar": {
+    "settings": "Settings"
+  },
+  "theme": {
+    "title": "Choice of question topic",
+    "select": "Select",
+    "database": {
+      "title": "Database",
+      "description": "Become a database beast to devour your friends"
+    },
+    "network": {
+      "title": "Network",
+      "description": "Become a networked war machine to DDOS your colleagues"
+    },
+    "frontend": {
+      "title": "Web - Front",
+      "description": "Become a prophet in Web-Front to bring the good word to your friends"
+    },
+    "backend": {
+      "title": "Web - Back",
+      "description": "Are you a Web-Back admiral? Shirohige will put you to the test "
+    },
+    "oop": {
+      "title": "Object-oriented programming",
+      "description": "Where there's a will there's a way, but can you do this training in Prog Object?"
+    },
+    "experience": {
+      "title": "Experience",
+      "description": "You're a noob' said the rager, so come and get some experience here "
+    },
+    "personnal": {
+      "title": "Personnal",
+      "description": "Talking about yourself is an art, have you mastered it?"
+    },
+    "php": {
+      "title": "PHP",
+      "description": "Demonic language indeed, now is the time to change your mind"
+    },
+    "softskills": {
+      "title": "Soft Skills",
+      "description": "Check here if you have skills applicable to all trades"
+    },
+    "random": {
+      "title": "Random theme",
+      "description": "The training of the young Padawan"
+    },
+    "all": {
+      "title": "All theme",
+      "description": "The training of the Shaolin Warrior"
+    }
+  }
+}
